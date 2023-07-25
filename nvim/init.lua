@@ -1,12 +1,11 @@
 for _, source in ipairs {
   "defaults",
-  "neovim.options",
-  "neovim.lazy",
-  "neovim.autocmds",
-  "neovim.mappings",
+  "options",
+  "lazy-package",
+  "keymaps",
 } do
-  local status_ok, fault = pcall(require, source)
-  if not status_ok then vim.api.nvim_err_writeln("Failed to load " .. source .. "\n\n" .. fault) end
+  local status_ok, mod = pcall(require, source)
+  if not status_ok then vim.api.nvim_err_writeln("Failed to load " .. source .. "\n" .. mod) end
 end
 
 if defaults.colorscheme then
