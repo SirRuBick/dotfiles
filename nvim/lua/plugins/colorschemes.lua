@@ -17,9 +17,7 @@ return {
       transparent_background = true,
       show_end_of_buffer = true,       -- show the '~' characters after the end of buffers
       integrations = {
-        cmp = true,
-        gitsigns = true,
-        treesitter = true,
+        alpha = true,
         barbecue = {
           dim_dirname = true,     -- directory name is dimmed by default
           bold_basename = true,
@@ -29,6 +27,18 @@ return {
             enabled = true,
             colored_indent_levels = false,
           },
+        cmp = true,
+        flash = true,
+        gitsigns = true,
+        illuminate = true,
+        lsp_trouble = true,
+        mason = true,
+        mini = true,
+        notify = true,
+        neotree = true,
+        telescope = true,
+        treesitter = true,
+        which_key = true,
         },
       },
     },
