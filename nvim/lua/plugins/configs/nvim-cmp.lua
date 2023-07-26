@@ -1,12 +1,5 @@
-local cmp_status_ok, cmp = pcall(require, "cmp")
-if not cmp_status_ok then
-  return
-end
-
-local snip_status_ok, luasnip = pcall(require, "luasnip")
-if not snip_status_ok then
-  return
-end
+local cmp = require("cmp")
+local luasnip = require("luasnip")
 
 require("luasnip/loaders/from_vscode").lazy_load()
 
@@ -56,18 +49,18 @@ local kind_icons = {
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
 cmp.setup({
-  enabled = function()
-    if vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "prompt" then
-      return false
-    end
-    return vim.g.cmp_enabled
-  end,
+  -- enabled = function()
+  --   if vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "prompt" then
+  --     return false
+  --   end
+  --   return vim.g.cmp_enabled
+  -- end,
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
   },
-  mapping = {
+  mapping = cmp.mapping.preset.insert({
     ["<Up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
     ["<Down>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
     ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
@@ -102,7 +95,7 @@ cmp.setup({
         fallback()
       end
     end, { "i", "s" }),
-  },
+  }),
   formatting = {
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
