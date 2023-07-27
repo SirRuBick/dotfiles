@@ -34,7 +34,7 @@ return {
         lsp_trouble = true,
         mason = true,
         mini = true,
-        notify = true,
+        notify = false,
         neotree = true,
         telescope = true,
         treesitter = true,

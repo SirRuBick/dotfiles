@@ -44,6 +44,10 @@ option.splitbelow = true
 option.splitright = true
 option.wrap = false
 option.exrc = true
+-- foldcolumn
+option.foldlevel = 99
+option.foldmethod = "expr"
+option.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- buffer
 buffer.fileencoding = "utf-8"
