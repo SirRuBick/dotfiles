@@ -38,6 +38,7 @@ option.mouse = nil               -- disable mouse
 option.clipboard = "unnamedplus" -- allows neovim to access system clipboard
 option.undofile = true           -- enable persistent undo
 option.updatetime = 300          -- faster completion (default 4000ms)
+option.timeoutlen = 300
 option.completeopt = { "menuone", "noselect" }
 option.splitbelow = true
 option.splitright = true

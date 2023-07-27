@@ -246,5 +246,15 @@ maps.n["<leader>pS"] = { require("lazy").sync, desc = "Plugins Sync" }
 maps.n["<leader>pu"] = { require("lazy").check, desc = "Plugins Check Updates" }
 maps.n["<leader>pU"] = { require("lazy").update, desc = "Plugins Update" }
 
+-- UI --
+maps.n["<leader>u"] = sections.u
+-- Trouble
+maps.n["<leader>ux"] = { "<cmd>TroubleToggle<cr>", desc = "Touble: Toggle" }
+maps.n["<leader>uw"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Trouble: Toggle workspace diagnostics" }
+maps.n["<leader>ud"] = { "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Trouble: Toggle document diagnostics" }
+maps.n["<leader>ul"] = { "<cmd>TroubleToggle loclist<cr>", desc = "Trouble: Open location list" }
+maps.n["<leader>uq"] = { "<cmd>TroubleToggle quickfix<cr>", desc = "Trouble: Quick Fix" }
+maps.n["<leader>ur"] = { "<cmd>TroubleToggle lsp_references<cr>", desc = "Trouble: LSP reference" }
+
 
 utils.set_mappings(maps)
