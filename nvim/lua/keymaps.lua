@@ -53,6 +53,9 @@ if is_available("bufferline.nvim") then
   maps.n["<S-l>"] = { "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" }
   maps.n["[b"] = { "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" }
   maps.n["]b"] = { "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" }
+  maps.n["<leader>bC"] = { "<cmd>BufferLineCloseOthers<cr>", desc = "Close all other buffers" }
+  maps.n["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick and Close a buffer" }
+  maps.n["<leader>bp"] = { "<cmd>BufferLinePick<cr>", desc = "Pick a buffer" }
 else
   maps.n["<S-h>"] = { "<cmd>bprevious<cr>", desc = "Prev buffer" }
   maps.n["<S-l>"] = { "<cmd>bnext<cr>", desc = "Next buffer" }
