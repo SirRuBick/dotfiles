@@ -195,8 +195,9 @@ if is_available "nvim-dap" then
     desc = "Debugger: Conditional Breakpoint",
   }
   maps.n["<leader>db"] = { require("dap").toggle_breakpoint, desc = "Toggle Breakpoint (F9)" }
-  maps.n["<leader>dc"] = { require("dap").clear_breakpoints, desc = "Clear Breakpoints" }
+  maps.n["<leader>dC"] = { require("dap").clear_breakpoints, desc = "Clear Breakpoints" }
 
+  maps.n["<leader>dc"] = { require("dap").continue, desc = "Debugger: Continue (F5)" }
   maps.n["<leader>di"] = { require("dap").step_into, desc = "Step Into (F7)" }
   maps.n["<leader>do"] = { require("dap").step_over, desc = "Step Over (F6)" }
   maps.n["<leader>dO"] = { require("dap").step_out, desc = "Step Out (F8)" }
@@ -217,7 +218,7 @@ if is_available "nvim-dap" then
       end,
       desc = "Evaluate Input",
     }
-    maps.v["<leader>dE"] = { require("dapui").eval, desc = "Evaluate Input" }
+    -- maps.v["<leader>dE"] = { require("dapui").eval, desc = "Evaluate Input" }
     maps.n["<leader>du"] = { require("dapui").toggle, desc = "Toggle Debugger UI" }
     maps.n["<leader>dh"] = { require("dap.ui.widgets").hover, desc = "Debugger Hover" }
   end
@@ -248,13 +249,28 @@ maps.n["<leader>pU"] = { require("lazy").update, desc = "Plugins Update" }
 
 -- UI --
 maps.n["<leader>u"] = sections.u
+local ui = require("utils.ui")
+if is_available "nvim-autopairs" then
+  maps.n["<leader>ua"] = { ui.toggle_autopairs, desc = "Toggle autopairs" }
+end
+if is_available "nvim-cmp" then
+  maps.n["<leader>uc"] = { ui.toggle_cmp, desc = "Toggle autocompletion" }
+end
+
+maps.n["<leader>ud"] = { ui.toggle_diagnostics, desc = "Toggle diagnostics" }
+maps.n["<leader>ul"] = { ui.toggle_statusline, desc = "Toggle statusline" }
+maps.n["<leader>uL"] = { ui.toggle_codelens, desc = "Toggle CodeLens" }
+maps.n["<leader>us"] = { ui.toggle_spell, desc = "Toggle spellcheck" }
+maps.n["<leader>uS"] = { ui.toggle_conceal, desc = "Toggle conceal" }
+maps.n["<leader>uw"] = { ui.toggle_wrap, desc = "Toggle wrap" }
 -- Trouble
-maps.n["<leader>ux"] = { "<cmd>TroubleToggle<cr>", desc = "Touble: Toggle" }
-maps.n["<leader>uw"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Trouble: Toggle workspace diagnostics" }
-maps.n["<leader>ud"] = { "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Trouble: Toggle document diagnostics" }
-maps.n["<leader>ul"] = { "<cmd>TroubleToggle loclist<cr>", desc = "Trouble: Open location list" }
-maps.n["<leader>uq"] = { "<cmd>TroubleToggle quickfix<cr>", desc = "Trouble: Quick Fix" }
-maps.n["<leader>ur"] = { "<cmd>TroubleToggle lsp_references<cr>", desc = "Trouble: LSP reference" }
+
+maps.n["<leader>uX"] = { "<cmd>TroubleToggle<cr>", desc = "Touble: Toggle" }
+maps.n["<leader>uW"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Trouble: Toggle workspace diagnostics" }
+maps.n["<leader>uD"] = { "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Trouble: Toggle document diagnostics" }
+maps.n["<leader>uL"] = { "<cmd>TroubleToggle loclist<cr>", desc = "Trouble: Open location list" }
+maps.n["<leader>uQ"] = { "<cmd>TroubleToggle quickfix<cr>", desc = "Trouble: Quick Fix" }
+maps.n["<leader>uR"] = { "<cmd>TroubleToggle lsp_references<cr>", desc = "Trouble: LSP reference" }
 
 
 utils.set_mappings(maps)
