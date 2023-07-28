@@ -1,0 +1,16 @@
+autoload -Uz compinit promptinit
+compinit
+promptinit
+
+# This will set the default prompt to the walters theme
+prompt walters
+
+# Load colors so we can access $fg and more.
+autoload -U colors && colors
+
+# Disable CTRL-s from freezing your terminal's output.
+stty stop undef
+
+# Enable comments when working in an interactive shell.
+setopt interactive_comments
+
