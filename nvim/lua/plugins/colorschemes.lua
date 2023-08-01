@@ -14,7 +14,7 @@ return {
         light = "latte",
         dark = "mocha",
       },
-      transparent_background = true,
+      transparent_background = false,
       show_end_of_buffer = true,       -- show the '~' characters after the end of buffers
       integrations = {
         alpha = true,
