@@ -53,6 +53,14 @@ link_file () {
   success "linked $1 to $2"
 }
 
+install_dependencies() {
+  # install zoxide
+  curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+  # install fzf
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install
+}
+
 # install_zsh() {
 #   # Test to see if zshell is installed.  If it is:
 #   if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
@@ -72,8 +80,8 @@ link_file () {
 # link_file "$DOTFILES_ROOT/shell/.bashrc" "$HOME/.bashrc"
 # link_file "$DOTFILES_ROOT/shell/.bash_logout" "$HOME/.bash_logout"
 
-link_file "$DOTFILES_ROOT/shell/zsh" "$HOME/.config/zsh"
+# link_file "$DOTFILES_ROOT/shell/zsh" "$HOME/.config/zsh"
 
 link_file "$DOTFILES_ROOT/nvim" "$HOME/.config/nvim"
-link_file "$DOTFILES_ROOT/tmux/tmux.conf" "$HOME/.tmux.conf"
+# link_file "$DOTFILES_ROOT/tmux/tmux.conf" "$HOME/.tmux.conf"
 
