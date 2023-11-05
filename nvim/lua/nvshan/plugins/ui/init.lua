@@ -14,12 +14,9 @@ local plugins = {
     dependencies = {
       "nvim-tree/nvim-web-devicons"
     },
-    opts = {
-      options = {
-        icons_enabled = vim.g.icons_enabled,
-        theme = "catppuccin",
-      }
-    }
+    config = function()
+      require("nvshan.plugins.ui.lualine")
+    end,
   },
   {
     "utilyre/barbecue.nvim",

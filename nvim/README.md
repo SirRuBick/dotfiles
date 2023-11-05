@@ -23,8 +23,6 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 - document down folding shortcuts
 - telescope keymaps
 - numToStr/Comment.nvim how to work with treesitter and keymaps
-- treesitter-context is having bugs
-- make lualine buffer line look better?
 - nvim-tree some nerd fonts are not shown
 - after/ftplugins
 - what are tags and marks?? is this useful?
