@@ -34,7 +34,6 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 ### possible improvements
 - lsp keymaps with lspsaga
 - config DAP well
-- nvim-treesitter-textobjects how to use indeed?
 - more telescope plugins? and pickers?
 - make copy paste smarter
 - "simrat39/symbols-outline.nvim" is quite useful but can lspsaga do the same or not?
