@@ -87,7 +87,8 @@ return {
   },
   {
     "SUSTech-data/wildfire.nvim",
-    event = "VeryLazy",
+    -- TODO: Can we lazy load this when <CR> is pressed?
+    event = { "BufRead", "BufNewFile" },
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {
       surrounds = {
@@ -107,7 +108,7 @@ return {
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability;
-    event = "VeryLazy",
+    event = { "BufRead", "BufNewFile" },
     opts = {
       keymaps = {
         insert = "<C-g>s",

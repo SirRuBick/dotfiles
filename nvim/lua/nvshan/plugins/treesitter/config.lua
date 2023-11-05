@@ -1,3 +1,4 @@
+local is_available = require("utils").is_available
 local status_ok, configs = pcall(require, "nvim-treesitter.configs")
 if not status_ok then
   return
@@ -64,12 +65,12 @@ configs.setup({
   },
   indent = { enable = true },
   incremental_selection = {
-    enable = true,
+    enable = not is_available("wildfire.nvim"),
     keymaps = {
-      init_selection = "gnn", -- set to `false` to disable one of the mappings
-      node_incremental = "grn",
-      scope_incremental = "grc",
-      node_decremental = "grm",
+      init_selection = "<CR>", -- set to `false` to disable one of the mappings
+      node_incremental = "<CR>",
+      scope_incremental = false,
+      node_decremental = "<BS>",
     },
   },
   -- Extra plugins

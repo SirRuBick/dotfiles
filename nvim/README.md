@@ -26,22 +26,20 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 - [] setup filetype plugins
 - [] setup plugins for tags and marks
 - [] config "github/copilot.vim"
+- [] "folke/zen-mode.nvim"
+- [] "preservim/vim-markdown" and "iamcco/markdown-preview.nvim"
+- [] "stevearc/aerial.nvim"
+- [] "folke/persistence.nvim"
 
 ### possible improvements
+- lsp keymaps with lspsaga
 - config DAP well
 - nvim-treesitter-textobjects how to use indeed?
 - more telescope plugins? and pickers?
-- lualine with more info?
+- make copy paste smarter
+- "simrat39/symbols-outline.nvim" is quite useful but can lspsaga do the same or not?
+- "joechrisellis/lsp-format-modifications.nvim" is useful but needs to be added to lsp keymap after it's cleaned
 
 ### Plugins to explore
-- "nvimdev/lspsaga.nvim"
-- "folke/persistence.nvim"
-- "preservim/vim-markdown" and "iamcco/markdown-preview.nvim"
 - "jackMort/ChatGPT.nvim"
-- "folke/zen-mode.nvim"
-- "DNLHC/glance.nvim"
-- "simrat39/symbols-outline.nvim"
-- "ibhagwan/smartyank.nvim"
-- "joechrisellis/lsp-format-modifications.nvim"
-- "stevearc/aerial.nvim"
 - "ThePrimeagen/refactoring.nvim"

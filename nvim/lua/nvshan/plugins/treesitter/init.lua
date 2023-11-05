@@ -3,7 +3,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    event = "VeryLazy",
+    event = { "BufRead", "BufNewFile" },
     commands = {
       "TSInstall",
       "TSInstallSync",
