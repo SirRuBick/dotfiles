@@ -21,6 +21,10 @@ return {
           require "nvshan.plugins.lsp.mason-lspconfig"
         end,
       },
+      {
+        "folke/neodev.nvim",
+        config = true,
+      },
     },
     config = require "nvshan.plugins.lsp.lspconfig",
   },

@@ -18,6 +18,7 @@ return {
     root_dir = require("lspconfig/util").root_pattern('CMakePresets.json', 'CTestConfig.cmake', '.git', 'build', 'cmake'),
     single_file_support = true,
   },
+
   -- C/C++
   clangd = {
     cmd = { "cland" },
@@ -36,24 +37,24 @@ return {
     },
     single_file_support = true,
   },
+
   -- -- C SHARP
   -- csharp_ls = {
   --   cmd = { "csharp-ls" },
   --   filetypes = { "cs" },
   --   init_options = { AutomaticWorkspaceInit = true },
   -- },
-  -- dockerls = {},
-  -- html = {},
-  -- jsonls = {},
-  -- ltex = {},
-  -- lua_ls = {
-  --   Lua = {
-  --     diagnostics = { globals = { "vim" } },
-  --     workspace = { checkThirdParty = false },
-  --     telemetry = { enable = false },
-  --   },
-  -- },
-  -- MARKDOWN
+
+  -- DOCKER
+  dockerls = {},
+
+  -- HTML
+  html = {},
+
+  -- JSON
+  jsonls = {},
+
+  -- lATEX; MARKDOWN
   ltex = {
     cmd = { "ltex-ls" },
     filetypes = { "bib", "gitcommit", "markdown", "org", "plaintex", "rst", "rnoweb", "tex", "pandoc", "quarto", "rmd" },
@@ -62,6 +63,21 @@ return {
       ltex = { language = "en" },
     },
   },
+
+  -- LUA
+  lua_ls = {
+    settings = {
+      Lua = {
+        diagnostics = { globals = { "vim" } },
+        workspace = { checkThirdParty = false },
+        telemetry = { enable = false },
+        completion = {
+          callSnippet = "Replace"
+        }
+      }
+    }
+  },
+
   -- PYTHON
   pyright = {
     cmd = { "pyright-langserver", "--stdio" },
@@ -77,6 +93,7 @@ return {
     },
     single_file_support = true,
   },
+
   -- SQL
   sqlls = {},
 }
