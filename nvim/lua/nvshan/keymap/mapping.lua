@@ -19,7 +19,10 @@ mappings.i["jk"] = map("<ESC>"):desc("Exit")
 
 -- Normal --
 mappings.n["<C-s>"] = map("<cmd>w<cr>"):desc("Save file")
-mappings.n["<C-q>"] = map("<cmd>q<cr>"):desc("Quit")
+if not require("configs.global").is_wsl then
+    -- <C-Q> for vitual block mode under windows
+    mappings.n["<C-q>"] = map("<cmd>q<cr>"):desc("Quit")
+end
 
 -- Split Navigation
 mappings.n["<C-h>"] = map("<C-w>h"):silent():noremap():desc("Move to left split")
