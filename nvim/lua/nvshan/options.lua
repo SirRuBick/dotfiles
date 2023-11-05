@@ -1,10 +1,11 @@
--- ### vim global options
+-- ### vim options
 --
 -- Some basic options, refer to :help options
 --
 -- @Author: alex shan
 -- @Date:   2023
 --
+local settings = require("settings")
 local option = vim.opt
 local buffer = vim.b
 local global = vim.g
@@ -53,7 +54,7 @@ option.foldexpr = "nvim_treesitter#foldexpr()"
 buffer.fileencoding = "utf-8"
 
 -- global
-global.mapleader = " "
+global.mapleader = settings.leader
 global.maplocalleader = ""
 global.highlighturl_enabled = true
 global.icons_enabled = true

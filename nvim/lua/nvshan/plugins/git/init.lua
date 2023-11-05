@@ -22,7 +22,7 @@ return {
     "kdheepak/lazygit.nvim",
     cmd = { "LazyGit", "LazyGitConfig" },
     keys = {
-      { "<C-g>", "<cmd>LazyGit<CR>", silent = true, noremap = true, desc = "Toggle LazyGit" },
+      { "<C-g>",      "<cmd>LazyGit<CR>", silent = true, noremap = true, desc = "Toggle LazyGit" },
       { "<leader>gg", "<cmd>LazyGit<CR>", silent = true, noremap = true, desc = "Toggle LazyGit" },
     },
   },
@@ -61,36 +61,12 @@ return {
         "Git Blame (Current Line)"
       },
       {
-        "<leader>gB",
-        "<cmd>lua require('gitsigns').toggle_current_line_blame(true)<CR>",
-        silent = true,
-        noremap = true,
-        desc =
-        "Git Blame (Current Line, Full)"
-      },
-      {
         "<leader>gl",
         "<cmd>lua require('gitsigns').blame_line()<CR>",
         silent = true,
         noremap = true,
         desc =
         "Git Blame"
-      },
-      {
-        "<leader>gL",
-        "<cmd>lua require('gitsigns').blame_line(true)<CR>",
-        silent = true,
-        noremap = true,
-        desc =
-        "Git Blame (Full)"
-      },
-      {
-        "<leader>gp",
-        "<cmd>lua require('gitsigns').preview_hunk()<CR>",
-        silent = true,
-        noremap = true,
-        desc =
-        "Git Preview Hunk"
       },
       {
         "<leader>gh",

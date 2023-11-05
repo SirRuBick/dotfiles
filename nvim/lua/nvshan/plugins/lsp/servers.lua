@@ -54,7 +54,14 @@ return {
   --   },
   -- },
   -- MARKDOWN
-  marksman = {},
+  ltex = {
+    cmd = { "ltex-ls" },
+    filetypes = { "bib", "gitcommit", "markdown", "org", "plaintex", "rst", "rnoweb", "tex", "pandoc", "quarto", "rmd" },
+    single_file_support = true,
+    settings = {
+      ltex = { language = "en" },
+    },
+  },
   -- PYTHON
   pyright = {
     cmd = { "pyright-langserver", "--stdio" },

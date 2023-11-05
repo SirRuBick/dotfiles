@@ -1,5 +1,7 @@
 local settings = {}
 
+-- leader key
+settings.leader = " "
 -- default color scheme to start with
 settings.colorscheme = "catppuccin"
 -- background clolor, "dark" or "light"
@@ -10,7 +12,7 @@ settings.pluginmodule = "nvshan.plugins"
 settings.use_copilot = false
 -- nvim-tree
 settings.float = {
-    enable = false,
+    enable = true,
     height_ratio = 0.8,
     width_ratio = 0.4,
 }
