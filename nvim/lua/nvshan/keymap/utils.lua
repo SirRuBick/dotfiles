@@ -24,7 +24,7 @@ function keymap:new()
 end
 
 --- set keymap rhs
---- @param rhs string
+--- @param rhs string|function|nil
 function keymap:map(rhs)
   self.rhs = rhs
   return self
@@ -66,7 +66,7 @@ function keymap:buffer(buf)
   return self
 end
 
----@param rhs string
+---@param rhs string|function|nil
 function utils.map(rhs)
   local km = keymap:new()
   return km:map(rhs)
