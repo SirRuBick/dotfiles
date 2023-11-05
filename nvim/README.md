@@ -5,6 +5,10 @@ I am still adding things in as I lean more about nvim.<br>
 ## Plugins
 + [Lazy.nvim](https://github.com/folke/lazy.nvim): Plugin Manager
 
+## dependencies
++ git
++ ripgrep
+
 ## Keymaps
 Some of the shortcuts I use frequently are listed here. <br>
 In the following shortcuts, `<leader>` represents `space`.<br>
@@ -18,16 +22,17 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 
 ## TODO
 - config DAP well
-- doc keymap
-- Random color scheme
-- document down folding shortcuts
-- telescope keymaps
+- doc useful shortcuts, including folding ones
+- More color themes and possibly random color scheme
 - numToStr/Comment.nvim how to work with treesitter and keymaps
-- nvim-tree some nerd fonts are not shown
+- nvim-tree keybinds conflict c-v with windows
 - after/ftplugins
 - what are tags and marks?? is this useful?
 - nvim-treesitter-textobjects how to use indeed?
-- more telescope plugins?
+
+### possible improvements
+- more telescope plugins? and pickers?
+- lualine with more info?
 
 ### Plugins to explore
 - "nvimdev/lspsaga.nvim"
