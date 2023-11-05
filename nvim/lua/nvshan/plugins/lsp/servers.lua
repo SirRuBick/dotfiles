@@ -15,7 +15,7 @@ return {
       buildDirectory = "build",
       maxThreads = 4,
     },
-    root_dir = require("lspconfig/util").root_pattern('CMakePresets.json', 'CTestConfig.cmake', '.git', 'build', 'cmake'),
+    root_dir = require("lspconfig/util").root_pattern("CMakePresets.json", "CTestConfig.cmake", ".git", "build", "cmake"),
     single_file_support = true,
   },
 
@@ -24,13 +24,13 @@ return {
     cmd = { "cland" },
     filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
     root_dir = require("lspconfig/util").root_pattern(
-      '.clangd',
-      '.clang-tidy',
-      '.clang-format',
-      'compile_commands.json',
-      'compile_flags.txt',
-      'configure.ac',
-      '.git'
+      ".clangd",
+      ".clang-tidy",
+      ".clang-format",
+      "compile_commands.json",
+      "compile_flags.txt",
+      "configure.ac",
+      ".git"
     ),
     flags = {
       debounce_text_changes = 500,

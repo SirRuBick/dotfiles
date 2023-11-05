@@ -1,4 +1,4 @@
-require 'alpha'.setup(require 'alpha.themes.startify'.config)
+require("alpha").setup(require("alpha.themes.startify").config)
 local time = os.date("%A, %d-%B-%Y %H:%M:%S")
 
 local alpha = require("alpha")

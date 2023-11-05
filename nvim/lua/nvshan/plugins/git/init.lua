@@ -38,7 +38,7 @@ return {
     keys = {
       {
         "<leader>gn",
-        "<cmd>lua require('gitsigns').next_hunk()<CR>",
+        function() require("gitsigns").next_hunk() end,
         silent = true,
         noremap = true,
         desc =
@@ -46,7 +46,7 @@ return {
       },
       {
         "<leader>gp",
-        "<cmd>lua require('gitsigns').prev_hunk()<CR>",
+        function() require("gitsigns").prev_hunk() end,
         silent = true,
         noremap = true,
         desc =
@@ -54,7 +54,7 @@ return {
       },
       {
         "<leader>gb",
-        "<cmd>lua require('gitsigns').toggle_current_line_blame()<CR>",
+        function() require("gitsigns").toggle_current_line_blame() end,
         silent = true,
         noremap = true,
         desc =
@@ -62,7 +62,7 @@ return {
       },
       {
         "<leader>gl",
-        "<cmd>lua require('gitsigns').blame_line()<CR>",
+        function() require("gitsigns").blame_line() end,
         silent = true,
         noremap = true,
         desc =
@@ -70,7 +70,7 @@ return {
       },
       {
         "<leader>gh",
-        "<cmd>lua require('gitsigns').reset_hunk()<CR>",
+        function() require("gitsigns").reset_hunk() end,
         silent = true,
         noremap = true,
         desc =
@@ -78,7 +78,7 @@ return {
       },
       {
         "<leader>gr",
-        "<cmd>lua require('gitsigns').reset_buffer()<CR>",
+        function() require("gitsigns").reset_buffer() end,
         silent = true,
         noremap = true,
         desc =
@@ -86,7 +86,7 @@ return {
       },
       {
         "<leader>gs",
-        "<cmd>lua require('gitsigns').stage_hunk()<CR>",
+        function() require("gitsigns").stage_hunk() end,
         silent = true,
         noremap = true,
         desc =
@@ -94,7 +94,7 @@ return {
       },
       {
         "<leader>gS",
-        "<cmd>lua require('gitsigns').stage_buffer()<CR>",
+        function() require("gitsigns").stage_buffer() end,
         silent = true,
         noremap = true,
         desc =
@@ -102,7 +102,7 @@ return {
       },
       {
         "<leader>gu",
-        "<cmd>lua require('gitsigns').undo_stage_hunk()<CR>",
+        function() require("gitsigns").undo_stage_hunk() end,
         silent = true,
         noremap = true,
         desc =
@@ -110,7 +110,7 @@ return {
       },
       {
         "<leader>gd",
-        "<cmd>lua require('gitsigns').diffthis()<CR>",
+        function() require("gitsigns").diffthis() end,
         silent = true,
         noremap = true,
         desc =
