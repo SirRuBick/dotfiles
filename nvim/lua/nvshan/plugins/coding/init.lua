@@ -27,7 +27,7 @@ return {
     keys = {
       {
         "<leader>xx",
-        "<cmd>TroubleToggle<cr>",
+        "<cmd>TroubleToggle<CR>",
         silent = true,
         noremap = true,
         desc =
@@ -35,7 +35,7 @@ return {
       },
       {
         "<leader>xw",
-        "<cmd>Trouble lsp_workspace_diagnostics<cr>",
+        "<cmd>Trouble lsp_workspace_diagnostics<CR>",
         silent = true,
         noremap = true,
         desc =
@@ -43,7 +43,7 @@ return {
       },
       {
         "<leader>xd",
-        "<cmd>Trouble lsp_document_diagnostics<cr>",
+        "<cmd>Trouble lsp_document_diagnostics<CR>",
         silent = true,
         noremap = true,
         desc =
@@ -51,7 +51,7 @@ return {
       },
       {
         "<leader>xl",
-        "<cmd>Trouble loclist<cr>",
+        "<cmd>Trouble loclist<CR>",
         silent = true,
         noremap = true,
         desc =
@@ -59,7 +59,7 @@ return {
       },
       {
         "<leader>xq",
-        "<cmd>Trouble quickfix<cr>",
+        "<cmd>Trouble quickfix<CR>",
         silent = true,
         noremap = true,
         desc =
@@ -67,7 +67,7 @@ return {
       },
       {
         "<leader>gr",
-        "<cmd>Trouble lsp_references<cr>",
+        "<cmd>Trouble lsp_references<CR>",
         silent = true,
         noremap = true,
         desc =
