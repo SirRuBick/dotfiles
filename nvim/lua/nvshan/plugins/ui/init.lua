@@ -57,6 +57,14 @@ local plugins = {
       require("nvshan.plugins.ui.specs")
     end
   },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    event = { "BufReadPost", "BufAdd", "BufNewFile" },
+    config = function()
+      require("nvshan.plugins.ui.ibl")
+    end,
+  },
 }
 
 return plugins

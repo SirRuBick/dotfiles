@@ -25,8 +25,8 @@ return {
           alt_background = false,
           indent_blankline = {
             enabled = true,
-            scope_color = "", -- catppuccin color (eg. `lavender`) Default: text
-            colored_indent_levels = false,
+            scope_color = "lavender", -- catppuccin color (eg. `lavender`) Default: text
+            colored_indent_levels = true,
         },
           cmp = true,
           flash = true,
@@ -38,6 +38,7 @@ return {
           notify = true,
           neotree = true,
           telescope = true,
+          treesitter_context = false,
           treesitter = true,
           which_key = true,
         },
