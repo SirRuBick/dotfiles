@@ -29,7 +29,6 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 
 ### possible improvements
 - config DAP well
-- nvim-tree keybinds conflict c-v with windows
 - nvim-treesitter-textobjects how to use indeed?
 - more telescope plugins? and pickers?
 - lualine with more info?
