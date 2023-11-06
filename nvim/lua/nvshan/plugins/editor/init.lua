@@ -60,7 +60,7 @@ local plugins = {
     "nvim-tree/nvim-tree.lua",
     cmd = { "NvimTreeToggle" },
     keys = {
-      { "<leader>e", "<cmd>NvimTreeToggle<CR>", silent = true, noremap = true, desc = "Explorer" },
+      { "<leader>e", "<cmd>NvimTreeToggle<CR>", silent = true, noremap = true, desc = " Explorer" },
     },
     config = function()
       require("nvshan.plugins.editor.nvim-tree")
