@@ -6,13 +6,13 @@ local map = keymap_utils.map
 local wk_icons = require("icons").whichkey
 mappings.n["<leader>f"] = map():desc(wk_icons.f)
 mappings.n["<leader>p"] = map():desc(wk_icons.p)
-mappings.n["<leader>l"] = map():desc(wk_icons.l)
 mappings.n["<leader>u"] = map():desc(wk_icons.u)
 mappings.n["<leader>b"] = map():desc(wk_icons.b)
 mappings.n["<leader>d"] = map():desc(wk_icons.d)
 mappings.n["<leader>g"] = map():desc(wk_icons.g)
 mappings.n["<leader>t"] = map():desc(wk_icons.t)
 mappings.n["<leader>s"] = map():desc(wk_icons.s)
+mappings.n["<leader>x"] = map():desc(wk_icons.x)
 
 -- Insert --
 mappings.i["jk"] = map("<ESC>"):desc("Exit")

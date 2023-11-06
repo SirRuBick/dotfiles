@@ -25,54 +25,12 @@ return {
     "folke/trouble.nvim",
     cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
     keys = {
-      {
-        "<leader>xx",
-        "<cmd>TroubleToggle<CR>",
-        silent = true,
-        noremap = true,
-        desc =
-        "Trouble Toggle"
-      },
-      {
-        "<leader>xw",
-        "<cmd>Trouble lsp_workspace_diagnostics<CR>",
-        silent = true,
-        noremap = true,
-        desc =
-        "Trouble Workspace Diagnostics"
-      },
-      {
-        "<leader>xd",
-        "<cmd>Trouble lsp_document_diagnostics<CR>",
-        silent = true,
-        noremap = true,
-        desc =
-        "Trouble Document Diagnostics"
-      },
-      {
-        "<leader>xl",
-        "<cmd>Trouble loclist<CR>",
-        silent = true,
-        noremap = true,
-        desc =
-        "Trouble Location List"
-      },
-      {
-        "<leader>xq",
-        "<cmd>Trouble quickfix<CR>",
-        silent = true,
-        noremap = true,
-        desc =
-        "Trouble Quickfix"
-      },
-      {
-        "<leader>gr",
-        "<cmd>Trouble lsp_references<CR>",
-        silent = true,
-        noremap = true,
-        desc =
-        "Trouble References"
-      },
+      { "<leader>xx", "<cmd>TroubleToggle<CR>", desc = "Trouble Toggle" },
+      { "<leader>xw", "<cmd>Trouble lsp_workspace_diagnostics<CR>", desc = "Trouble Workspace Diagnostics" },
+      { "<leader>xd", "<cmd>Trouble lsp_document_diagnostics<CR>", desc = "Trouble Document Diagnostics" },
+      { "<leader>xl", "<cmd>Trouble loclist<CR>", desc = "Trouble Location List" },
+      { "<leader>xq", "<cmd>Trouble quickfix<CR>", desc = "Trouble Quickfix" },
+      { "<leader>xr", "<cmd>Trouble lsp_references<CR>", desc = "Trouble References" },
     },
     config = function()
       require("nvshan.plugins.coding.trouble")
@@ -118,8 +76,7 @@ return {
         normal_line = "yS",
         normal_cur_line = "ySS",
         visual = "S",
-        visual_line = "gS",
-        delete = "ds",
+        visual_line = "gS", delete = "ds",
         change = "cs",
         change_line = "cS",
       },

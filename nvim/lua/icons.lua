@@ -213,6 +213,7 @@ local data = {
     g  = "󰊢 Git",
     S  = "󱂬 Session",
     t  = " Terminal",
+    x  = "󰼇 Trouble",
   },
 }
 
