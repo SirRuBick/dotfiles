@@ -26,6 +26,6 @@ return {
         config = true,
       },
     },
-    config = require "nvshan.plugins.lsp.lspconfig",
+    config = require "nvshan.plugins.lsp.nvim-lsp",
   },
 }
