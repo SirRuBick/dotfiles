@@ -28,4 +28,12 @@ return {
     },
     config = require "nvshan.plugins.lsp.nvim-lsp",
   },
+  {
+    "nvimdev/lspsaga.nvim",
+    event = "LspAttach",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    opts = {},
+  },
 }

@@ -26,6 +26,7 @@ if not require("configs.global").is_wsl then
 end
 
 -- Split Navigation
+mappings.n["<leader>o"] = map(":only"):silent():noremap():desc("Focus on current split")
 mappings.n["<C-h>"] = map("<C-w>h"):silent():noremap():desc("Move to left split")
 mappings.n["<C-j>"] = map("<C-w>j"):silent():noremap():desc("Move to below split")
 mappings.n["<C-k>"] = map("<C-w>k"):silent():noremap():desc("Move to above split")

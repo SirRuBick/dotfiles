@@ -26,7 +26,6 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 - setup filetype plugins
 - setup plugins for tags and marks
 - dap and dap-ui
-- lspsaga
 - config "github/copilot.vim"
 - "folke/zen-mode.nvim"
 - "preservim/vim-markdown" and "iamcco/markdown-preview.nvim"
