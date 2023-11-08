@@ -24,6 +24,7 @@ Config.on_attach = function(client, bufnr)
   lsp_mappings.n["[d"] = map(vim.diagnostic.goto_prev):buffer(bufnr):desc("Previous diagnostic")
   lsp_mappings.n["]d"] = map(vim.diagnostic.goto_next):buffer(bufnr):desc("Next diagnostic")
   lsp_mappings.n["<leader>ld"] = map(vim.diagnostic.open_float):buffer(bufnr):desc("Hover diagnostics")
+  lsp_mappings.n["<leader>ls"] = map(vim.diagnostic.document_symbol):buffer(bufnr):desc("Document Symbols")
   if capabilities.renameProvider then
     lsp_mappings.n["<leader>lr"] = map(vim.lsp.buf.rename):buffer(bufnr):desc("Rename current symbol")
   end
@@ -58,6 +59,7 @@ Config.on_attach = function(client, bufnr)
     lsp_mappings.n["gr"] = map(vim.lsp.buf.references):buffer(bufnr):desc("References of current symbol")
   end
 
+
   local saga_ready, lsp_saga = pcall(require, "lspsaga")
   if saga_ready then
     -- lsp saga specific keymaps
@@ -65,35 +67,30 @@ Config.on_attach = function(client, bufnr)
     lsp_mappings.n["<leader>lc"] = map(lsp_saga.incoming_calls):buffer(bufnr):desc("Show incoming calls")
     lsp_mappings.n["<leader>lC"] = map(lsp_saga.outgoing_calls):buffer(bufnr):desc("Show outgoing calls")
     -- other keymaps
-    lsp_mappings.n["[d"] = map(lsp_saga.diagnostic_jump_prev):buffer(bufnr):desc("Previous diagnostic")
-    lsp_mappings.n["]d"] = map(lsp_saga.diagnostic_jump_next):buffer(bufnr):desc("Next diagnostic")
-    lsp_mappings.n["<leader>ld"] = map(lsp_saga.show_line_diagnostics):buffer(bufnr):desc("Hover diagnostics")
-    if capabilities.renameProvider then
-      lsp_mappings.n["<leader>lr"] = map(lsp_saga.rename):buffer(bufnr):desc("Rename current symbol")
-    end
-    if capabilities.hoverProvider then
-      lsp_mappings.n["K"] = map(lsp_saga.hover_doc):buffer(bufnr):desc("Hover symbol details")
-    end
-    if capabilities.codeActionProvider then
-      lsp_mappings.n["<leader>la"] = map(lsp_saga.code_action):buffer(bufnr):desc("LSP code action")
-      lsp_mappings.v["<leader>la"] = map(lsp_saga.code_action):buffer(bufnr):desc("LSP code action")
-    end
-    if capabilities.definitionProvider then
-      lsp_mappings.n["gd"] = map(lsp_saga.go_to_definition):buffer(bufnr):desc("Show the definition of current symbol")
-    end
-    if capabilities.typeDefinitionProvider then
-      lsp_mappings.n["gT"] = map(lsp_saga.goto_type_definition):buffer(bufnr):desc("Definition of current type")
-    end
+    if lsp_mappings.n["[d"] then lsp_mappings.n["[d"][1] = lsp_saga.diagnostic_jump_prev end
+    if lsp_mappings.n["]d"] then lsp_mappings.n["]d"][1] = lsp_saga.diagnostic_jump_next end
+    if lsp_mappings.n["<leader>ld"] then lsp_mappings.n["<leader>ld"][1] = lsp_saga.show_line_diagnostics end
+    if lsp_mappings.n["<leader>lr"] then lsp_mappings.n["<leader>lr"][1] = lsp_saga.rename end
+    if lsp_mappings.n["K"] then lsp_mappings.n["K"][1] = lsp_saga.hover_doc end
+    if lsp_mappings.n["<leader>la"] then lsp_mappings.n["<leader>la"][1] = lsp_saga.code_action end
+    if lsp_mappings.v["<leader>la"] then lsp_mappings.v["<leader>la"][1] = lsp_saga.code_action end
+    if lsp_mappings.n["gd"] then lsp_mappings.n["gd"][1] = lsp_saga.go_to_definition end
+    if lsp_mappings.n["gT"] then lsp_mappings.n["gT"][1] = lsp_saga.goto_type_definition end
   end
 
+  
   -- TODO: Telescope is lazy loading, so keymap doesn't really work here.
+  --       Is it possible to re-attach when telescope loaded?
   if is_available "telescope.nvim" then -- setup telescope mappings if available
     local tele_builtin = require("telescope.builtin")
-    if lsp_mappings.n.gd then lsp_mappings.n.gd[1] = tele_builtin.lsp_definitions end
-    if lsp_mappings.n.gI then lsp_mappings.n.gI[1] = tele_builtin.lsp_implementations end
-    if lsp_mappings.n.gr then lsp_mappings.n.gr[1] = require("telescope.builtin").lsp_references end
+    if lsp_mappings.n["<leader>ls"] then lsp_mappings.n["<leader>ls"][1] = tele_builtin.document_symbol end
+    if lsp_mappings.n["<leader>lc"] then lsp_mappings.n["<leader>lc"][1] = tele_builtin.lsp_incoming_calls end
+    if lsp_mappings.n["<leader>lC"] then lsp_mappings.n["<leader>lC"][1] = tele_builtin.lsp_outgoing_calls end
+    if lsp_mappings.n["gd"] then lsp_mappings.n["gd"][1] = tele_builtin.lsp_definitions end
+    if lsp_mappings.n["gI"] then lsp_mappings.n["gI"][1] = tele_builtin.lsp_implementations end
+    if lsp_mappings.n["gr"] then lsp_mappings.n["gr"][1] = require("telescope.builtin").lsp_references end
     if lsp_mappings.n["<leader>lR"] then lsp_mappings.n["<leader>lR"][1] = tele_builtin.lsp_references end
-    if lsp_mappings.n.gT then lsp_mappings.n.gT[1] = tele_builtin.lsp_type_definitions end
+    if lsp_mappings.n["gT"] then lsp_mappings.n["gT"][1] = tele_builtin.lsp_type_definitions end
   end
 
   if not vim.tbl_isempty(lsp_mappings.v) then
@@ -104,7 +101,14 @@ Config.on_attach = function(client, bufnr)
 end
 
 --- The lsp capabilities to be used by lspconfig
-Config.capabilities = vim.lsp.protocol.make_client_capabilities()
-
+function Config.capabilities()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+  capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true,
+  }
+  return capabilities
+end
 
 return Config

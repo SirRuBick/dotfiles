@@ -41,7 +41,7 @@ local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 local capabilities = vim.tbl_deep_extend(
   "force",
   {},
-  lsp.capabilities or {},
+  lsp.capabilities() or {},
   has_cmp and cmp_nvim_lsp.default_capabilities() or {}
 )
 
