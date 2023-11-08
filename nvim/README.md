@@ -32,6 +32,7 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 - "stevearc/aerial.nvim"
 - smarter yank and clipboard
 - config nvim-notify
+- project management(integrated with telescope)
 
 ### possible improvements
 - more telescope plugins? and pickers?
@@ -40,5 +41,4 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 - "joechrisellis/lsp-format-modifications.nvim" is useful but needs to be added to lsp keymap after it's cleaned
 
 ### Plugins to explore
-- "jackMort/ChatGPT.nvim"
 - "ThePrimeagen/refactoring.nvim"
