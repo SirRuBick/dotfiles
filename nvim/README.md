@@ -32,6 +32,7 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 - "stevearc/aerial.nvim"
 - "folke/persistence.nvim"
 - smarter yank and clipboard
+- config nvim-notify
 
 ### possible improvements
 - more telescope plugins? and pickers?

@@ -33,7 +33,7 @@ local plugins = {
   },
   {
     "rcarriga/nvim-notify",
-    command = "Notify",
+    event = "VeryLazy", 
     config = function()
       local notify = require("notify")
       notify.setup({

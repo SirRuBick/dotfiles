@@ -68,5 +68,16 @@ mappings.n["<leader>pS"] = map(require("lazy").sync):desc("Plugins Sync")
 mappings.n["<leader>pu"] = map(require("lazy").check):desc("Plugins Check Updates")
 mappings.n["<leader>pU"] = map(require("lazy").update):desc("Plugins Update")
 
+-- UI assistance
+local ui = require("nvshan.keymap.helpers")
+mappings.n["<leader>u"] = map():desc(wk_icons.u)
+mappings.n["<leader>ud"] = map(ui.toggle_diagnostics):desc("Toggle diagnostics virtual text")
+mappings.n["<leader>ua"] = map(ui.toggle_autopairs):desc("Toggle autopairs")
+mappings.n["<leader>uc"] = map(ui.toggle_cmp):desc("Toggle auto completion")
+mappings.n["<leader>uL"] = map(ui.toggle_codelens):desc("Toggle code lens")
+mappings.n["<leader>uC"] = map(ui.toggle_conceal):desc("Toggle conceal")
+mappings.n["<leader>uw"] = map(ui.toggle_wrap):desc("Toggle conceal")
+mappings.n["<leader>us"] = map(ui.toggle_spell):desc("Toggle spellcheck")
+mappings.n["<leader>uC"] = map(ui.toggle_statusline):desc("Toggle status line")
 
 return mappings
