@@ -1,3 +1,5 @@
+local use_copilot = require("settings").use_copilot
+
 return {
   {
     "hrsh7th/nvim-cmp",
@@ -19,7 +21,22 @@ return {
       },
     },
     config = function()
-      require("nvshan.plugins.completion.config")
+      require("nvshan.plugins.completion.cmp")
+    end,
+  },
+  {
+    "zbirenbaum/copilot.lua",
+    cond = use_copilot,
+    cmd = "Copilot",
+    event = "InsertEnter",
+    dependencies = {
+      {
+        "zbirenbaum/copilot-cmp",
+        config = true,
+      },
+    },
+    config = function()
+      require("nvshan.plugins.completion.copilot")
     end,
   },
 }

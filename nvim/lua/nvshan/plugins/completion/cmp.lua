@@ -57,7 +57,6 @@ cmp.setup(
     mapping = cmp.mapping.preset.insert({
       ["<CR>"] = cmp.mapping.confirm { select = true },
       ["<C-e>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
-      ["<Esc>"] = cmp.mapping.close(),
       ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
       ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
       ["<Up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
@@ -90,12 +89,10 @@ cmp.setup(
       end, { "i", "s" }),
     }),
     sources = cmp.config.sources({
+      { name = "copilot", priority = 1200, group_index = 2 },
       { name = "nvim_lsp", priority = 1000 },
       { name = "luasnip",  priority = 750 },
       { name = "nvim_lua", priority = 750 },
-      -- { name = "ultisnips", priority = 500 },
-      -- { name = "cmp_tabnine", priority = 500 },
-      { name = "copilot", priority = 500 },
       -- { name = "orgmode", priority = 500 },
       { name = "tmux", priority = 500 },
       { name = "treesitter", priority = 500 },

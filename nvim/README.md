@@ -8,6 +8,7 @@ I am still adding things in as I lean more about nvim.<br>
 ## dependencies
 + git
 + ripgrep
++ nodejs( github copilot )
 
 ## Keymaps
 Some of the shortcuts I use frequently are listed here. <br>
@@ -26,7 +27,7 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 - setup filetype plugins
 - setup plugins for tags and marks
 - dap and dap-ui
-- config "github/copilot.vim"
+- config nvim-cmp better
 - "folke/zen-mode.nvim"
 - "preservim/vim-markdown" and "iamcco/markdown-preview.nvim"
 - "stevearc/aerial.nvim"
@@ -41,4 +42,23 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 - "joechrisellis/lsp-format-modifications.nvim" is useful but needs to be added to lsp keymap after it's cleaned
 
 ### Plugins to explore
+- "folke/noice.nvim"
+- "tpope/vim-dadbod", "kristijanhusak/vim-dadbod-ui", "'kristijanhusak/vim-dadbod-completion"
+- "nvim-neorg/neorg"
+- "ThePrimeagen/git-worktree.nvim"
+- "xiyaowong/nvim-transparent"
+- "numToStr/FTerm.nvim"
+- "rmagatti/goto-preview"
+- navarasu/onedark.nvi
+- "tpope/vim-sleuth"
+- "folke/twilight.nvim"
 - "ThePrimeagen/refactoring.nvim"
+- "nvim-pack/nvim-spectre"
+- "stevearc/oil.nvim"
+- "chentoast/marks.nvim"
+- "ahmedkhalf/project.nvim"
+- "Bekaboo/dropbar.nvim"
+- "nvim-neorg/neorg" vs "nvim-orgmode/orgmode"
+- "renerocksai/telekasten.nvim"
+- "petertriho/nvim-scrollbar"
+- "/mhartington/formatter.nvim" vs. "sbdchd/neoformat"
