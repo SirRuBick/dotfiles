@@ -20,7 +20,7 @@ mappings.i["<C-s>"] = map("<ESC><cmd>w<CR>"):desc("Save file")
 
 -- Normal --
 mappings.n["<C-s>"] = map("<cmd>w<CR>"):desc("Save file")
-if not require("configs.global").is_wsl then
+if not require("global").is_wsl then
     -- <C-Q> for vitual block mode under windows
     mappings.n["<C-q>"] = map("<cmd>q<CR>"):desc("Quit")
 end

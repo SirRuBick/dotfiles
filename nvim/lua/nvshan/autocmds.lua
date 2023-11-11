@@ -26,7 +26,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 -- TODO: add auto command to resource config if settings.lua is changed
 -- auto command to resource config if settings.lua is changed
--- vim_path = require("configs.global").vim_path
+-- vim_path = require("global").vim_path
 -- vim.api.nvim_create_autocmd("BufWritePost", {
 --   group = vim.api.nvim_create_augroup("ReloadConfig", { clear = true }),
 --   pattern = "lua/configs/settings.lua",

@@ -1,5 +1,5 @@
 local utils = {}
-local global = require("configs.global")
+local global = require("global")
 local join_path = require("utils").join_path
 
 --- class keymap

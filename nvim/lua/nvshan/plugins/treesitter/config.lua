@@ -1,4 +1,4 @@
-local is_wsl = require("configs.global").is_wsl
+local is_wsl = require("global").is_wsl
 local is_available = require("utils").is_available
 local status_ok, configs = pcall(require, "nvim-treesitter.configs")
 if not status_ok then

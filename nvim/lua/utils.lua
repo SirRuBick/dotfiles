@@ -6,7 +6,7 @@
 -- @Date:  2023
 --
 local Utils = {}
-local os_sep = require("configs.global").os_path_sep
+local os_sep = require("global").os_path_sep
 
 --- Concat strings with os separator
 ---@return string

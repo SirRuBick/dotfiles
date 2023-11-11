@@ -1,4 +1,4 @@
-local globals = require("configs.global")
+local globals = require("global")
 local settings = require("settings")
 local join_path = require("utils").join_path
 

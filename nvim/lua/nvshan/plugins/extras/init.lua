@@ -1,3 +1,5 @@
+local use_chatgpt = require("settings").use_chatgpt
+
 return {
   {
     "dstein64/vim-startuptime",
@@ -8,6 +10,7 @@ return {
   },
   {
       "jackMort/ChatGPT.nvim",
+      cond = use_chatgpt,
       command = { "ChatGPT", "ChatGPTActAs", "ChatGPTEditWithInstructions", "ChatGPTRun" },
       dependencies = {
           "MunifTanjim/nui.nvim",
