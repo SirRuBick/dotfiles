@@ -3,7 +3,7 @@ local use_copilot = require("settings").use_copilot
 return {
   {
     "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
+    event = { "InsertEnter" },
     dependencies = {
       "onsails/lspkind.nvim",
       "hrsh7th/cmp-nvim-lsp",

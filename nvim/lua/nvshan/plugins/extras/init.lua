@@ -9,17 +9,16 @@ return {
     end,
   },
   {
-      "jackMort/ChatGPT.nvim",
-      cond = use_chatgpt,
-      command = { "ChatGPT", "ChatGPTActAs", "ChatGPTEditWithInstructions", "ChatGPTRun" },
-      dependencies = {
-          "MunifTanjim/nui.nvim",
-          "nvim-lua/plenary.nvim",
-          "nvim-telescope/telescope.nvim"
-      },
-      config = function()
-          require("nvshan.plugins.extras.chatgpt")
-      end,
+    "jackMort/ChatGPT.nvim",
+    cond = use_chatgpt,
+    command = { "ChatGPT", "ChatGPTActAs", "ChatGPTEditWithInstructions", "ChatGPTRun" },
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim"
+    },
+    config = function()
+      require("nvshan.plugins.extras.chatgpt")
+    end,
   },
 }
-

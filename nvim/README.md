@@ -30,7 +30,6 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 - config nvim-cmp better
 - "folke/zen-mode.nvim"
 - "preservim/vim-markdown" and "iamcco/markdown-preview.nvim"
-- "stevearc/aerial.nvim"
 - smarter yank and clipboard
 - config nvim-notify
 - project management(integrated with telescope)

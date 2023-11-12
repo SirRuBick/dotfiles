@@ -4,7 +4,7 @@ local mappings = keymap_utils.init_mapping()
 local map = keymap_utils.map
 
 if is_available("nvim-treesitter-context") then
-  mappings.n["[c"] = map(require("treesitter-context").go_to_context):silent():noremap():desc(
+  mappings.n["[c"] = map(function() require("treesitter-context").go_to_context() end):silent():noremap():desc(
   "Toggle treesitter context")
 end
 
