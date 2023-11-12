@@ -23,23 +23,19 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 
 ## TODO
 - document useful shortcuts, including folding ones, Comment, etc.
-- setup filetype plugins
 - setup plugins for tags and marks
 - config nvim-cmp better
-- "folke/zen-mode.nvim"
-- "preservim/vim-markdown" and "iamcco/markdown-preview.nvim"
 - smarter yank and clipboard
 - config nvim-notify
 - project management(integrated with telescope)
 
-### possible improvements
-- more telescope plugins? and pickers?
+### Plugins to explore
+- "preservim/vim-markdown" and "iamcco/markdown-preview.nvim"
+- "folke/noice.nvim"
 - "stevearc/aerial.nvim"?
 - "simrat39/symbols-outline.nvim" is quite useful but can lspsaga do the same or not?
 - "joechrisellis/lsp-format-modifications.nvim" is useful but needs to be added to lsp keymap after it's cleaned
-
-### Plugins to explore
-- "folke/noice.nvim"
+- "folke/zen-mode.nvim"
 - "tpope/vim-dadbod", "kristijanhusak/vim-dadbod-ui", "'kristijanhusak/vim-dadbod-completion"
 - "nvim-neorg/neorg"
 - "ThePrimeagen/git-worktree.nvim"
