@@ -26,7 +26,6 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 - random color themes
 - setup filetype plugins
 - setup plugins for tags and marks
-- dap and dap-ui
 - config nvim-cmp better
 - "folke/zen-mode.nvim"
 - "preservim/vim-markdown" and "iamcco/markdown-preview.nvim"
