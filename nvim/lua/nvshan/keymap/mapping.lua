@@ -23,9 +23,12 @@ if not require("global").is_wsl then
     -- <C-Q> for vitual block mode under windows
     mappings.n["<C-q>"] = map("<cmd>q<CR>"):desc("Quit")
 end
+mappings.n["QQ"] = map("<cmd>q!<CR>"):desc("Quit without saving")
+mappings.n["WW"] = map("<cmd>w!<CR>"):desc("Save file without quit")
+mappings.n["QH"] = map("<cmd>nohlsearch<CR>"):desc("Clear highlight")
 
 -- Split Navigation
-mappings.n["<leader>o"] = map(":only"):silent():noremap():desc("Focus on current split")
+mappings.n["<leader>o"] = map("<cmd>only<CR>"):silent():noremap():desc("Focus on current split")
 mappings.n["<C-h>"] = map("<C-w>h"):silent():noremap():desc("Move to left split")
 mappings.n["<C-j>"] = map("<C-w>j"):silent():noremap():desc("Move to below split")
 mappings.n["<C-k>"] = map("<C-w>k"):silent():noremap():desc("Move to above split")

@@ -5,6 +5,10 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     dependencies = { "nvim-lua/plenary.nvim" },
     config = true,
+    keys = {
+      { "<leader>fd", "<cmd>TodoTeleScope<CR>", desc = "Find TODOs" },
+      { "<leader>xd", "<cmd>TodoTrouble<CR>", desc = "Trouble TODOs" },
+    },
   },
   {
     "numToStr/Comment.nvim",
