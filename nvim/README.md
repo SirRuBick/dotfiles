@@ -36,7 +36,6 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 - "simrat39/symbols-outline.nvim" is quite useful but can lspsaga do the same or not?
 - "joechrisellis/lsp-format-modifications.nvim" is useful but needs to be added to lsp keymap after it's cleaned
 - "folke/zen-mode.nvim"
-- "tpope/vim-dadbod", "kristijanhusak/vim-dadbod-ui", "'kristijanhusak/vim-dadbod-completion"
 - "nvim-neorg/neorg"
 - "ThePrimeagen/git-worktree.nvim"
 - "xiyaowong/nvim-transparent"
