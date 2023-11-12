@@ -23,7 +23,6 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 
 ## TODO
 - document useful shortcuts, including folding ones, Comment, etc.
-- random color themes
 - setup filetype plugins
 - setup plugins for tags and marks
 - config nvim-cmp better

@@ -2,6 +2,7 @@ return {
   {
     -- tokyonight-night, tokyonight-storm, tokyonight-day, tokyonight-moon
     "folke/tokyonight.nvim",
+    name = "tokyonight",
     opts = { style = "moon" },
   },
   {
@@ -27,7 +28,7 @@ return {
             enabled = true,
             scope_color = "lavender", -- catppuccin color (eg. `lavender`) Default: text
             colored_indent_levels = true,
-        },
+          },
           cmp = true,
           flash = true,
           gitsigns = true,
