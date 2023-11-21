@@ -6,6 +6,7 @@
 -- @Date:   2023
 --
 local settings = require("settings")
+local global_settings = require("global")
 local option = vim.opt
 local buffer = vim.b
 local global = vim.g
@@ -35,10 +36,10 @@ option.smartindent = true
 -- operations
 option.backup = false
 option.swapfile = false
-option.mouse = nil               -- disable mouse
+option.mouse = nil      -- disable mouse
 option.clipboard = "unnamedplus" -- allows neovim to access system clipboard
-option.undofile = true           -- enable persistent undo
-option.updatetime = 300          -- faster completion (default 4000ms)
+option.undofile = true  -- enable persistent undo
+option.updatetime = 300 -- faster completion (default 4000ms)
 option.timeoutlen = 300
 option.completeopt = { "menuone", "noselect" }
 option.splitbelow = true
@@ -58,3 +59,18 @@ global.mapleader = settings.leader
 global.maplocalleader = ""
 global.highlighturl_enabled = true
 global.icons_enabled = true
+
+if global_settings.is_wsl then
+  global.clipboard = {
+    name = 'WslClipboard',
+    copy = {
+      ['+'] = 'clip.exe',
+      ['*'] = 'clip.exe',
+    },
+    paste = {
+      ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    },
+    cache_enabled = 0,
+  }
+end

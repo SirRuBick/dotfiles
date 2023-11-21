@@ -25,7 +25,6 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 - document useful shortcuts, including folding ones, Comment, etc.
 - setup plugins for tags and marks
 - config nvim-cmp better
-- smarter yank and clipboard
 - config nvim-notify
 - note taking: nvim-neorg/neorg
 
