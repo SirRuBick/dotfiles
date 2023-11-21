@@ -32,6 +32,17 @@ local plugins = {
     },
   },
   {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "MuifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+    config = function()
+      require("nvshan.plugins.ui.noice")
+    end,
+  },
+  {
     "rcarriga/nvim-notify",
     lazy = false,
     config = function()
