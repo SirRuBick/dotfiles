@@ -37,6 +37,13 @@ local plugins = {
   },
   {
     "christoomey/vim-tmux-navigator",
+    event = "VeryLazy",
+    config = function()
+      vim.g.tmux_navigator_no_mappings = 1
+      vim.g.tmux_navigator_save_on_switch = 2
+      vim.g.tmux_navigator_disable_when_zoomed = 1
+      vim.g.tmux_navigator_disable_when_zoomed = 1
+    end,
     commands = {
       "TmuxNavigateLeft",
       "TmuxNavigateDown",
@@ -45,15 +52,6 @@ local plugins = {
       "TmuxNavigatePrevious",
       "TmuxNavigateNext",
       "TmuxNavigateLast",
-    },
-    keys = {
-      { "n", "<C-h>",  ":TmuxNavigateLeft<CR>" },
-      { "n", "<C-j>",  ":TmuxNavigateDown<CR>" },
-      { "n", "<C-k>",  ":TmuxNavigateUp<CR>" },
-      { "n", "<C-l>",  ":TmuxNavigateRight<CR>" },
-      { "n", "<C-\\>", ":TmuxNavigatePrevious<CR>" },
-      { "n", "<C-]>",  ":TmuxNavigateNext<CR>" },
-      { "n", "<C-/>",  ":TmuxNavigateLast<CR>" },
     },
   },
   {
@@ -75,9 +73,9 @@ local plugins = {
     opts = { options = vim.opt.sessionoptions:get() },
     -- stylua: ignore
     keys = {
-      { "<leader>ss", function() require("persistence").load() end, desc = "Restore Session" },
+      { "<leader>ss", function() require("persistence").load() end,                desc = "Restore Session" },
       { "<leader>sr", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
-      { "<leader>sq", function() require("persistence").stop() end, desc = "Don't Save Current Session" },
+      { "<leader>sq", function() require("persistence").stop() end,                desc = "Don't Save Current Session" },
     },
   },
 }

@@ -27,16 +27,16 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 - config nvim-cmp better
 - smarter yank and clipboard
 - config nvim-notify
-- project management(integrated with telescope)
+- note taking: nvim-neorg/neorg
 
 ### Plugins to explore
 - "preservim/vim-markdown" and "iamcco/markdown-preview.nvim"
+- ahmedkhalf/project.nvim
 - "folke/noice.nvim"
 - "stevearc/aerial.nvim"?
 - "simrat39/symbols-outline.nvim" is quite useful but can lspsaga do the same or not?
 - "joechrisellis/lsp-format-modifications.nvim" is useful but needs to be added to lsp keymap after it's cleaned
 - "folke/zen-mode.nvim"
-- "nvim-neorg/neorg"
 - "ThePrimeagen/git-worktree.nvim"
 - "xiyaowong/nvim-transparent"
 - "numToStr/FTerm.nvim"
@@ -50,7 +50,6 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 - "chentoast/marks.nvim"
 - "ahmedkhalf/project.nvim"
 - "Bekaboo/dropbar.nvim"
-- "nvim-neorg/neorg" vs "nvim-orgmode/orgmode"
 - "renerocksai/telekasten.nvim"
 - "petertriho/nvim-scrollbar"
 - "/mhartington/formatter.nvim" vs. "sbdchd/neoformat"
