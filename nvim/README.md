@@ -41,7 +41,6 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 - "xiyaowong/nvim-transparent"
 - "numToStr/FTerm.nvim"
 - "rmagatti/goto-preview"
-- navarasu/onedark.nvi
 - "tpope/vim-sleuth"
 - "folke/twilight.nvim"
 - "ThePrimeagen/refactoring.nvim"

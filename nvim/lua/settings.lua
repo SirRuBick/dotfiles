@@ -2,7 +2,9 @@ local settings = {}
 
 -- leader key
 settings.leader = " "
--- default color scheme to start with
+-- colorscheme, choose from 
+-- tokyonight/catppuccin/kanagawa/onedark/nord
+-- or random
 settings.colorscheme = "random"
 -- background clolor, "dark" or "light"
 settings.background = "dark"
