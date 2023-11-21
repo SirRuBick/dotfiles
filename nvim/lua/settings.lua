@@ -3,7 +3,7 @@ local settings = {}
 -- leader key
 settings.leader = " "
 -- default color scheme to start with
-settings.colorscheme = "catppuccin"
+settings.colorscheme = "random"
 -- background clolor, "dark" or "light"
 settings.background = "dark"
 -- plugin file
