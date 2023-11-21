@@ -26,28 +26,29 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 - setup plugins for tags and marks
 - config nvim-cmp better
 - config nvim-notify
-- note taking: nvim-neorg/neorg
+- paste in insert mode
+- "joechrisellis/lsp-format-modifications.nvim" is useful but needs to be added to lsp keymap after it's cleaned
 
 ### Plugins to explore
-- David-Kunz/gen.nvim
-- "preservim/vim-markdown" and "iamcco/markdown-preview.nvim"
-- ahmedkhalf/project.nvim
-- 
-- "stevearc/aerial.nvim"?
-- "simrat39/symbols-outline.nvim" is quite useful but can lspsaga do the same or not?
-- "joechrisellis/lsp-format-modifications.nvim" is useful but needs to be added to lsp keymap after it's cleaned
-- "folke/zen-mode.nvim"
-- "ThePrimeagen/git-worktree.nvim"
-- "xiyaowong/nvim-transparent"
-- "numToStr/FTerm.nvim"
-- "rmagatti/goto-preview"
-- "tpope/vim-sleuth"
-- "folke/twilight.nvim"
-- "ThePrimeagen/refactoring.nvim"
-- "nvim-pack/nvim-spectre"
-- "stevearc/oil.nvim"
-- "chentoast/marks.nvim"
-- "Bekaboo/dropbar.nvim"
-- "renerocksai/telekasten.nvim"
-- "petertriho/nvim-scrollbar"
-- "/mhartington/formatter.nvim" vs. "sbdchd/neoformat"
+| Section | Plugins |
+|---------|---------|
+|custom LLM| "David-Kunz/gen.nvim"|
+| terminal integration| "akinsho/toggleterm.nvim"|
+| markdown| "preservim/vim-markdown" and "iamcco/markdown-preview.nvim"|
+| project | ahmedkhalf/project.nvim|
+| coding support |"folke/zen-mode.nvim"|
+| coding support | "folke/twilight.nvim" |
+| coding support | "rmagatti/goto-preview" |
+| coding enhancement | "stevearc/aerial.nvim"|
+| coding enhancement | "simrat39/symbols-outline.nvim" is quite useful but can lspsaga do the same or not?|
+| coding enhancement | "chentoast/marks.nvim"|
+| git | "ThePrimeagen/git-worktree.nvim"|
+|formatter | "/mhartington/formatter.nvim" vs. "sbdchd/neoformat" |
+| file explorer | "stevearc/oil.nvim" |
+| ui |  "petertriho/nvim-scrollbar" |
+| ui | "Bekaboo/dropbar.nvim" |
+| ui | "xiyaowong/nvim-transparent" |
+| filetype | "tpope/vim-sleuth" |
+| search and replace | "nvim-pack/nvim-spectre" |
+| note taking | "nvim-neorg/neorg" |
+| note taking | "renerocksai/telekasten.nvim" |
