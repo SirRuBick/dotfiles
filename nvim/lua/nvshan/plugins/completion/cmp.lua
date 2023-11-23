@@ -54,31 +54,40 @@ cmp.setup(
       -- completion = cmp.config.window.bordered(),
       -- documentation = cmp.config.window.bordered(),
     },
+    nvim_get_mode
     mapping = cmp.mapping.preset.insert({
-      ["<CR>"] = cmp.mapping.confirm { select = true },
       ["<C-e>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
-      ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-      ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
       ["<Up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
       ["<Down>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
       ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
       ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
       ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
       ["<C-y>"] = cmp.config.disable,
-      ["<S-Tab>"] = cmp.mapping(function(fallback)
+      ["<CR>"] = cmp.mapping({
+        i = function(fallback)
+          if cmp.visible() and cmp.get_active_entry() then
+            cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+          else
+            fallback()
+          end
+        end,
+        s = cmp.mapping.confirm({ select = true }),
+        c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+      }),
+      ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
+          -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+          -- that way you will only jump inside the snippet region
         elseif luasnip.expand_or_jumpable() then
           luasnip.expand_or_jump()
         elseif has_words_before() then
           cmp.complete()
-        elseif check_backspace() then
-          fallback()
         else
           fallback()
         end
       end, { "i", "s" }),
-      ["<C-Tab>"] = cmp.mapping(function(fallback)
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
         elseif luasnip.jumpable(-1) then
@@ -89,46 +98,30 @@ cmp.setup(
       end, { "i", "s" }),
     }),
     sources = cmp.config.sources({
-      { name = "copilot", priority = 1200, group_index = 2 },
-      { name = "nvim_lsp", priority = 1000 },
-      { name = "luasnip",  priority = 750 },
-      { name = "nvim_lua", priority = 750 },
+      { name = "copilot",    priority = 1200, group_index = 2 },
+      { name = "nvim_lsp",   priority = 1000 },
+      { name = "luasnip",    priority = 750 },
+      { name = "nvim_lua",   priority = 750 },
       -- { name = "orgmode", priority = 500 },
-      { name = "tmux", priority = 500 },
+      { name = "tmux",       priority = 500 },
       { name = "treesitter", priority = 500 },
       -- { name = "latex_symbols", priority = 500 },
       -- { name = "emoji", priority = 500 },
-      { name = "buffer",   priority = 500 },
-      { name = "path",     priority = 250 },
+      { name = "buffer",     priority = 500 },
+      { name = "path",       priority = 250 },
     }),
     formatting = {
       format = lspkind.cmp_format({
-        mode = "symbol", -- show only symbol annotations
-        -- menu = {
-        --   nvim_lsp = "[LSP]",
-        --   ultisnips = "[US]",
-        --   nvim_lua = "[LUA]",
-        --   path = "[PATH]",
-        --   buffer = "[BUFF]",
-        --   emoji = "[Emoji]",
-        --   omni = "[Omni]",
-        --   cmp_tabnine = "[TN]",
-				-- 	copilot = "[CPLT]",
-				-- 	orgmode = "[ORG]",
-				-- 	tmux = "[TMUX]",
-				-- 	treesitter = "[TS]",
-				-- 	latex_symbols = "[LTEX]",
-				-- 	luasnip = "[SNIP]",
-				-- 	spell = "[SPELL]",
-        -- },
-        maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+        mode = "symbol",       -- show only symbol annotations
+        maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
         ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-  
+
         -- The function below will be called before any actual modifications from lspkind
         -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-        before = function (entry, vim_item)
+        before = function(entry, vim_item)
           local lspkind_icons = vim.tbl_deep_extend("force", icons.kind, icons.type, icons.cmp)
-          vim_item.kind = string.format(" %s  %s", lspkind_icons[vim_item.kind] or icons.cmp.undefined, vim_item.kind or "")
+          vim_item.kind = string.format(" %s  %s", lspkind_icons[vim_item.kind] or icons.cmp.undefined,
+            vim_item.kind or "")
           vim_item.menu = setmetatable({
             nvim_lsp = "[LSP]",
             ultisnips = "[US]",
@@ -153,13 +146,6 @@ cmp.setup(
           return vim_item
         end
       })
-    },
-    duplicates = {
-      nvim_lsp = 1,
-      luasnip = 1,
-      cmp_tabnine = 1,
-      buffer = 1,
-      path = 1,
     },
     experimental = {
       ghost_text = { hl_group = "Whitespace" },

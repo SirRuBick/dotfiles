@@ -5,7 +5,8 @@ I am still adding things in as I lean more about nvim.<br>
 ## Plugins
 + [Lazy.nvim](https://github.com/folke/lazy.nvim): Plugin Manager
 
-## dependencies
+## Requirements
++ neovim 0.9.4
 + git
 + ripgrep
 + nodejs( github copilot )
@@ -22,12 +23,7 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 
 
 ## TODO
-- document useful shortcuts, including folding ones, Comment, etc.
-- setup plugins for tags and marks
-- config nvim-cmp better
-- config nvim-notify
-- paste in insert mode
-- "joechrisellis/lsp-format-modifications.nvim" is useful but needs to be added to lsp keymap after it's cleaned
+- document useful shortcuts
 
 ### Plugins to explore
 | Section | Plugins |
@@ -36,6 +32,7 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 | terminal integration| "akinsho/toggleterm.nvim"|
 | markdown| "preservim/vim-markdown" and "iamcco/markdown-preview.nvim"|
 | project | ahmedkhalf/project.nvim|
+| nvigation | "ThePrimeagen/harpoon" |
 | coding support |"folke/zen-mode.nvim"|
 | coding support | "folke/twilight.nvim" |
 | coding support | "rmagatti/goto-preview" |
@@ -44,6 +41,7 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 | coding enhancement | "chentoast/marks.nvim"|
 | git | "ThePrimeagen/git-worktree.nvim"|
 |formatter | "/mhartington/formatter.nvim" vs. "sbdchd/neoformat" |
+|formatter | "joechrisellis/lsp-format-modifications.nvim" |
 | file explorer | "stevearc/oil.nvim" |
 | ui |  "petertriho/nvim-scrollbar" |
 | ui | "Bekaboo/dropbar.nvim" |

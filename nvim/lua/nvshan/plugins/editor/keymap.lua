@@ -13,7 +13,5 @@ mappings.n["<C-j>"] = map(":TmuxNavigateDown<CR>"):silent():noremap():desc("Tmux
 mappings.n["<C-k>"] = map(":TmuxNavigateUp<CR>"):silent():noremap():desc("Tmux Navigate Up")
 mappings.n["<C-l>"] = map(":TmuxNavigateRight<CR>"):silent():noremap():desc("Tmux Navigate Right")
 mappings.n["<C-\\>"] = map(":TmuxNavigatePrevious<CR>"):silent():noremap():desc("Tmux Navigate Previous")
-mappings.n["<C-]>"] = map(":TmuxNavigateNext<CR>"):silent():noremap():desc("Tmux Navigate Next")
-mappings.n["<C-[>"] = map(":TmuxNavigateLast<CR>"):silent():noremap():desc("Tmux Navigate Last")
 
 return mappings
