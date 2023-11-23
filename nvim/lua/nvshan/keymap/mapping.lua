@@ -16,6 +16,7 @@ mappings.n["<leader>x"] = map():desc(wk_icons.x)
 -- Insert --
 mappings.i["jk"] = map("<ESC>"):desc("Exit")
 mappings.i["<C-s>"] = map("<ESC><cmd>w<CR>"):desc("Save file")
+mappings.i["<C-v>"] = map("<C-R>+"):desc("Paste from system clipboard")
 
 -- Normal --
 mappings.n["<C-s>"] = map("<cmd>w<CR>"):desc("Save file")
