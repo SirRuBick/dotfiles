@@ -24,17 +24,18 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 
 ## TODO
 - document useful shortcuts
+- comment key map
+- ftplugin
 
 ### Plugins to explore
 | Section | Plugins |
 |---------|---------|
-|custom LLM| "David-Kunz/gen.nvim"|
-| terminal integration| "akinsho/toggleterm.nvim"|
-| markdown| "preservim/vim-markdown" and "iamcco/markdown-preview.nvim"|
+| custom LLM | "David-Kunz/gen.nvim"|
+| terminal integration | "akinsho/toggleterm.nvim"|
+| markdown | "preservim/vim-markdown" and "iamcco/markdown-preview.nvim"|
 | project | ahmedkhalf/project.nvim|
 | nvigation | "ThePrimeagen/harpoon" |
-| coding support |"folke/zen-mode.nvim"|
-| coding support | "folke/twilight.nvim" |
+| session | olimorris/persisted.nvim |
 | coding support | "rmagatti/goto-preview" |
 | coding enhancement | "stevearc/aerial.nvim"|
 | coding enhancement | "simrat39/symbols-outline.nvim" is quite useful but can lspsaga do the same or not?|

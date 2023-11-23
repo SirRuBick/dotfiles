@@ -78,6 +78,26 @@ local plugins = {
       { "<leader>sq", function() require("persistence").stop() end,                desc = "Don't Save Current Session" },
     },
   },
+  {
+    "folke/twilight.nvim",
+    opts = {
+      context = 15, -- amount of lines we will try to show around the current line
+    },
+    keys = {
+      { "<leader>ut", "<cmd>Twilight<CR>", desc = "Toggle twilight" }
+    },
+  },
+  {
+    "folke/zen-mode.nvim",
+    opts = {
+      window = {
+        width = .85,
+      },
+    },
+    keys = {
+      { "<leader>uz", function() require("zen-mode").toggle() end, desc = "Toggle zen mode" },
+    },
+  },
 }
 
 return plugins
