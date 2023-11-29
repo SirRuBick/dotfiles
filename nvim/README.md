@@ -24,7 +24,6 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 
 ## TODO
 - document useful shortcuts
-- comment key map
 - ftplugin
 
 ### Plugins to explore
@@ -48,6 +47,5 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 | ui | "Bekaboo/dropbar.nvim" |
 | ui | "xiyaowong/nvim-transparent" |
 | filetype | "tpope/vim-sleuth" |
-| search and replace | "nvim-pack/nvim-spectre" |
 | note taking | "nvim-neorg/neorg" |
 | note taking | "renerocksai/telekasten.nvim" |

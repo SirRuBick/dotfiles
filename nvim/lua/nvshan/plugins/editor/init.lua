@@ -98,6 +98,18 @@ local plugins = {
       { "<leader>uz", function() require("zen-mode").toggle() end, desc = "Toggle zen mode" },
     },
   },
+  {
+    "nvim-pack/nvim-spectre",
+    opts = {},
+    keys = {
+      { "<C-f>s", function() require("spectre").toggle() end,                             desc =
+      "Toggle Find and Replace" },
+      { "<C-f>w", function() require("spectre").open_visual({ select_word = true }) end,  desc = "Search Current Word" },
+      { "<C-f>f", function() require("spectre").open_file_search({ select_word = true }) end,
+                                                                                            desc =
+        "Search word in current file" },
+    },
+  }
 }
 
 return plugins

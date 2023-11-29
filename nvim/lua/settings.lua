@@ -11,7 +11,7 @@ settings.background = "dark"
 -- plugin file
 settings.pluginmodule = "nvshan.plugins"
 -- use copilot
-settings.use_copilot = true
+settings.use_copilot = false
 -- use chatgpt
 settings.use_chatgpt = true
 -- nvim-tree
