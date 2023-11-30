@@ -26,6 +26,9 @@ return {
         "folke/neodev.nvim",
         config = true,
       },
+      {
+        "joechrisellis/lsp-format-modifications.nvim",
+      },
     },
     config = require "nvshan.plugins.lsp.nvim-lsp",
   },

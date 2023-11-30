@@ -10,6 +10,20 @@ local wk_icons = require("icons").whichkey
 ---@param client table The LSP client details when attaching
 ---@param bufnr number The buffer that the LSP client is attaching to
 Config.on_attach = function(client, bufnr)
+  -- lsp modification autocmd
+  if is_available("lsp-format-modifications.nvim") then
+    vim.api.nvim_buf_create_user_command(
+      bufnr,
+      "FormatModifications",
+      function()
+        local lsp_format_modifications = require "lsp-format-modifications"
+        lsp_format_modifications.format_modifications(client, bufnr)
+      end,
+      {}
+    )
+  end
+
+  -- keymaps
   local capabilities = client.server_capabilities
   local lsp_mappings = keymap_utils.init_mapping()
 
@@ -51,6 +65,8 @@ Config.on_attach = function(client, bufnr)
   if capabilities.documentFormattingProvider then
     lsp_mappings.n["<leader>lf"] = map(vim.lsp.buf.format):buffer(bufnr):desc("Format buffer")
     lsp_mappings.v["<leader>lf"] = map(vim.lsp.buf.format):buffer(bufnr):desc("Format buffer")
+    lsp_mappings.n["<leader>lm"] = map("<CMD>FormatModifications<CR>"):buffer(bufnr):desc("Format modifications only")
+    lsp_mappings.v["<leader>lm"] = map("<CMD>FormatModifications<CR>"):buffer(bufnr):desc("Format modifications only")
   end
   if capabilities.implementationProvider then
     lsp_mappings.n["gI"] = map(vim.lsp.buf.implementation):buffer(bufnr):desc("Implementation of current symbol")
@@ -78,7 +94,7 @@ Config.on_attach = function(client, bufnr)
     if lsp_mappings.n["gT"] then lsp_mappings.n["gT"][1] = lsp_saga.goto_type_definition end
   end
 
-  
+  -- TODO: Telescope is lazy loading, so keymap doesn't really work here.
   -- TODO: Telescope is lazy loading, so keymap doesn't really work here.
   --       Is it possible to re-attach when telescope loaded?
   if is_available "telescope.nvim" then -- setup telescope mappings if available

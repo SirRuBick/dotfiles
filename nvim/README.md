@@ -41,7 +41,6 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 | coding enhancement | "chentoast/marks.nvim"|
 | git | "ThePrimeagen/git-worktree.nvim"|
 |formatter | "/mhartington/formatter.nvim" vs. "sbdchd/neoformat" |
-|formatter | "joechrisellis/lsp-format-modifications.nvim" |
 | file explorer | "stevearc/oil.nvim" |
 | ui |  "petertriho/nvim-scrollbar" |
 | ui | "Bekaboo/dropbar.nvim" |
