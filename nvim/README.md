@@ -36,11 +36,10 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 | nvigation | "ThePrimeagen/harpoon" |
 | session | olimorris/persisted.nvim |
 | coding support | "rmagatti/goto-preview" |
-| coding enhancement | "stevearc/aerial.nvim"|
 | coding enhancement | "simrat39/symbols-outline.nvim" is quite useful but can lspsaga do the same or not?|
 | coding enhancement | "chentoast/marks.nvim"|
 | git | "ThePrimeagen/git-worktree.nvim"|
-|formatter | "/mhartington/formatter.nvim" vs. "sbdchd/neoformat" |
+|formatter | "mhartington/formatter.nvim" vs. "sbdchd/neoformat" |
 | file explorer | "stevearc/oil.nvim" |
 | ui |  "petertriho/nvim-scrollbar" |
 | ui | "Bekaboo/dropbar.nvim" |
