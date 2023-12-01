@@ -2,6 +2,7 @@ local telescope = require "telescope"
 
 telescope.load_extension("media_files")
 telescope.load_extension("fzy_native")
+telescope.load_extension("notify")
 
 local actions = require("telescope.actions")
 

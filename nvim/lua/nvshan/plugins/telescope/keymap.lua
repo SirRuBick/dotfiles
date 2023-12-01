@@ -23,6 +23,7 @@ mappings.n["<leader>ff"] = map(function() require("telescope.builtin").find_file
 mappings.n["<leader>fh"] = map(function() require("telescope.builtin").help_tags() end):silent():desc("Find help")
 mappings.n["<leader>fk"] = map(function() require("telescope.builtin").keymappings() end):silent():desc("Find keymappings")
 mappings.n["<leader>fm"] = map(function() require("telescope.builtin").man_pages() end):silent():desc("Find man")
+mappings.n["<leader>fn"] = map(function() require("telescope").extensions.notify.notify() end):silent():desc("Find notification history")
 mappings.n["<leader>fo"] = map(function() require("telescope.builtin").oldfiles() end):silent():desc("Find history")
 mappings.n["<leader>fr"] = map(function() require("telescope.builtin").registers() end):silent():desc("Find registers")
 mappings.n["<leader>fe"] = map(function() require("telescope.builtin").treesitter() end):silent():desc("Find treesitter")
