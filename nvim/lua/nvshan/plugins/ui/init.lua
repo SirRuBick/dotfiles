@@ -73,6 +73,21 @@ local plugins = {
       require("nvshan.plugins.ui.ibl")
     end,
   },
+  {
+    "petertriho/nvim-scrollbar",
+    lazy = false,
+    event = "VeryLazy",
+    dependencies = {
+      "lewis6991/gitsigns.nvim",
+      {
+        "kevinhwang91/nvim-hlslens",
+        config = function()
+          require("scrollbar.handlers.search").setup({})
+        end
+      },
+    },
+    opts = {},
+  },
 }
 
 return plugins

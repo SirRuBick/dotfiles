@@ -46,3 +46,8 @@ gitsigns.setup {
     enable = false,
   },
 }
+
+local scb_ok, scrollbar = pcall(require, "scrollbar.handlers.gitsigns")
+if scb_ok then
+  scrollbar.setup()
+end
