@@ -31,7 +31,6 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 |---------|---------|
 | custom LLM | "David-Kunz/gen.nvim"|
 | terminal integration | "akinsho/toggleterm.nvim"|
-| markdown | "preservim/vim-markdown" and "iamcco/markdown-preview.nvim"|
 | project | ahmedkhalf/project.nvim|
 | nvigation | "ThePrimeagen/harpoon" |
 | session | olimorris/persisted.nvim |
