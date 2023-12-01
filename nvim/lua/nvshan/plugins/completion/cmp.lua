@@ -19,11 +19,6 @@ local function has_words_before()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-local border_opts = {
-  border = "single",
-  winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
-}
-
 
 cmp.setup(
   {
@@ -42,17 +37,13 @@ cmp.setup(
       end
     end,
     snippet = {
-      -- REQUIRED - you must specify a snippet engine
       expand = function(args)
-        -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
         require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
-        -- require("snippy").expand_snippet(args.body) -- For `snippy` users.
-        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
       end,
     },
     window = {
-      -- completion = cmp.config.window.bordered(),
-      -- documentation = cmp.config.window.bordered(),
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
       ["<C-e>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
@@ -62,17 +53,15 @@ cmp.setup(
       ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
       ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
       ["<C-y>"] = cmp.config.disable,
-      ["<CR>"] = cmp.mapping({
-        i = function(fallback)
+      ["<CR>"] = cmp.mapping(
+        function(fallback)
           if cmp.visible() and cmp.get_active_entry() then
             cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
           else
             fallback()
           end
-        end,
-        s = cmp.mapping.confirm({ select = true }),
-        c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
-      }),
+        end, {"i", "c"}
+      ),
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
@@ -97,15 +86,11 @@ cmp.setup(
       end, { "i", "s" }),
     }),
     sources = cmp.config.sources({
-      { name = "copilot",    priority = 1200, group_index = 2 },
+      { name = "copilot",    priority = 1000 },
       { name = "nvim_lsp",   priority = 1000 },
       { name = "luasnip",    priority = 750 },
-      { name = "nvim_lua",   priority = 750 },
-      -- { name = "orgmode", priority = 500 },
       { name = "tmux",       priority = 500 },
       { name = "treesitter", priority = 500 },
-      -- { name = "latex_symbols", priority = 500 },
-      -- { name = "emoji", priority = 500 },
       { name = "buffer",     priority = 500 },
       { name = "cmdline",    priority = 300 },
       { name = "path",       priority = 250 },
@@ -123,22 +108,14 @@ cmp.setup(
           vim_item.kind = string.format(" %s  %s", lspkind_icons[vim_item.kind] or icons.cmp.undefined,
             vim_item.kind or "")
           vim_item.menu = setmetatable({
-            nvim_lsp = "[LSP]",
-            ultisnips = "[US]",
-            nvim_lua = "[LUA]",
-            path = "[PATH]",
-            buffer = "[BUFF]",
-            emoji = "[Emoji]",
-            omni = "[Omni]",
-            cmp_tabnine = "[TN]",
             copilot = "[CPLT]",
-            orgmode = "[ORG]",
+            nvim_lsp = "[LSP]",
+            luasnip = "[SNIP]",
             tmux = "[TMUX]",
             treesitter = "[TS]",
-            latex_symbols = "[LTEX]",
-            luasnip = "[SNIP]",
-            spell = "[SPELL]",
+            buffer = "[BUFF]",
             cmdline = "[CMD]",
+            path = "[PATH]",
           }, {
             __index = function()
               return "[BTN]" -- builtin/unknown source names
@@ -148,20 +125,8 @@ cmp.setup(
         end
       })
     },
-    experimental = {
-      ghost_text = { hl_group = "Whitespace" },
-      native_menu = false,
-    },
   })
 
--- Set configuration for specific filetype.
-cmp.setup.filetype("gitcommit", {
-  sources = cmp.config.sources({
-    { name = "git" }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
-  }, {
-    { name = "buffer" },
-  })
-})
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ "/", "?" }, {
