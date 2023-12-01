@@ -25,6 +25,7 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 ## TODO
 - document useful shortcuts
 - ftplugin
+- organize key maps
 
 ### Plugins to explore
 | Section | Plugins |
@@ -33,14 +34,11 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 | terminal integration | "akinsho/toggleterm.nvim"|
 | project | ahmedkhalf/project.nvim|
 | nvigation | "ThePrimeagen/harpoon" |
-| session | olimorris/persisted.nvim |
-| coding support | "rmagatti/goto-preview" |
 | coding enhancement | "chentoast/marks.nvim"|
 | git | "ThePrimeagen/git-worktree.nvim"|
-| formatter | "mhartington/formatter.nvim" vs. "sbdchd/neoformat" |
+| formatter | "mhartington/formatter.nvim" |
+| formatter | "sbdchd/neoformat" |
 | file explorer | "stevearc/oil.nvim" |
-| ui | "Bekaboo/dropbar.nvim" |
-| ui | "xiyaowong/nvim-transparent" |
 | note taking | "mickael-menu/zk-nvim" |
 | note taking | "nvim-neorg/neorg" |
 | note taking | "renerocksai/telekasten.nvim" |
