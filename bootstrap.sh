@@ -83,5 +83,5 @@ install_dependencies() {
 # link_file "$DOTFILES_ROOT/shell/zsh" "$HOME/.config/zsh"
 
 link_file "$DOTFILES_ROOT/nvim" "$HOME/.config/nvim"
-# link_file "$DOTFILES_ROOT/tmux/tmux.conf" "$HOME/.tmux.conf"
+link_file "$DOTFILES_ROOT/tmux" "$HOME/.config/tmux"
 

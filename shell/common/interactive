@@ -27,6 +27,7 @@ alias lla="la -l"
 alias python="python3"
 alias pip="pip3"
 alias vim="nvim"
+alias lg="lazygit"
 
 # if run interactively
 if [ -t 0 ]; then
