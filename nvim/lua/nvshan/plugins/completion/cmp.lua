@@ -107,6 +107,7 @@ cmp.setup(
       -- { name = "latex_symbols", priority = 500 },
       -- { name = "emoji", priority = 500 },
       { name = "buffer",     priority = 500 },
+      { name = "cmdline",    priority = 300 },
       { name = "path",       priority = 250 },
     }),
     formatting = {
@@ -137,6 +138,7 @@ cmp.setup(
             latex_symbols = "[LTEX]",
             luasnip = "[SNIP]",
             spell = "[SPELL]",
+            cmdline = "[CMD]",
           }, {
             __index = function()
               return "[BTN]" -- builtin/unknown source names
