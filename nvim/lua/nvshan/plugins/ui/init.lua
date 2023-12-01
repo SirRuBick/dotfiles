@@ -35,7 +35,7 @@ local plugins = {
     "folke/noice.nvim",
     event = "VeryLazy",
     dependencies = {
-      "MuifTanjim/nui.nvim",
+      "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
     },
     config = function()

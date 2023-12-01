@@ -29,17 +29,16 @@ return {
       {
         "joechrisellis/lsp-format-modifications.nvim",
       },
+      {
+        "nvimdev/lspsaga.nvim",
+        dependencies = {
+          "nvim-tree/nvim-web-devicons",
+        },
+        config = function()
+          require "nvshan.plugins.lsp.lspsaga"
+        end,
+      },
     },
     config = require "nvshan.plugins.lsp.nvim-lsp",
-  },
-  {
-    "nvimdev/lspsaga.nvim",
-    event = "LspAttach",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require "nvshan.plugins.lsp.lspsaga"
-    end,
   },
 }

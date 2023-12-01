@@ -81,6 +81,12 @@ require("lspsaga").setup({
 		enable = true,
 		frequency = 8,
 	},
+  -- https://nvimdev.github.io/lspsaga/outline
+  outline = {
+    detail = false,
+    auto_close = true,
+    close_after_jump = true,
+  },
 	-- https://nvimdev.github.io/lspsaga/misc/#generic-ui-options
 	ui = {
 		title = true,

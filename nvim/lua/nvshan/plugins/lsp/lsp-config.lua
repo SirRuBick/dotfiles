@@ -76,37 +76,32 @@ Config.on_attach = function(client, bufnr)
   end
 
 
-  local saga_ready, lsp_saga = pcall(require, "lspsaga")
-  if saga_ready then
+  if is_available "lspsaga.nvim" then
     -- lsp saga specific keymaps
-    lsp_mappings.n["<leader>lo"] = map(lsp_saga.outline):buffer(bufnr):desc("Show outline")
-    lsp_mappings.n["<leader>lc"] = map(lsp_saga.incoming_calls):buffer(bufnr):desc("Show incoming calls")
-    lsp_mappings.n["<leader>lC"] = map(lsp_saga.outgoing_calls):buffer(bufnr):desc("Show outgoing calls")
+    lsp_mappings.n["<leader>lo"] = map("<CMD>Lspsaga outline<CR>"):buffer(bufnr):desc("Show outline")
+    lsp_mappings.n["<leader>lc"] = map("<CMD>Lspsaga incoming_calls<CR>"):buffer(bufnr):desc("Show incoming calls")
+    lsp_mappings.n["<leader>lC"] = map("<CMD>Lspsaga outgoing_calls<CR>"):buffer(bufnr):desc("Show outgoing calls")
     -- other keymaps
-    if lsp_mappings.n["[d"] then lsp_mappings.n["[d"][1] = lsp_saga.diagnostic_jump_prev end
-    if lsp_mappings.n["]d"] then lsp_mappings.n["]d"][1] = lsp_saga.diagnostic_jump_next end
-    if lsp_mappings.n["<leader>ld"] then lsp_mappings.n["<leader>ld"][1] = lsp_saga.show_line_diagnostics end
-    if lsp_mappings.n["<leader>lr"] then lsp_mappings.n["<leader>lr"][1] = lsp_saga.rename end
-    if lsp_mappings.n["K"] then lsp_mappings.n["K"][1] = lsp_saga.hover_doc end
-    if lsp_mappings.n["<leader>la"] then lsp_mappings.n["<leader>la"][1] = lsp_saga.code_action end
-    if lsp_mappings.v["<leader>la"] then lsp_mappings.v["<leader>la"][1] = lsp_saga.code_action end
-    if lsp_mappings.n["gd"] then lsp_mappings.n["gd"][1] = lsp_saga.go_to_definition end
-    if lsp_mappings.n["gT"] then lsp_mappings.n["gT"][1] = lsp_saga.goto_type_definition end
+    if lsp_mappings.n["[d"] then lsp_mappings.n["[d"][1] = "<CMD>Lspsaga diagnostic_jump_prev<CR>" end
+    if lsp_mappings.n["]d"] then lsp_mappings.n["]d"][1] = "<CMD>Lspsaga diagnostic_jump_next<CR>" end
+    if lsp_mappings.n["<leader>ld"] then lsp_mappings.n["<leader>ld"][1] = "<CMD>Lspsaga show_line_diagnostics<CR>" end
+    if lsp_mappings.n["<leader>lr"] then lsp_mappings.n["<leader>lr"][1] = "<CMD>Lspsaga rename<CR>" end
+    if lsp_mappings.n["K"] then lsp_mappings.n["K"][1] = "<CMD>Lspsaga hover_doc<CR>" end
+    if lsp_mappings.n["<leader>la"] then lsp_mappings.n["<leader>la"][1] = "<CMD>Lspsaga code_action<CR>" end
+    if lsp_mappings.v["<leader>la"] then lsp_mappings.v["<leader>la"][1] = "<CMD>Lspsaga code_action<CR>" end
+    if lsp_mappings.n["gd"] then lsp_mappings.n["gd"][1] = "<CMD>Lspsaga go_to_definition<CR>" end
+    if lsp_mappings.n["gT"] then lsp_mappings.n["gT"][1] = "<CMD>Lspsaga goto_type_definition<CR>" end
   end
 
-  -- TODO: Telescope is lazy loading, so keymap doesn't really work here.
-  -- TODO: Telescope is lazy loading, so keymap doesn't really work here.
-  --       Is it possible to re-attach when telescope loaded?
   if is_available "telescope.nvim" then -- setup telescope mappings if available
-    local tele_builtin = require("telescope.builtin")
-    if lsp_mappings.n["<leader>ls"] then lsp_mappings.n["<leader>ls"][1] = tele_builtin.document_symbol end
-    if lsp_mappings.n["<leader>lc"] then lsp_mappings.n["<leader>lc"][1] = tele_builtin.lsp_incoming_calls end
-    if lsp_mappings.n["<leader>lC"] then lsp_mappings.n["<leader>lC"][1] = tele_builtin.lsp_outgoing_calls end
-    if lsp_mappings.n["gd"] then lsp_mappings.n["gd"][1] = tele_builtin.lsp_definitions end
-    if lsp_mappings.n["gI"] then lsp_mappings.n["gI"][1] = tele_builtin.lsp_implementations end
-    if lsp_mappings.n["gr"] then lsp_mappings.n["gr"][1] = require("telescope.builtin").lsp_references end
-    if lsp_mappings.n["<leader>lR"] then lsp_mappings.n["<leader>lR"][1] = tele_builtin.lsp_references end
-    if lsp_mappings.n["gT"] then lsp_mappings.n["gT"][1] = tele_builtin.lsp_type_definitions end
+    if lsp_mappings.n["<leader>ls"] then lsp_mappings.n["<leader>ls"][1] = "<CMD>Telescope document_symbol<CR>" end
+    if lsp_mappings.n["<leader>lc"] then lsp_mappings.n["<leader>lc"][1] = "<CMD>Telescope lsp_incoming_calls<CR>" end
+    if lsp_mappings.n["<leader>lC"] then lsp_mappings.n["<leader>lC"][1] = "<CMD>Telescope lsp_outgoing_calls<CR>" end
+    if lsp_mappings.n["gd"] then lsp_mappings.n["gd"][1] = "<CMD>Telescope lsp_definitions<CR>" end
+    if lsp_mappings.n["gI"] then lsp_mappings.n["gI"][1] = "<CMD>Telescope lsp_implementations<CR>" end
+    if lsp_mappings.n["gr"] then lsp_mappings.n["gr"][1] = "<CMD>Telescope lsp_references<CR>" end
+    if lsp_mappings.n["<leader>lR"] then lsp_mappings.n["<leader>lR"][1] = "<CMD>Telescope lsp_references<CR>" end
+    if lsp_mappings.n["gT"] then lsp_mappings.n["gT"][1] = "<CMD>Telescope lsp_type_definitions<CR>" end
   end
 
   if not vim.tbl_isempty(lsp_mappings.v) then
