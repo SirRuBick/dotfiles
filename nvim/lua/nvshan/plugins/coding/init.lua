@@ -94,4 +94,11 @@ return {
       ["s"] = { "}", "]", ")", ">", '"', "'", "`" },
     },
   },
+  {
+    "mfussenegger/nvim-lint",
+    event = { "BufNewFile", "BufReadPost" },
+    config = function()
+      require("nvshan.plugins.coding.lint")
+    end
+  },
 }
