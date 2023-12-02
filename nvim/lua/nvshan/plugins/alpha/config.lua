@@ -16,13 +16,14 @@ local logo = [[
 dashboard.section.header.val = vim.split(logo, "\n")
 dashboard.section.header.opts.hl = "DashboardHeader"
 dashboard.section.buttons.val = {
-  dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
-  dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
+  dashboard.button("f", "󰈞  Find file", ":Telescope find_files <CR>"),
+  dashboard.button("a", "  New file", ":ene <BAR> startinsert <CR>"),
   dashboard.button("p", "  Find project", ":Telescope projects <CR>"),
-  dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
-  dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
+  dashboard.button("r", "󱋡  Recently used files", ":Telescope oldfiles <CR>"),
+  dashboard.button("w", "󱎸  Find words", ":Telescope live_grep <CR>"),
+  dashboard.button("g", "󰊢  Open Lazygit", ":LazyGit<CR>"),
   dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),
-  dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
+  dashboard.button("q", "󰗼  Quit Neovim", ":qa<CR>"),
 }
 dashboard.config.layout[1].val = vim.fn.max { 2, vim.fn.floor(vim.fn.winheight(0) * 0.1) }
 dashboard.config.layout[3].val = 5

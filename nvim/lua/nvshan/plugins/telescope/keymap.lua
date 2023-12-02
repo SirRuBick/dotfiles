@@ -14,6 +14,7 @@ mappings.n["<leader>fg"] = map():desc("Find git related")
 mappings.n["<leader>fgb"] = map(function() require("telescope.builtin").git_branches() end):silent():desc("Search git branches")
 mappings.n["<leader>fgc"] = map(function() require("telescope.builtin").git_commits() end):silent():desc("Search Git commits")
 mappings.n["<leader>fgs"] = map(function() require("telescope.builtin").git_status() end):silent():desc("Search Git status")
+mappings.n["<leader>lD"] = map(function() require("telescope.builtin").diagnostics() end):silent():desc("Search diagnostics")
 mappings.n["<leader>fR"] = map(function() require("telescope.builtin").resume() end):silent():desc("Resume previous search")
 mappings.n["<leader>f'"] = map(function() require("telescope.builtin").marks() end):silent():desc("Find marks")
 mappings.n["<leader>fb"] = map(function() require("telescope.builtin").buffers() end):silent():desc("Find buffers")
@@ -21,9 +22,8 @@ mappings.n["<leader>fc"] = map(function() require("telescope.builtin").grep_stri
 mappings.n["<leader>fC"] = map(function() require("telescope.builtin").commands() end):silent():desc("Find commands")
 mappings.n["<leader>ff"] = map(function() require("telescope.builtin").find_files() end):silent():desc("Find files")
 mappings.n["<leader>fh"] = map(function() require("telescope.builtin").help_tags() end):silent():desc("Find help")
-mappings.n["<leader>fk"] = map(function() require("telescope.builtin").keymappings() end):silent():desc("Find keymappings")
+mappings.n["<leader>fk"] = map(function() require("telescope.builtin").keymaps() end):silent():desc("Find keymaps")
 mappings.n["<leader>fm"] = map(function() require("telescope.builtin").man_pages() end):silent():desc("Find man")
-mappings.n["<leader>fn"] = map(function() require("telescope").extensions.notify.notify() end):silent():desc("Find notification history")
 mappings.n["<leader>fo"] = map(function() require("telescope.builtin").oldfiles() end):silent():desc("Find history")
 mappings.n["<leader>fr"] = map(function() require("telescope.builtin").registers() end):silent():desc("Find registers")
 mappings.n["<leader>fe"] = map(function() require("telescope.builtin").treesitter() end):silent():desc("Find treesitter")
@@ -40,7 +40,13 @@ mappings.n["<leader>fW"] = map(
     )
   end
 ):desc("Find words in all files")
-mappings.n["<leader>lD"] = map(function() require("telescope.builtin").diagnostics() end):silent():desc("Search diagnostics")
+
+if is_available("nvim-notify") then
+  mappings.n["<leader>fn"] = map(function() require("telescope").extensions.notify.notify() end):silent():desc("Find notification history")
+end
+if is_available("project.nvim") then
+  mappings.n["<leader>fp"] = map(function() require("telescope").extensions.projects.projects() end):silent():desc("Find projects")
+end
 
 
 return mappings

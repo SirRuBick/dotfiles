@@ -1,8 +1,14 @@
+local is_available = require("utils").is_available
 local telescope = require "telescope"
 
 telescope.load_extension("media_files")
 telescope.load_extension("fzy_native")
-telescope.load_extension("notify")
+if is_available("nvim-notify") then
+  telescope.load_extension("notify")
+end
+if is_available("project.nvim") then
+  telescope.load_extension("projects")
+end
 
 local actions = require("telescope.actions")
 

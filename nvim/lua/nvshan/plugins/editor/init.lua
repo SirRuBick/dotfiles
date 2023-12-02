@@ -68,6 +68,13 @@ local plugins = {
     },
   },
   {
+    "ahmedkhalf/project.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("nvshan.plugins.editor.project")
+    end
+  },
+  {
     "folke/persistence.nvim",
     event = "BufReadPre",
     opts = { options = vim.opt.sessionoptions:get() },

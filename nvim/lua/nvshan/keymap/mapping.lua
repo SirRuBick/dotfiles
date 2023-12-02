@@ -19,6 +19,8 @@ mappings.i["<C-s>"] = map("<ESC><cmd>w<CR>"):desc("Save file")
 mappings.i["<C-v>"] = map("<C-R>+"):desc("Paste from system clipboard")
 
 -- Normal --
+mappings.n["E"] = map("$"):silent():noremap():desc("Go to line end")
+mappings.n["B"] = map("0"):silent():noremap():desc("Go to line begin")
 mappings.n["<C-s>"] = map("<cmd>w<CR>"):desc("Save file")
 if not require("global").is_wsl then
     -- <C-Q> for vitual block mode under windows
@@ -45,8 +47,6 @@ mappings.n["<C-j>"] = map(":wincmd j<CR>"):desc("Move to below split")
 mappings.n["<C-k>"] = map(":wincmd k<CR>"):desc("Move to above split")
 mappings.n["<C-l>"] = map(":wincmd l<CR>"):desc("Move to right split")
 
-mappings.n["<S-h>"] = map("<cmd>bprevious<CR>"):desc("Prev buffer")
-mappings.n["<S-l>"] = map("<cmd>bnext<CR>"):desc("Next buffer")
 mappings.n["[b"] = map("<cmd>bprevious<CR>"):desc("Prev buffer")
 mappings.n["]b"] = map("<cmd>bnext<CR>"):desc("Next buffer")
 mappings.n["<leader>bb"] = map(":buffers<CR>:buffer<Space>"):desc("Switch to buffer by name")
