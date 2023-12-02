@@ -21,6 +21,8 @@ mappings.i["<C-v>"] = map("<C-R>+"):desc("Paste from system clipboard")
 -- Normal --
 mappings.n["E"] = map("$"):silent():noremap():desc("Go to line end")
 mappings.n["B"] = map("0"):silent():noremap():desc("Go to line begin")
+mappings.n["+"] = map("<CMD>foldopen<CR>"):silent():desc("Fold Open")
+mappings.n["-"] = map("<CMD>foldclose<CR>"):silent():desc("Fold Close")
 mappings.n["<C-s>"] = map("<cmd>w<CR>"):desc("Save file")
 if not require("global").is_wsl then
     -- <C-Q> for vitual block mode under windows
@@ -53,6 +55,7 @@ mappings.n["<leader>bb"] = map(":buffers<CR>:buffer<Space>"):desc("Switch to buf
 mappings.n["<leader>bd"] = map(":bd<CR>"):desc("Delete buffer")
 
 -- Visual --
+mappings.v["//"] = map('y/<C-R>"<CR>'):desc("Search highlighted text")
 -- Move text up and down
 mappings.v["<A-j>"] = map(":m .+1<CR>=="):desc("move text up")
 mappings.v["<A-k>"] = map(":m .-2<CR>=="):desc("move text down")
