@@ -57,7 +57,7 @@ return {
   -- lATEX; MARKDOWN
   ltex = {
     cmd = { "ltex-ls" },
-    filetypes = { "bib", "gitcommit", "markdown", "org", "plaintex", "rst", "rnoweb", "tex", "pandoc", "quarto", "rmd" },
+    filetypes = { "bib", "gitcommit", "org", "plaintex", "rst", "rnoweb", "tex", "pandoc", "quarto", "rmd" },
     single_file_support = true,
     settings = {
       ltex = { language = "en" },
@@ -77,6 +77,10 @@ return {
       }
     }
   },
+
+
+  -- MARKDOWN
+  marksman = {},
 
   -- PYTHON
   pyright = {
