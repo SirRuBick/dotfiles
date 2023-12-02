@@ -44,16 +44,20 @@ local exclude_ft = { "help", "git", "markdown", "snippets", "text", "gitconfig",
 
 -- Background color indentation guides
 local highlight = {
-      "CursorColumn",
-      "Whitespace",
+  "CursorColumn",
+  "Whitespace",
 }
 require("ibl").setup {
-      indent = { highlight = highlight, char = "" },
-      whitespace = {
-          highlight = highlight,
-          remove_blankline_trail = false,
-      },
-      scope = { enabled = false },
+  indent = { highlight = highlight, char = "" },
+  whitespace = {
+    highlight = highlight,
+    remove_blankline_trail = false,
+  },
+  scope = { enabled = false },
+  exclude = {
+    filetypes = exclude_ft,
+    buftypes = { "terminal" },
+  },
 }
 
 

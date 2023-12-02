@@ -92,7 +92,7 @@ cmp.setup(
       { name = "tmux",       priority = 500 },
       { name = "treesitter", priority = 500 },
       { name = "buffer",     priority = 500 },
-      { name = "cmdline",    priority = 300 },
+      -- { name = "cmdline",    priority = 300 },
       { name = "path",       priority = 250 },
     }),
     formatting = {
