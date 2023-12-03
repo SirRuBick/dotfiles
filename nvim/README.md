@@ -10,6 +10,7 @@ I am still adding things in as I lean more about nvim.<br>
 + git
 + ripgrep
 + nodejs( github copilot )
++ glow[https://github.com/charmbracelet/glow]
 
 ## Keymaps
 Some of the shortcuts I use frequently are listed here. <br>
@@ -40,6 +41,8 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 | formatter | "sbdchd/neoformat" |
 | formatter | "stevearc/conform.nvim" |
 | file explorer | "stevearc/oil.nvim" |
+| note taking | "epwalsh/obsidian.nvim" |
 | note taking | "mickael-menu/zk-nvim" |
 | note taking | "nvim-neorg/neorg" |
 | note taking | "renerocksai/telekasten.nvim" |
+| test | "nvim-neotest/neotest" |
