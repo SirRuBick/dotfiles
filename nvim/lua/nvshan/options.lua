@@ -7,6 +7,7 @@
 --
 local settings = require("settings")
 local global_settings = require("global")
+local is_available = require("utils").is_available
 local option = vim.opt
 local buffer = vim.b
 local global = vim.g
@@ -47,9 +48,15 @@ option.splitright = true
 option.wrap = false
 option.exrc = true
 -- foldcolumn
-option.foldlevel = 99
+if is_available("nvim-ufo") then
+option.foldcolumn = "1"
+option.foldlevelstart = 99
+option.foldenable = true
+else
 option.foldmethod = "expr"
 option.foldexpr = "nvim_treesitter#foldexpr()"
+end
+option.foldlevel = 99
 
 -- buffer
 buffer.fileencoding = "utf-8"

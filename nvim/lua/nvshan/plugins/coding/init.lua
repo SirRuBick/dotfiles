@@ -7,7 +7,7 @@ return {
     config = true,
     keys = {
       { "<leader>fd", "<cmd>TodoTelescope<CR>", desc = "Find TODOs" },
-      { "<leader>xd", "<cmd>TodoTrouble<CR>", desc = "Trouble TODOs" },
+      { "<leader>xd", "<cmd>TodoTrouble<CR>",   desc = "Trouble TODOs" },
     },
   },
   {
@@ -29,12 +29,12 @@ return {
     "folke/trouble.nvim",
     cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
     keys = {
-      { "<leader>xx", "<cmd>TroubleToggle<CR>", desc = "Trouble Toggle" },
+      { "<leader>xx", "<cmd>TroubleToggle<CR>",                     desc = "Trouble Toggle" },
       { "<leader>xw", "<cmd>Trouble lsp_workspace_diagnostics<CR>", desc = "Trouble Workspace Diagnostics" },
-      { "<leader>xd", "<cmd>Trouble lsp_document_diagnostics<CR>", desc = "Trouble Document Diagnostics" },
-      { "<leader>xl", "<cmd>Trouble loclist<CR>", desc = "Trouble Location List" },
-      { "<leader>xq", "<cmd>Trouble quickfix<CR>", desc = "Trouble Quickfix" },
-      { "<leader>xr", "<cmd>Trouble lsp_references<CR>", desc = "Trouble References" },
+      { "<leader>xd", "<cmd>Trouble lsp_document_diagnostics<CR>",  desc = "Trouble Document Diagnostics" },
+      { "<leader>xl", "<cmd>Trouble loclist<CR>",                   desc = "Trouble Location List" },
+      { "<leader>xq", "<cmd>Trouble quickfix<CR>",                  desc = "Trouble Quickfix" },
+      { "<leader>xr", "<cmd>Trouble lsp_references<CR>",            desc = "Trouble References" },
     },
     config = function()
       require("nvshan.plugins.coding.trouble")
@@ -80,7 +80,8 @@ return {
         normal_line = "yS",
         normal_cur_line = "ySS",
         visual = "S",
-        visual_line = "gS", delete = "ds",
+        visual_line = "gS",
+        delete = "ds",
         change = "cs",
         change_line = "cS",
       },
@@ -100,5 +101,30 @@ return {
     config = function()
       require("nvshan.plugins.coding.lint")
     end
+  },
+  {
+    "kevinhwang91/nvim-ufo",
+    cmds = {
+      "UfoEnable",
+      "UfoDisable",
+      "UfoInspect",
+      "UfoAttach",
+      "UfoDetach",
+      "UfoEnableFold",
+      "UfoDisableFold"
+    },
+    dependencies = {
+      "kevinhwang91/promise-async"
+    },
+    opts = {
+      open_fold_hl_timeout = 200,
+      -- provider_selector = function(bufnr, filetype, buftype)
+      --   return { 'treesitter', 'indent' }
+      -- end
+    },
+    keys = {
+      { "zR", function() require("ufo").openAllFolds() end,  desc = "Open all folds" },
+      { "zM", function() require("ufo").closeAllFolds() end, desc = "Close all folds" },
+    },
   },
 }
