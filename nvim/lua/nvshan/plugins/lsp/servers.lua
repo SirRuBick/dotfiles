@@ -8,42 +8,18 @@
 --
 return {
   -- CMAKE
-  cmake = {
-    cmd = { "cmake-language-server" },
-    filetypes = { "cmake" },
-    init_options = {
-      buildDirectory = "build",
-      maxThreads = 4,
-    },
-    root_dir = require("lspconfig/util").root_pattern("CMakePresets.json", "CTestConfig.cmake", ".git", "build", "cmake"),
-    single_file_support = true,
-  },
+  cmake = {},
 
   -- C/C++
   clangd = {
-    cmd = { "cland" },
-    filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
-    root_dir = require("lspconfig/util").root_pattern(
-      ".clangd",
-      ".clang-tidy",
-      ".clang-format",
-      "compile_commands.json",
-      "compile_flags.txt",
-      "configure.ac",
-      ".git"
-    ),
-    flags = {
-      debounce_text_changes = 500,
+    cmd = {
+      "clangd",
+      "--offset-encoding=utf-16",
     },
-    single_file_support = true,
   },
 
   -- -- C SHARP
-  -- csharp_ls = {
-  --   cmd = { "csharp-ls" },
-  --   filetypes = { "cs" },
-  --   init_options = { AutomaticWorkspaceInit = true },
-  -- },
+  -- csharp_ls = {},
 
   -- DOCKER
   dockerls = {},
