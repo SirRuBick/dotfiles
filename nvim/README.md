@@ -27,13 +27,14 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 - document useful shortcuts
 - ftplugin
 - organize key maps
+- dadboard ui close should also close dbout and sql query
 
 ### Plugins to explore
 | Section | Plugins |
 |---------|---------|
 | custom LLM | "David-Kunz/gen.nvim"|
 | terminal integration | "akinsho/toggleterm.nvim"|
-| navigation | "ThePrimeagen/harpoon" |
+| coding enhancement  | "ThePrimeagen/harpoon" |
 | coding enhancement | "chentoast/marks.nvim"|
 | git | "ThePrimeagen/git-worktree.nvim"|
 | formatter | "mhartington/formatter.nvim" |

@@ -59,7 +59,6 @@ local plugins = {
   },
   {
     "edluffy/specs.nvim",
-    lazy = false,
     event = "CursorMoved",
     config = function()
       require("nvshan.plugins.ui.specs")
@@ -75,8 +74,7 @@ local plugins = {
   },
   {
     "petertriho/nvim-scrollbar",
-    lazy = false,
-    event = "VeryLazy",
+    event = { "BufNewFile", "BufReadPost" },
     dependencies = {
       "lewis6991/gitsigns.nvim",
       {
