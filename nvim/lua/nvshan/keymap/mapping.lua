@@ -5,7 +5,6 @@ local map = keymap_utils.map
 -- which key descriptions
 local wk_icons = require("icons").whichkey
 mappings.n["<leader>f"] = map():desc(wk_icons.f)
-mappings.n["<leader>p"] = map():desc(wk_icons.p)
 mappings.n["<leader>u"] = map():desc(wk_icons.u)
 mappings.n["<leader>b"] = map():desc(wk_icons.b)
 mappings.n["<leader>g"] = map():desc(wk_icons.g)
@@ -22,8 +21,6 @@ mappings.i["<C-v>"] = map("<C-R>+"):desc("Paste from system clipboard")
 -- Normal --
 mappings.n["E"] = map("$"):silent():noremap():desc("Go to line end")
 mappings.n["B"] = map("0"):silent():noremap():desc("Go to line begin")
-mappings.n["+"] = map("<CMD>foldopen<CR>"):silent():desc("Fold Open")
-mappings.n["-"] = map("<CMD>foldclose<CR>"):silent():desc("Fold Close")
 mappings.n["<C-s>"] = map("<cmd>w<CR>"):desc("Save file")
 if not require("global").is_wsl then
     -- <C-Q> for vitual block mode under windows
@@ -34,7 +31,7 @@ mappings.n["WW"] = map("<cmd>w!<CR>"):desc("Save file without quit")
 mappings.n["QH"] = map("<cmd>nohlsearch<CR>"):desc("Clear highlight")
 
 -- Split Navigation
-mappings.n["<leader>o"] = map("<cmd>only<CR>"):silent():noremap():desc("Focus on current split")
+mappings.n["<leader>o"] = map("<cmd>only<CR>"):silent():noremap():desc(wk_icons.o)
 mappings.n["<C-h>"] = map("<C-w>h"):silent():noremap():desc("Move to left split")
 mappings.n["<C-j>"] = map("<C-w>j"):silent():noremap():desc("Move to below split")
 mappings.n["<C-k>"] = map("<C-w>k"):silent():noremap():desc("Move to above split")
@@ -68,12 +65,11 @@ mappings.x["<A-k>"] = map(":move '<-2<CR>gv-gv"):desc("move text down")
 mappings.v["<A-[>"] = map("<gv"):desc("unindent line")
 mappings.v["<A-]>"] = map(">gv"):desc("indent line")
 
--- Plugin Manager
-mappings.n["<leader>pi"] = map(require("lazy").install):expr():desc("Plugins Install")
-mappings.n["<leader>ps"] = map(require("lazy").home):desc("Plugins Status")
-mappings.n["<leader>pS"] = map(require("lazy").sync):desc("Plugins Sync")
-mappings.n["<leader>pu"] = map(require("lazy").check):desc("Plugins Check Updates")
-mappings.n["<leader>pU"] = map(require("lazy").update):desc("Plugins Update")
+-- Lazy
+mappings.n["<leader>z"] = map("<CMD>Lazy<CR>"):desc(wk_icons.z)
+
+-- File Explorer
+mappings.n["<leader>e"] = map("<CMD>NvimTreeToggle<CR>"):desc(wk_icons.e)
 
 -- UI assistance
 local ui = require("nvshan.keymap.helpers")

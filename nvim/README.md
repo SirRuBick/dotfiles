@@ -21,6 +21,8 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 | `CTRL`+`o`        | N        | Cursor moves back to previous position                                   | Vim                         |
 | `CTRL`+`i`        | N        | Cursor moves back to next position                                       | Vim                         |
 | `CTRL`+`6`        | N        | Toggle between previous file with                                        | Vim                         |
+| `B`               | N        | Go to beginning of the line                                              | Vim                         |
+| `E`               | N        | Go to end of the line                                                    | Vim                         |
 
 
 ## TODO

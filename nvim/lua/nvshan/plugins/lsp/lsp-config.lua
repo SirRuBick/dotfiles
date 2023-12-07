@@ -102,6 +102,8 @@ Config.on_attach = function(client, bufnr)
     if lsp_mappings.n["gr"] then lsp_mappings.n["gr"][1] = "<CMD>Telescope lsp_references<CR>" end
     if lsp_mappings.n["<leader>lR"] then lsp_mappings.n["<leader>lR"][1] = "<CMD>Telescope lsp_references<CR>" end
     if lsp_mappings.n["gT"] then lsp_mappings.n["gT"][1] = "<CMD>Telescope lsp_type_definitions<CR>" end
+    lsp_mappings.n["<leader>lD"] = map(function() require("telescope.builtin").diagnostics() end):silent():desc(
+    "Search diagnostics")
   end
 
   if not vim.tbl_isempty(lsp_mappings.v) then

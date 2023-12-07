@@ -205,15 +205,17 @@ local data = {
   whichkey = {
     b = "󰓩 Buffers",
     d = " Debugger",
+    e = "󰙅 File Exploer",
     f = "󰍉 Find",
     g = "󰊢 Git",
     l = " LSP",
-    p = "󰏖 Packages",
+    o = "󰻿 Focus",
     q = "󰆼 SQL",
-    S = "󱂬 Session",
+    s = "󱂬 Session",
     t = " Terminal",
     u = " UI",
     x = "󰼇 Trouble",
+    z = "󰏖 Lazy",
   },
 }
 
