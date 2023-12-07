@@ -1,8 +1,10 @@
 local settings = {}
+local global = require("global")
+local join_path = require("utils").join_path
 
 -- leader key
 settings.leader = " "
--- colorscheme, choose from 
+-- colorscheme, choose from
 -- tokyonight/catppuccin/kanagawa/onedark/nord
 -- or random
 settings.colorscheme = "random"
@@ -16,9 +18,11 @@ settings.use_copilot = true
 settings.use_chatgpt = true
 -- nvim-tree
 settings.float = {
-    enable = true,
-    height_ratio = 0.8,
-    width_ratio = 0.4,
+  enable = true,
+  height_ratio = 0.8,
+  width_ratio = 0.4,
 }
+-- DB: dadbod
+settings.db_ui_save_location = join_path(global.home, "dadbod")
 
 return settings

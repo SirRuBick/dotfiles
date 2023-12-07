@@ -12,6 +12,7 @@ mappings.n["<leader>g"] = map():desc(wk_icons.g)
 mappings.n["<leader>t"] = map():desc(wk_icons.t)
 mappings.n["<leader>s"] = map():desc(wk_icons.s)
 mappings.n["<leader>x"] = map():desc(wk_icons.x)
+mappings.n["<leader>q"] = map():desc(wk_icons.q)
 
 -- Insert --
 mappings.i["jk"] = map("<ESC>"):desc("Exit")
