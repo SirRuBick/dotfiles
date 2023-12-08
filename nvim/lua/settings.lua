@@ -23,6 +23,6 @@ settings.float = {
   width_ratio = 0.4,
 }
 -- DB: dadbod
-settings.db_ui_save_location = join_path(global.home, "dadbod")
+settings.db_ui_save_location = join_path(global.data_dir, "dadbod")
 
 return settings

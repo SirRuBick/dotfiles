@@ -17,14 +17,5 @@ return {
     config = function()
       require("nvshan.plugins.sql.dadbod")
     end,
-    keys = {
-      { "<leader>qc", "<CMD>DBUIClose<CR>",                   desc = "Close DB UI" },
-      { "<leader>qu", "<CMD>DBUIToggle<CR>",                  desc = "Toggle Dadbod UI" },
-      { "<leader>qa", "<CMD>DBUIAddConnection<CR>",           desc = "DB Add Connection" },
-      { "<leader>qf", "<CMD>DBUIFindBuffer<CR>",              desc = "DB UI Find Buffer" },
-      { "<leader>qr", "<CMD>DBUIRenameBuffer<CR>",            desc = "DB UI Rename Buffer" },
-      { "<leader>qq", "<CMD>DBUILastQueryInfo<CR>",           desc = "Last Query Info" },
-      { "<leader>qe", "<CMD>e ~/dadbod/connections.json<CR>", desc = "Edit DB Connections" },
-    },
   }
 }
