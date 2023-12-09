@@ -83,4 +83,9 @@ mappings.n["<leader>uw"] = map(ui.toggle_wrap):desc("Toggle conceal")
 mappings.n["<leader>us"] = map(ui.toggle_spell):desc("Toggle spellcheck")
 mappings.n["<leader>uC"] = map(ui.toggle_statusline):desc("Toggle status line")
 
+-- Preview
+mappings.n["<leader>p"] = map():desc(wk_icons.p)
+mappings.n["<leader>pm"] = map("<CMD>MarkdownPreview<CR>"):desc("Preview Markdown with browser")
+mappings.n["<leader>pg"] = map("<CMD>Glow<CR>"):desc("Preview Markdown with glow")
+
 return mappings

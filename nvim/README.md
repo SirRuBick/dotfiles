@@ -8,9 +8,9 @@ I am still adding things in as I lean more about nvim.<br>
 ## Requirements
 + neovim 0.9.4
 + git
-+ ripgrep
-+ nodejs( github copilot )
-+ glow[https://github.com/charmbracelet/glow]
++ [ripgrep](https://github.com/BurntSushi/ripgrep)
++ [glow](https://github.com/charmbracelet/glow): required by Glow
++ nodejs: required by github Copliot
 
 ## Keymaps
 Some of the shortcuts I use frequently are listed here. <br>
@@ -30,6 +30,7 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 - ftplugin
 - organize key maps
 - dadboard ui close should also close dbout and sql query
+- telescope current_buffer_fuzzy_find and others.
 
 ### Plugins to explore
 | Section | Plugins |

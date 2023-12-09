@@ -143,12 +143,12 @@ configs.setup({
     swap = {
       enable = true,
       swap_next = {
-        ["<leader>na"] = "@parameter.inner", -- swap parameter/arument with next
-        ["<leader>nm"] = "@function.outer",  -- swap method/function with next
+        ["mpn"] = "@parameter.inner", -- swap parameter/arument with next
+        ["mmn"] = "@function.outer",  -- swap method/function with next
       },
       swap_previous = {
-        ["<leader>pa"] = "@parameter.inner", -- swap parameter/arument with previous
-        ["<leader>pm"] = "@function.outer",  -- swap method/function with previous
+        ["mpp"] = "@parameter.inner", -- swap parameter/arument with previous
+        ["mmp"] = "@function.outer",  -- swap method/function with previous
       },
     },
     -- text object move
