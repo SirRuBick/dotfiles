@@ -30,10 +30,8 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 - ftplugin
 - organize key maps
 - dadboard ui close should also close dbout and sql query
-- telescope current_buffer_fuzzy_find and others.
 - tab keymaps?
 - split keymaps?
-- project jumps to sub dir automatically
 
 ### Plugins to explore
 | Section | Plugins |

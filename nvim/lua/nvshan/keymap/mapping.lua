@@ -143,6 +143,9 @@ mappings.n["<leader>p"] = map():desc(wk_icons.p)
 mappings.n["<leader>pm"] = map("<CMD>MarkdownPreview<CR>"):desc("Preview Markdown with browser")
 mappings.n["<leader>pg"] = map("<CMD>Glow<CR>"):desc("Preview Markdown with glow")
 
+-- Sessions and Project
+mappings.n["<leader>sp"] = map("<CMD>ProjectRoot<CR>"):desc("Change project root directory")
+
 -- Others
 if global.is_mac then
   mappings.n["<leader>?"] = map("<CMD>silent !open dict://<cword><CR>"):desc("Open current word in dictionary")
