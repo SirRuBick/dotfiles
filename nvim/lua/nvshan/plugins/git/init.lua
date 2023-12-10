@@ -1,9 +1,8 @@
 return {
-  -- {
-  --   "tpope/vim-fugitive",
-  --   keys = {
-  --   },
-  -- },
+  {
+    "tpope/vim-fugitive",
+    cmd = "Git",
+  },
   {
     "kdheepak/lazygit.nvim",
     cmd = { "LazyGit", "LazyGitConfig" },

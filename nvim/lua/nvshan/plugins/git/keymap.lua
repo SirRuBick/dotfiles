@@ -29,4 +29,11 @@ if is_available("gitsigns.nvim") then
   mappings.x["ih"] = map(":<C-U>Gitsigns select_hunk<CR>"):desc("Select in hunk")
 end
 
+-- TODO: more key maps with vim-fugitive
+if is_available("vim-fugitive") then
+  mappings.n["<leader>g<CR>"] = map("<CMD>Git<CR>"):silent():desc("Git fugitive status")
+  mappings.n["<leader>gp"] = map("<CMD>Git pull<CR>"):silent():desc("Git pull")
+  mappings.n["<leader>gP"] = map("<CMD>Git push<CR>"):silent():desc("Git push")
+end
+
 return mappings
