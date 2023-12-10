@@ -76,4 +76,19 @@ function M.toggle_wrap()
   vim.notify(string.format("wrap %s", bool2str(vim.wo.wrap)))
 end
 
+-- Toggle gitsigns line blame
+function M.toggle_git_blame()
+  require("gitsigns").toggle_current_line_blame()
+end
+
+-- Toggle background
+function M.toggle_background()
+  if vim.o.background == 'dark' then
+    vim.o.background = 'light'
+  else
+    vim.o.background = 'dark'
+  end
+  vim.notify(string.format("background set as  %s", vim.o.background))
+end
+
 return M

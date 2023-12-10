@@ -1,6 +1,9 @@
+local global = require("global")
 local keymap_utils = require("nvshan.keymap.utils")
 local mappings = keymap_utils.init_mapping()
 local map = keymap_utils.map
+
+local is_available = require("utils").is_available
 
 -- which key descriptions
 local wk_icons = require("icons").whichkey
@@ -13,22 +16,59 @@ mappings.n["<leader>s"] = map():desc(wk_icons.s)
 mappings.n["<leader>x"] = map():desc(wk_icons.x)
 mappings.n["<leader>q"] = map():desc(wk_icons.q)
 
--- Insert --
+---- Insert ----
+-- Operations
 mappings.i["jk"] = map("<ESC>"):desc("Exit")
-mappings.i["<C-s>"] = map("<ESC><cmd>w<CR>"):desc("Save file")
+mappings.i["<C-s>"] = map("<cmd>w<CR>"):desc("Save file")
+mappings.v["<C-s>"] = map("cmd>w<CR>"):desc("Save file")
 mappings.i["<C-v>"] = map("<C-R>+"):desc("Paste from system clipboard")
 
--- Normal --
+-- Coding enhancement
+mappings.i["<A-CR>"] = map("Esco"):desc("New Line below")
+
+-- Moves
+mappings.i["<A-B>"] = map("<HOME>"):desc("Move to line begin")
+mappings.i["<A-E>"] = map("<END>"):desc("Move to line end")
+mappings.c["<A-B>"] = map("<HOME>"):desc("Move to command begin")
+mappings.c["<A-E>"] = map("<END>"):desc("Move to command end")
+
+---- Normal ----
+-- TODO: Realod config without exiting vim
+
+-- Operations
+mappings.n["<C-s>"] = map("<cmd>w<CR>"):desc("Save file")
+mappings.n["QQ"] = map("<cmd>qa<CR>"):desc("Quit without saving")
+mappings.n["QH"] = map("<cmd>nohlsearch<CR>"):desc("Clear highlight")
+mappings.n["Esc"] = map("<cmd>nohlsearch<CR>"):silent():noremap():desc("Clear highlight")
+-- TODO: change text without putting it in register
+
+-- Coding enhancement
+mappings.n["<A-o>"] = map("o<Esc>k"):desc("New Line below")
+mappings.n["<A-O>"] = map("O<Esc>j"):desc("New Line above")
+mappings.n["<A-j>"] = map(":m .+1<CR>=="):desc("move text up")
+mappings.n["<A-k>"] = map(":m .-2<CR>=="):desc("move text down")
+
+-- Moves
 mappings.n["E"] = map("$"):silent():noremap():desc("Go to line end")
 mappings.n["B"] = map("0"):silent():noremap():desc("Go to line begin")
-mappings.n["<C-s>"] = map("<cmd>w<CR>"):desc("Save file")
-if not require("global").is_wsl then
-    -- <C-Q> for vitual block mode under windows
-    mappings.n["<C-q>"] = map("<cmd>q<CR>"):desc("Quit")
-end
-mappings.n["QQ"] = map("<cmd>q!<CR>"):desc("Quit without saving")
-mappings.n["WW"] = map("<cmd>w!<CR>"):desc("Save file without quit")
-mappings.n["QH"] = map("<cmd>nohlsearch<CR>"):desc("Clear highlight")
+mappings.n["gl"] = map("g$"):silent():noremap():desc("Go to line end")
+mappings.n["gh"] = map("g^"):silent():noremap():desc("Go to line begin")
+mappings.n["[q"] = map("<cmd>cprevious<CR>"):silent():desc("Prev quickfix")
+mappings.n["]q"] = map("<cmd>cnext<CR>"):silent():desc("Next quickfix")
+mappings.n["[Q"] = map("<cmd>cfirst<CR>"):silent():desc("Prev quickfix")
+mappings.n["]Q"] = map("<cmd>clast<CR>"):silent():desc("Next quickfix")
+mappings.n["[a"] = map("<cmd>lprevious<CR>"):silent():desc("Prev location")
+mappings.n["]a"] = map("<cmd>lnext<CR>"):silent():desc("Next location")
+mappings.n["[A"] = map("<cmd>lfirst<CR>"):silent():desc("Prev location")
+mappings.n["]A"] = map("<cmd>llast<CR>"):silent():desc("Next location")
+-- close qf or ll if they are present, see https://superuser.com/questions/355325/close-all-locations-list-or-quick-fix-windows-in-vim
+mappings.n["QC"] = map(':ccl <bar> lcl<CR>'):desc("Quick close quickfix or locationlist")
+
+-- Folding
+mappings.n["zc"] = map("zc"):desc("zMzv"):desc("Focus on Fold")
+
+-- Macro
+mappings.n["<C-q>"] = map("q"):desc("Macro Prefix")
 
 -- Split Navigation
 mappings.n["<leader>o"] = map("<cmd>only<CR>"):silent():noremap():desc(wk_icons.o)
@@ -41,19 +81,24 @@ mappings.n["<C-Up>"] = map("<cmd>resize -2<CR>"):desc("Resize split up")
 mappings.n["<C-Down>"] = map("<cmd>resize +2<CR>"):desc("Resize split down")
 mappings.n["<C-Left>"] = map("<cmd>vertical resize -2<CR>"):desc("Resize split left")
 mappings.n["<C-Right>"] = map("<cmd>vertical resize +2<CR>"):desc("Resize split right")
+
 -- Improved Terminal Navigation
 mappings.n["<C-h>"] = map(":wincmd h<CR>"):desc("Move to left split")
 mappings.n["<C-j>"] = map(":wincmd j<CR>"):desc("Move to below split")
 mappings.n["<C-k>"] = map(":wincmd k<CR>"):desc("Move to above split")
 mappings.n["<C-l>"] = map(":wincmd l<CR>"):desc("Move to right split")
 
+-- Buffer
 mappings.n["[b"] = map("<cmd>bprevious<CR>"):desc("Prev buffer")
 mappings.n["]b"] = map("<cmd>bnext<CR>"):desc("Next buffer")
 mappings.n["<leader>bb"] = map(":buffers<CR>:buffer<Space>"):desc("Switch to buffer by name")
 mappings.n["<leader>bd"] = map(":bd<CR>"):desc("Delete buffer")
 
--- Visual --
+
+---- Visual ----
+-- Search
 mappings.v["//"] = map('y/<C-R>"<CR>'):desc("Search highlighted text")
+
 -- Move text up and down
 mappings.v["<A-j>"] = map(":m .+1<CR>=="):desc("move text up")
 mappings.v["<A-k>"] = map(":m .-2<CR>=="):desc("move text down")
@@ -62,9 +107,15 @@ mappings.x["K"] = map(":move '<-2<CR>gv-gv"):desc("move text down")
 mappings.x["<A-j>"] = map(":move '>+1<CR>gv-gv"):desc("move text up")
 mappings.x["<A-k>"] = map(":move '<-2<CR>gv-gv"):desc("move text down")
 -- Stay in indent mode
-mappings.v["<A-[>"] = map("<gv"):desc("unindent line")
-mappings.v["<A-]>"] = map(">gv"):desc("indent line")
+-- unbind C-]
+mappings.v["<A-[>"] = map("<gv"):silent():noremap():desc("unindent line")
+mappings.v["<A-]>"] = map(">gv"):silent():noremap():desc("indent line")
+mappings.n["<A-[>"] = map("<<"):silent():noremap():desc("unindent line")
+mappings.n["<A-]>"] = map(">>"):silent():noremap():desc("indent line")
+mappings.i["<A-[>"] = map("<C-d>"):silent():noremap():desc("unindent line")
+mappings.i["<A-]>"] = map("<C-t>"):silent():noremap():desc("indent line")
 
+---- Plugins ----
 -- Lazy
 mappings.n["<leader>z"] = map("<CMD>Lazy<CR>"):desc(wk_icons.z)
 
@@ -74,18 +125,27 @@ mappings.n["<leader>e"] = map("<CMD>NvimTreeToggle<CR>"):desc(wk_icons.e)
 -- UI assistance
 local ui = require("nvshan.keymap.helpers")
 mappings.n["<leader>u"] = map():desc(wk_icons.u)
-mappings.n["<leader>ud"] = map(ui.toggle_diagnostics):desc("Toggle diagnostics virtual text")
 mappings.n["<leader>ua"] = map(ui.toggle_autopairs):desc("Toggle autopairs")
+mappings.n["<leader>ub"] = map(ui.toggle_background):desc("Toggle background")
 mappings.n["<leader>uc"] = map(ui.toggle_cmp):desc("Toggle auto completion")
-mappings.n["<leader>uL"] = map(ui.toggle_codelens):desc("Toggle code lens")
 mappings.n["<leader>uC"] = map(ui.toggle_conceal):desc("Toggle conceal")
-mappings.n["<leader>uw"] = map(ui.toggle_wrap):desc("Toggle conceal")
+mappings.n["<leader>ud"] = map(ui.toggle_diagnostics):desc("Toggle diagnostics virtual text")
+if is_available("gitsigns.nvim") then
+  mappings.n["<leader>ug"] = map(ui.toggle_git_blame):desc("Toggle git signs")
+end
+mappings.n["<leader>uL"] = map(ui.toggle_codelens):desc("Toggle code lens")
+mappings.n["<leader>uw"] = map(ui.toggle_wrap):desc("toggle wrap")
 mappings.n["<leader>us"] = map(ui.toggle_spell):desc("Toggle spellcheck")
-mappings.n["<leader>uC"] = map(ui.toggle_statusline):desc("Toggle status line")
+mappings.n["<leader>uS"] = map(ui.toggle_statusline):desc("Toggle status line")
 
 -- Preview
 mappings.n["<leader>p"] = map():desc(wk_icons.p)
 mappings.n["<leader>pm"] = map("<CMD>MarkdownPreview<CR>"):desc("Preview Markdown with browser")
 mappings.n["<leader>pg"] = map("<CMD>Glow<CR>"):desc("Preview Markdown with glow")
+
+-- Others
+if global.is_mac then
+  mappings.n["<leader>?"] = map("<CMD>silent !open dict://<cword><CR>"):desc("Open current word in dictionary")
+end
 
 return mappings

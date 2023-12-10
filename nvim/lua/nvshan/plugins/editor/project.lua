@@ -1,3 +1,4 @@
+local global = require("global")
 local project = require("project_nvim")
 
 
@@ -39,5 +40,5 @@ project.setup({
 
   -- Path where project.nvim will store the project history for use in
   -- telescope
-  datapath = vim.fn.stdpath("data"),
+  datapath = global.data_dir,
 })
