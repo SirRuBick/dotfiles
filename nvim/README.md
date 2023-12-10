@@ -32,6 +32,7 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 - dadboard ui close should also close dbout and sql query
 - tab keymaps?
 - split keymaps?
+- shortcut for playing with jupyter notebook
 
 ### Plugins to explore
 | Section | Plugins |
