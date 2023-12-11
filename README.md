@@ -1,36 +1,22 @@
-# Dotfiles
+# My Dotfiles
 My dotfiles to personalize my system.<br>
-I am adding more while I am leaning.<br>
+Building up my development workflow bit by bit.<br>
 
-## Terminal
-### Windows Powershell
-### Tmux
+## Installation
+```bash
+./bootstrap.sh
+```
 
-## Editor
-### Neovim
-
-## Shell
-### Bash
-### Zsh
-
-## File Manager
-### Joshuto[https://github.com/kamiyaa/joshuto]
-
-## Other tools
-
-## More to txplore
-### Terminals
-- [] alacritty
-- [] warp
-- [] wezterm
-- [] kitty
-### tools
-- [] joshuto
-- [] ranger
-- [] fzf
-- [] zoxide 
-- [] ogham/exa
-- [] ducaale/xh
-- [] bat 
-- [] ripgrep
-
+## Contents
+### Terminal<br>
+- Wezterm<br>
+- Tmux<br>
+### Editor<br>
+- Neovim<br>
+### Shell<br>
+- Zsh<br>
+### File Manager<br>
+- Joshuto[https://github.com/kamiyaa/joshuto]<br>
+### Other tools<br>
+- fzf<br>
+- ripgrep<br>
