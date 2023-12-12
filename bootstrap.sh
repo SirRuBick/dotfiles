@@ -85,3 +85,5 @@ install_dependencies() {
 link_file "$DOTFILES_ROOT/nvim" "$HOME/.config/nvim"
 link_file "$DOTFILES_ROOT/tmux" "$HOME/.config/tmux"
 
+# Joshuto
+link_file "$DOTFILES_ROOT/joshuto" "$HOME/.config/joshuto"
