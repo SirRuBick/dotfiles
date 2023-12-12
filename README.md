@@ -20,3 +20,6 @@ Building up my development workflow bit by bit.<br>
 ### Other tools<br>
 - fzf<br>
 - ripgrep<br>
+
+## TODO
+- config shells better
