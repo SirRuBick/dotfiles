@@ -7,7 +7,8 @@ I am still adding things in as I lean more about nvim.<br>
 
 ## Requirements
 + neovim 0.9.4
-+ git
++ Nerdfont
++ Git
 + [ripgrep](https://github.com/BurntSushi/ripgrep)
 + [glow](https://github.com/charmbracelet/glow): required by Glow
 + nodejs: required by github Copliot

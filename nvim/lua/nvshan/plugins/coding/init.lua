@@ -127,4 +127,16 @@ return {
       { "zM", function() require("ufo").closeAllFolds() end, desc = "Close all folds" },
     },
   },
+  {
+    "Wansmer/treesj",
+    cmd = { "TSJToggle", "TSJSplit", "TSJJoin" },
+    dependencies = { "nvim-tressitter/nvim-treesitter" },
+    config = function()
+      require("nvshan.plugins.coding.treesj")
+    end,
+    keys = {
+      { "<leader>cs", function() require("treesj").toggle() end,                              desc = "Split/Join Toggle" },
+      { "<leader>cS", function() require("treesj").toggle({ split = { recursive = true } }) end, desc = "Split/Join Toggle Recursively" },
+    },
+  },
 }

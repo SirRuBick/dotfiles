@@ -204,6 +204,7 @@ local data = {
   },
   whichkey = {
     b = "󰓩 Buffers",
+    c = " Code Actions",
     d = " Debugger",
     e = "󰙅 File Exploer",
     f = "󰍉 Find",
