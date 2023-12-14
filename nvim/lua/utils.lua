@@ -16,12 +16,10 @@ function Utils.join_path(...)
   return path
 end
 
-
 --- Convert a path to a module name
 function Utils.path_to_module(path)
   return path.gsub(os_sep, ".")
 end
-
 
 --- Checks whether a given path exists and is a file.
 --- @param path (string) path to check
@@ -38,7 +36,6 @@ function Utils.is_directory(path)
   local stat = vim.loop.fs_stat(path)
   return stat and stat.type == "directory" or false
 end
-
 
 -- Check if a plugin is available in lazy
 function Utils.is_available(plugin)

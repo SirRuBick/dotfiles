@@ -86,6 +86,14 @@ local plugins = {
     },
     opts = {},
   },
+  {
+    "xiyaowong/transparent.nvim",
+    cond = enable_transparent,
+    cmd = { "TransparentToggle", "TransparentEnable", "TransparentDisable" },
+    config = function()
+      require("nvshan.plugins.ui.transparent")
+    end,
+  },
 }
 
 return plugins

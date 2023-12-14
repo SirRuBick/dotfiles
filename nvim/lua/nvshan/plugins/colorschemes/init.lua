@@ -1,9 +1,14 @@
+local enable_transparent = require("settings").transparent
+
 return {
   {
     -- tokyonight-night, tokyonight-storm, tokyonight-day, tokyonight-moon
     "folke/tokyonight.nvim",
     name = "tokyonight",
-    opts = { style = "moon" },
+    opts = {
+      style = "moon",
+      transparent = enable_transparent,
+    },
   },
   {
     -- catpuccin
@@ -15,7 +20,7 @@ return {
         light = "latte",
         dark = "mocha",
       },
-      transparent_background = false,
+      transparent_background = enable_transparent,
       show_end_of_buffer = true, -- show the "~" characters after the end of buffers
       integrations = {
         alpha = true,
@@ -57,10 +62,10 @@ return {
       keywordStyle = { italic = true },
       statementStyle = { bold = true },
       typeStyle = {},
-      transparent = false,   -- do not set background color
-      dimInactive = false,   -- dim inactive window `:h hl-NormalNC`
-      terminalColors = true, -- define vim.g.terminal_color_{0,17}
-      colors = {             -- add/modify theme and palette colors
+      transparent = enable_transparent, -- do not set background color
+      dimInactive = false,              -- dim inactive window `:h hl-NormalNC`
+      terminalColors = true,            -- define vim.g.terminal_color_{0,17}
+      colors = {                        -- add/modify theme and palette colors
         palette = {},
         theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
       },
@@ -79,11 +84,11 @@ return {
     name = "onedark",
     opts = {
       -- Main options --
-      style = 'dark',               -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-      transparent = false,          -- Show/hide background
-      term_colors = true,           -- Change terminal color as per the selected theme style
-      ending_tildes = false,        -- Show the end-of-buffer tildes. By default they are hidden
-      cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
+      style = 'dark',                   -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+      transparent = enable_transparent, -- Show/hide background
+      term_colors = true,               -- Change terminal color as per the selected theme style
+      ending_tildes = false,            -- Show the end-of-buffer tildes. By default they are hidden
+      cmp_itemkind_reverse = false,     -- reverse item kind highlights in cmp menu
 
       -- toggle theme style ---
       toggle_style_key = nil,                                                              -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
@@ -102,7 +107,7 @@ return {
 
       -- Lualine options --
       lualine = {
-        transparent = false, -- lualine center bar transparency
+        transparent = enable_transparent, -- lualine center bar transparency
       },
 
       -- Custom Highlights --
@@ -121,7 +126,7 @@ return {
     "gbprod/nord.nvim",
     name = "nord",
     opts = {
-      transparent = false,
+      transparent = enable_transparent,
       terminal_colors = true,
 
     },

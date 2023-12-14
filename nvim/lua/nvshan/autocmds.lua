@@ -6,6 +6,9 @@
 -- @Date:  2023
 --
 
+local is_available = require("utils").is_available
+local enable_transparent = require("settings").transparent
+
 
 -- auto close NvimTree
 vim.api.nvim_create_autocmd("BufEnter", {
@@ -24,13 +27,12 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 
--- TODO: add auto command to resource config if settings.lua is changed
--- auto command to resource config if settings.lua is changed
--- vim_path = require("global").vim_path
--- vim.api.nvim_create_autocmd("BufWritePost", {
---   group = vim.api.nvim_create_augroup("ReloadConfig", { clear = true }),
---   pattern = "lua/configs/settings.lua",
---   callback = function()
---     vim.api.nvim_command(":luafile %")
---   end,
--- })
+-- autocmd to toggle transparent automatically
+if is_available("transparent.nvim") and enable_transparent then
+  vim.api.nvim_create_autocmd("VimEnter", {
+    group = vim.api.nvim_create_augroup("ToggleTransparent", { clear = true }),
+    callback = function()
+      vim.cmd(":TransparentToggle")
+    end,
+  })
+end

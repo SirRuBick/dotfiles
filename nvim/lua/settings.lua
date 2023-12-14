@@ -4,12 +4,13 @@ local join_path = require("utils").join_path
 
 -- leader key
 settings.leader = " "
--- colorscheme, choose from
+-- colorscheme, choose from random or
 -- tokyonight/catppuccin/kanagawa/onedark/nord
--- or random
 settings.colorscheme = "random"
 -- background clolor, "dark" or "light"
 settings.background = "dark"
+-- trasparent
+settings.transparent = true
 -- plugin file
 settings.pluginmodule = "nvshan.plugins"
 -- use copilot
