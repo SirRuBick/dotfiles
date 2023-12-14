@@ -126,6 +126,28 @@ local plugins = {
       },
     },
   },
+  {
+    "mg979/vim-visual-multi",
+    lazy = false,
+    init = function()
+      -- vim.g.VM_default_mappings = 0
+      vim.g.VM_maps = {
+        ['Select All']         = '\\a',
+        ['Find Under']         = '\\c',
+        ['Find Subword Under'] = '\\c',
+        ['Add Cursor Down']    = '\\j',
+        ['Add Cursor Up']      = '\\k',
+        ['Add Cursor At Pos']  = '\\m',
+        ['Start Regex Search'] = '\\/',
+        ['Switch Mode']        = '<Tab>',
+        ["Visual Regex"]       = '\\/',
+        ["Visual All"]         = '\\a',
+        ["Visual Add"]         = '\\n',
+        ["Visual Find"]        = '\\f',
+        ["Visual Cursors"]     = '\\c',
+      }
+    end
+  },
 }
 
 return plugins
