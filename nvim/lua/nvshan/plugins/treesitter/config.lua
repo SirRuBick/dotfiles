@@ -36,6 +36,7 @@ configs.setup({
     "python",
     "query",
     "regex",
+    "rust",
     "sql",
     "toml",
     "tsx",
@@ -143,12 +144,12 @@ configs.setup({
     swap = {
       enable = true,
       swap_next = {
-        ["mpn"] = "@parameter.inner", -- swap parameter/arument with next
-        ["mmn"] = "@function.outer",  -- swap method/function with next
+        ["]v"] = "@parameter.inner", -- swap parameter/arument with next
+        ["]k"] = "@function.outer",  -- swap method/function with next
       },
       swap_previous = {
-        ["mpp"] = "@parameter.inner", -- swap parameter/arument with previous
-        ["mmp"] = "@function.outer",  -- swap method/function with previous
+        ["[v"] = "@parameter.inner", -- swap parameter/arument with previous
+        ["[k"] = "@function.outer",  -- swap method/function with previous
       },
     },
     -- text object move
