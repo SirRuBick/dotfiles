@@ -26,6 +26,8 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 
 
 ## TODO
+- nvim-lint autocmd can be ftplugin?
+- use "WhoIsSethDaniel/mason-tool-installer.nvim" to manage linter and other dependencies?
 - document useful shortcuts
 - ftplugin
 - organize key maps
@@ -33,14 +35,22 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 - tab keymaps?
 - split keymaps?
 - shortcut for playing with jupyter notebook
+- python formatters and format only on changed code
+
+### BUGS
+- wildfire or treesitter tries to select space around
+- project is jumping dir for nonsense
 
 ### Plugins to explore
 | Section | Plugins |
 |---------|---------|
+| bookmark | "echasnovski/mini.indentscope" |
+| bookmark | "tom-anders/telescope-vim-bookmarks.nvim" |
 | custom LLM | "David-Kunz/gen.nvim"|
 | terminal integration | "akinsho/toggleterm.nvim"|
 | coding enhancement  | "ThePrimeagen/harpoon" |
-| coding enhancement | "chentoast/marks.nvim"|
+| coding enhancement | "chentoast/marks.nvim" |
+| coding enhancement | "rmagatti/alternate-toggler" |
 | git | "ThePrimeagen/git-worktree.nvim"|
 | formatter | "mhartington/formatter.nvim" |
 | formatter | "sbdchd/neoformat" |
@@ -50,4 +60,6 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 | note taking | "mickael-menu/zk-nvim" |
 | note taking | "nvim-neorg/neorg" |
 | note taking | "renerocksai/telekasten.nvim" |
+| ui | "echasnovski/mini.indentscope" |
+| ui | "neovide/neovide" |
 | test | "nvim-neotest/neotest" |

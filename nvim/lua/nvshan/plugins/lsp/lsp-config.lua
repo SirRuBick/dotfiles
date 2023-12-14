@@ -34,6 +34,18 @@ Config.on_attach = function(client, bufnr)
     lsp_mappings.n["<leader>lR"] = map("<cmd>LspRestart<CR>"):buffer(bufnr):desc("LSP Restart")
   end
 
+  -- TODO: Some predefined linter options?
+  if is_available "nvim-lint" then
+    lsp_mappings.n["<leader>ll"] = map(function() require("lint").try_lint() end):buffer(bufnr):desc("Lint")
+    lsp_mappings.n["<leader>lL"] = map(
+      function()
+        vim.ui.input({ 'prompt = Lint options:' }, function(input)
+          require("lint").try_lint(input)
+        end)
+      end
+    ):buffer(bufnr):desc("Lint")
+  end
+
   -- default lsp keymaps
   lsp_mappings.n["[d"] = map(vim.diagnostic.goto_prev):buffer(bufnr):desc("Previous diagnostic")
   lsp_mappings.n["]d"] = map(vim.diagnostic.goto_next):buffer(bufnr):desc("Next diagnostic")
@@ -103,7 +115,7 @@ Config.on_attach = function(client, bufnr)
     if lsp_mappings.n["<leader>lR"] then lsp_mappings.n["<leader>lR"][1] = "<CMD>Telescope lsp_references<CR>" end
     if lsp_mappings.n["gT"] then lsp_mappings.n["gT"][1] = "<CMD>Telescope lsp_type_definitions<CR>" end
     lsp_mappings.n["<leader>lD"] = map(function() require("telescope.builtin").diagnostics() end):silent():desc(
-    "Search diagnostics")
+      "Search diagnostics")
   end
 
   if not vim.tbl_isempty(lsp_mappings.v) then
