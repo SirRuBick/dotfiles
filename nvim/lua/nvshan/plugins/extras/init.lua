@@ -21,4 +21,9 @@ return {
       require("nvshan.plugins.extras.chatgpt")
     end,
   },
+  {
+    "Eandrju/cellular-automaton.nvim",
+    cmd = "CellularAutomaton",
+    opts = {},
+  }
 }
