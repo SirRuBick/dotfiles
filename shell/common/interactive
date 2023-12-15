@@ -2,17 +2,34 @@
 # this file is sourced by other shell configs
 
 # Make shorthands for common flags
+alias ls="ls --color=auto"
 alias ll='ls -alF'
 alias la='ls -A'
-alias l='ls -CF'
+alias lc="ls -CF"
 
-# Save a lot of typing for common commands
-alias gs="git status"
-alias gc="git commit"
-alias v="vim"
+# operations
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias rm='rm -iv'
 
-# Save you from mistyping
-alias sl=ls
+# git commands
+alias gs='git status'
+alias ga='git add'
+alias gp='git push'
+alias gpo='git push origin'
+alias gtd='git tag --delete'
+alias gtdr='git tag --delete origin'
+alias gr='git branch -r'
+alias gplo='git pull origin'
+alias gb='git branch '
+alias gc='git commit'
+alias gd='git diff'
+alias gco='git checkout '
+alias gl='git log'
+alias gr='git remote'
+alias grs='git remote show'
+alias glo='git log --pretty="oneline"'
+alias glol='git log --graph --oneline --decorate'
 
 # Overwrite existing commands for better defaults
 alias mv="mv -i"           # -i prompts before overwrite
@@ -26,8 +43,18 @@ alias lla="la -l"
 # Program aliases
 alias python="python3"
 alias pip="pip3"
-alias vim="nvim"
+alias v="nvim"
 alias lg="lazygit"
+
+# docker
+alias dockls="docker container ls | awk 'NR > 1 {print \$NF}'"                  # display names of running containers
+alias dockRr='docker rm $(docker ps -a -q)'                                     # delete every containers / images
+alias dockRr='docker rm $(docker ps -a -q) && docker rmi $(docker images -q)'   # delete every containers / images
+alias dockstats='docker stats $(docker ps -q)'                                  # stats on images
+alias dockimg='docker images'                                                   # list images installed
+alias dockprune='docker system prune -a'                                        # prune everything
+alias dockceu='docker-compose run --rm -u $(id -u):$(id -g)'                    # run as the host user
+alias dockce='docker-compose run --rm'
 
 # if run interactively
 if [ -t 0 ]; then
@@ -39,3 +66,4 @@ if [ -t 0 ]; then
 #    fi
 fi
 
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

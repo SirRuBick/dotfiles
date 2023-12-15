@@ -1,1 +1,4 @@
 . ~/.config/shell/common/interactive
+
+# zoxide
+eval "$(zoxide init bash)"

@@ -1,15 +1,12 @@
-# We need to set $ENV so that if you use shell X as your login shell,
-# and then start "sh" as a non-login interactive shell the startup scripts will
-# correctly run.
-export ENV=~/.config/shell/common/interactive
-
 # We also need to set BASH_ENV, which is run for *non-interactive* shells.
 # (unlike $ENV, which is for interactive shells)
 export BASH_ENV=~/.config/shell/common/env
 
-. ~/.config/shell/common/functions
+# set up the XDG Base Directory
+export XDG_CONFIG_HOME=~/.config
+export XDG_DATA_HOME=~/.local/share
+export XDG_CACHE_HOME=~/.cache
 
-umask 0077
-
-ssource ~/.config/shell/env_local
-
+# set up text editor
+export EDITOR="nvim"
+export VISUAL="nvim"
