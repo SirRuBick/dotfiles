@@ -15,31 +15,20 @@ mappings.n["<leader>t"] = map():desc(wk_icons.t)
 mappings.n["<leader>s"] = map():desc(wk_icons.s)
 mappings.n["<leader>x"] = map():desc(wk_icons.x)
 mappings.n["<leader>q"] = map():desc(wk_icons.q)
+mappings.n["<leader>c"] = map():desc(wk_icons.c)
 
----- Insert ----
 -- Operations
 mappings.i["jk"] = map("<ESC>"):desc("Exit")
 mappings.i["<C-s>"] = map("<cmd>w<CR>"):desc("Save file")
 mappings.v["<C-s>"] = map("cmd>w<CR>"):desc("Save file")
 mappings.i["<C-v>"] = map("<C-R>+"):desc("Paste from system clipboard")
 
--- Coding enhancement
-mappings.i["<A-CR>"] = map("Esco"):desc("New Line below")
-
--- Moves
-mappings.i["<A-B>"] = map("<HOME>"):desc("Move to line begin")
-mappings.i["<A-E>"] = map("<END>"):desc("Move to line end")
-mappings.c["<A-B>"] = map("<HOME>"):desc("Move to command begin")
-mappings.c["<A-E>"] = map("<END>"):desc("Move to command end")
-
----- Normal ----
 -- TODO: Realod config without exiting vim
 
 -- Operations
 mappings.n["<C-s>"] = map("<cmd>w<CR>"):desc("Save file")
 mappings.n["QQ"] = map("<cmd>qa<CR>"):desc("Quit without saving")
-mappings.n["QH"] = map("<cmd>nohlsearch<CR>"):desc("Clear highlight")
-mappings.n["Esc"] = map("<cmd>nohlsearch<CR>"):silent():noremap():desc("Clear highlight")
+mappings.n["<Esc>"] = map("<cmd>noh<CR>"):silent():noremap():desc("Clear highlight")
 -- TODO: change text without putting it in register
 
 -- Coding enhancement
@@ -49,8 +38,14 @@ mappings.n["<A-j>"] = map(":m .+1<CR>=="):desc("move text up")
 mappings.n["<A-k>"] = map(":m .-2<CR>=="):desc("move text down")
 
 -- Moves
-mappings.n["E"] = map("$"):silent():noremap():desc("Go to line end")
-mappings.n["B"] = map("0"):silent():noremap():desc("Go to line begin")
+mappings.n["<A-h>"] = map("0"):silent():desc("Go to line begin")
+mappings.n["<A-l>"] = map("$"):silent():desc("Go to line end")
+mappings.v["<A-h>"] = map("0"):silent():desc("Go to line begin")
+mappings.v["<A-l>"] = map("$"):silent():desc("Go to line end")
+mappings.i["<A-h>"] = map("<HOME>"):desc("Move to line begin")
+mappings.i["<A-l>"] = map("<END>"):desc("Move to line end")
+mappings.c["<A-h>"] = map("<HOME>"):desc("Move to command begin")
+mappings.c["<A-l>"] = map("<END>"):desc("Move to command end")
 mappings.n["gl"] = map("g$"):silent():noremap():desc("Go to line end")
 mappings.n["gh"] = map("g^"):silent():noremap():desc("Go to line begin")
 mappings.n["[q"] = map("<cmd>cprevious<CR>"):silent():desc("Prev quickfix")
@@ -95,7 +90,6 @@ mappings.n["<leader>bb"] = map(":buffers<CR>:buffer<Space>"):desc("Switch to buf
 mappings.n["<leader>bd"] = map(":bd<CR>"):desc("Delete buffer")
 
 
----- Visual ----
 -- Search
 mappings.v["//"] = map('y/<C-R>"<CR>'):desc("Search highlighted text")
 
@@ -115,7 +109,6 @@ mappings.n["<A-]>"] = map(">>"):silent():noremap():desc("indent line")
 mappings.i["<A-[>"] = map("<C-d>"):silent():noremap():desc("unindent line")
 mappings.i["<A-]>"] = map("<C-t>"):silent():noremap():desc("indent line")
 
----- Plugins ----
 -- Lazy
 mappings.n["<leader>z"] = map("<CMD>Lazy<CR>"):desc(wk_icons.z)
 
