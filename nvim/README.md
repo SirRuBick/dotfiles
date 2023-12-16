@@ -32,15 +32,14 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 - document useful shortcuts
 - ftplugin
 - organize key maps
-- dadboard ui close should also close dbout and sql query
 - tab keymaps?
 - split keymaps?
-- shortcut for playing with jupyter notebook
-- python formatters and format only on changed code
+- python setup, jupyter keymap?
 
 ### BUGS
 - wildfire or treesitter tries to select space around
 - project is jumping dir for nonsense
+- dadboard ui close should also close dbout and sql query
 
 ### Plugins to explore
 | Section | Plugins |
@@ -49,9 +48,11 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 | bookmark | "tom-anders/telescope-vim-bookmarks.nvim" |
 | custom LLM | "David-Kunz/gen.nvim"|
 | terminal integration | "akinsho/toggleterm.nvim"|
-| coding enhancement  | "ThePrimeagen/harpoon" |
-| coding enhancement | "chentoast/marks.nvim" |
-| coding enhancement | "rmagatti/alternate-toggler" |
+| coding | "ThePrimeagen/harpoon" |
+| coding | "chentoast/marks.nvim" |
+| coding | "rmagatti/alternate-toggler" |
+| coding | "skywind3000/asyncrun.vim" |
+| coding | "AckslD/swenv.nvim" |
 | git | "ThePrimeagen/git-worktree.nvim"|
 | formatter | "mhartington/formatter.nvim" |
 | formatter | "sbdchd/neoformat" |
