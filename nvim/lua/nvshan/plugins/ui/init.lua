@@ -46,15 +46,7 @@ local plugins = {
     "rcarriga/nvim-notify",
     lazy = false,
     config = function()
-      local notify = require("notify")
-      notify.setup({
-        -- Animation style
-        stages = "fade_in_slide_out",
-        -- Default timeout for notifications
-        timeout = 1500,
-        background_colour = "#2E3440",
-      })
-      vim.notify = notify
+      require("nvshan.plugins.ui.notify")
     end,
   },
   {
@@ -85,14 +77,6 @@ local plugins = {
       },
     },
     opts = {},
-  },
-  {
-    "xiyaowong/transparent.nvim",
-    cond = enable_transparent,
-    cmd = { "TransparentToggle", "TransparentEnable", "TransparentDisable" },
-    config = function()
-      require("nvshan.plugins.ui.transparent")
-    end,
   },
 }
 

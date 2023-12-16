@@ -25,14 +25,3 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end
   end,
 })
-
-
--- autocmd to toggle transparent automatically
-if is_available("transparent.nvim") and enable_transparent then
-  vim.api.nvim_create_autocmd("VimEnter", {
-    group = vim.api.nvim_create_augroup("ToggleTransparent", { clear = true }),
-    callback = function()
-      vim.cmd(":TransparentToggle")
-    end,
-  })
-end

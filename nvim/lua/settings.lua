@@ -19,7 +19,7 @@ settings.use_copilot = true
 settings.use_chatgpt = true
 -- nvim-tree
 settings.float = {
-  enable = false,
+  enable = not settings.transparent,
   height_ratio = 0.8,
   width_ratio = 0.4,
 }
