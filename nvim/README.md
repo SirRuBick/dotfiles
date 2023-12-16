@@ -44,8 +44,6 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 ### Plugins to explore
 | Section | Plugins |
 |---------|---------|
-| bookmark | "echasnovski/mini.indentscope" |
-| bookmark | "tom-anders/telescope-vim-bookmarks.nvim" |
 | custom LLM | "David-Kunz/gen.nvim"|
 | terminal integration | "akinsho/toggleterm.nvim"|
 | coding | "ThePrimeagen/harpoon" |
@@ -53,6 +51,8 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 | coding | "rmagatti/alternate-toggler" |
 | coding | "skywind3000/asyncrun.vim" |
 | coding | "AckslD/swenv.nvim" |
+| bookmark | "MattesGroeger/vim-bookmarks" |
+| bookmark | "tom-anders/telescope-vim-bookmarks.nvim" |
 | git | "ThePrimeagen/git-worktree.nvim"|
 | formatter | "mhartington/formatter.nvim" |
 | formatter | "sbdchd/neoformat" |
@@ -62,6 +62,5 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 | note taking | "mickael-menu/zk-nvim" |
 | note taking | "nvim-neorg/neorg" |
 | note taking | "renerocksai/telekasten.nvim" |
-| ui | "echasnovski/mini.indentscope" |
 | ui | "neovide/neovide" |
 | test | "nvim-neotest/neotest" |

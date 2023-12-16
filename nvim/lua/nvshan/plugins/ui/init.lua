@@ -1,3 +1,5 @@
+local settings = require("settings")
+
 local plugins = {
   {
     "akinsho/bufferline.nvim",
@@ -58,11 +60,20 @@ local plugins = {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
+    cond = settings.use_ibl,
     main = "ibl",
     event = { "BufReadPost", "BufAdd", "BufNewFile" },
     config = function()
       require("nvshan.plugins.ui.ibl")
     end,
+  },
+  {
+    "echasnovski/mini.indentscope",
+    cond = not settings.use_ibl,
+    event = { "BufNewFile", "BufReadPost" },
+    config = function()
+      require("nvshan.plugins.ui.mini_indent")
+    end
   },
   {
     "petertriho/nvim-scrollbar",

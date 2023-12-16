@@ -25,5 +25,7 @@ settings.float = {
 }
 -- DB: dadbod
 settings.db_ui_save_location = join_path(global.data_dir, "dadbod")
+-- use ibl or mini.indent
+settings.use_ibl = false
 
 return settings
