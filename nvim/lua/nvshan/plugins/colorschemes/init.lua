@@ -131,4 +131,11 @@ return {
 
     },
   },
+  {
+    "ellisonleao/gruvbox.nvim",
+    name = "gruvbox",
+    opts = {
+      transparent_mode = enable_transparent,
+    },
+  },
 }
