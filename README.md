@@ -7,6 +7,10 @@ I am using [LinuxHomebrew](https://docs.brew.sh/Homebrew-on-Linux) to manage pac
 ```bash
 ./bootstrap.sh
 ```
+1. install curl git
+2. install linuxhomebrew -> insatll build-essential
+3. brew install gcc neovim tmux joshuto lazygit fzf ripgrep glow nodejs
+4. tmp: git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ## Contents
 ### Terminal<br>
