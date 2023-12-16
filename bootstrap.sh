@@ -76,11 +76,11 @@ install_dependencies() {
 #   fi
 # }
 
-link_file "$DOTFILES_ROOT/shell" "$HOME/.config/shell"
+# link_file "$DOTFILES_ROOT/shell" "$HOME/.config/shell"
 # link_file "$DOTFILES_ROOT/shell/.bashrc" "$HOME/.bashrc"
 # link_file "$DOTFILES_ROOT/shell/.bash_logout" "$HOME/.bash_logout"
 
-link_file "$DOTFILES_ROOT/shell/zsh" "$HOME/.config/zsh"
+# link_file "$DOTFILES_ROOT/shell/zsh" "$HOME/.config/zsh"
 
 link_file "$DOTFILES_ROOT/nvim" "$HOME/.config/nvim"
 link_file "$DOTFILES_ROOT/tmux" "$HOME/.config/tmux"
