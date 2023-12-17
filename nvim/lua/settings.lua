@@ -5,8 +5,8 @@ local join_path = require("utils").join_path
 -- leader key
 settings.leader = " "
 -- colorscheme, choose from random or
--- tokyonight/catppuccin/kanagawa/onedark/nord/gruvbox
-settings.colorscheme = "random"
+-- tokyonight/catppuccin/kanagawa/onedark/gruvbox
+settings.colorscheme = "catppuccin"
 -- background clolor, "dark" or "light"
 settings.background = "dark"
 -- trasparent

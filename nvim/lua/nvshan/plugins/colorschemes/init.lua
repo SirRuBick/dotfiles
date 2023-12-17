@@ -123,15 +123,6 @@ return {
     },
   },
   {
-    "gbprod/nord.nvim",
-    name = "nord",
-    opts = {
-      transparent = enable_transparent,
-      terminal_colors = true,
-
-    },
-  },
-  {
     "ellisonleao/gruvbox.nvim",
     name = "gruvbox",
     opts = {
