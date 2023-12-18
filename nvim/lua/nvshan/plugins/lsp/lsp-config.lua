@@ -75,8 +75,8 @@ Config.on_attach = function(client, bufnr)
     lsp_mappings.n["<leader>lh"] = map(vim.lsp.buf.signature_help):buffer(bufnr):desc("Signature help")
   end
   if capabilities.documentFormattingProvider then
-    lsp_mappings.n["<leader>lf"] = map(vim.lsp.buf.format):buffer(bufnr):desc("Format buffer")
-    lsp_mappings.v["<leader>lf"] = map(vim.lsp.buf.format):buffer(bufnr):desc("Format buffer")
+    lsp_mappings.n["<leader>lf"] = map(vim.lsp.buf.format):buffer(bufnr):desc("Format buffer with lsp")
+    lsp_mappings.v["<leader>lf"] = map(vim.lsp.buf.format):buffer(bufnr):desc("Format buffer with lsp")
     lsp_mappings.n["<leader>lm"] = map("<CMD>FormatModifications<CR>"):buffer(bufnr):desc("Format modifications only")
     lsp_mappings.v["<leader>lm"] = map("<CMD>FormatModifications<CR>"):buffer(bufnr):desc("Format modifications only")
   end
@@ -120,6 +120,15 @@ Config.on_attach = function(client, bufnr)
 
   if not vim.tbl_isempty(lsp_mappings.v) then
     lsp_mappings.n["<leader>l"] = map():buffer(bufnr):desc(wk_icons.l)
+  end
+
+  if is_available("conform.nvim") then
+    local conform = require("conform")
+    local buf_table = conform.list_formatters_for_buffer(bufnr)
+    if buf_table then
+      lsp_mappings.n["<leader>lf"] = map(conform.format):buffer(bufnr):desc("Format buffer with conform")
+      lsp_mappings.v["<leader>lf"] = map(conform.format):buffer(bufnr):desc("Format buffer with conform")
+    end
   end
 
   keymap_utils.load_keymaps(lsp_mappings)

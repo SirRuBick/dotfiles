@@ -54,9 +54,6 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 | bookmark | "MattesGroeger/vim-bookmarks" |
 | bookmark | "tom-anders/telescope-vim-bookmarks.nvim" |
 | git | "ThePrimeagen/git-worktree.nvim"|
-| formatter | "mhartington/formatter.nvim" |
-| formatter | "sbdchd/neoformat" |
-| formatter | "stevearc/conform.nvim" |
 | file explorer | "stevearc/oil.nvim" |
 | note taking | "epwalsh/obsidian.nvim" |
 | note taking | "mickael-menu/zk-nvim" |

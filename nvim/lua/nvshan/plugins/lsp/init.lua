@@ -41,4 +41,12 @@ return {
     },
     config = require "nvshan.plugins.lsp.nvim-lsp",
   },
+  {
+    "stevearc/conform.nvim",
+    event = { "BufReadPre", "BufNewFile" ,"BufWritePre" },
+    cmd = { "ConformInfo" },
+    config = function()
+      require("nvshan.plugins.lsp.conform")
+    end,
+  },
 }
