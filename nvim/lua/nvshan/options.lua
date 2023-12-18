@@ -35,6 +35,7 @@ option.autoindent = true
 option.shiftround = true
 option.smartindent = true
 -- operations
+option.hidden = true    -- required by toggle term
 option.backup = false
 option.swapfile = false
 option.mouse = nil      -- disable mouse

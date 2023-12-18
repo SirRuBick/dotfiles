@@ -18,7 +18,9 @@ mappings.n["<leader>q"] = map():desc(wk_icons.q)
 mappings.n["<leader>c"] = map():desc(wk_icons.c)
 
 -- Operations
-mappings.i["jk"] = map("<ESC>"):desc("Exit")
+mappings.t["<ESC>"] = map("<C-\\><C-n>"):silent():desc("Exit terminal mode")
+mappings.t["jk"] = map("<C-\\><C-n>"):silent():desc("Exit terminal mode")
+mappings.i["jk"] = map("<C-\\><C-n>"):desc("Exit")
 mappings.i["<C-s>"] = map("<cmd>w<CR>"):desc("Save file")
 mappings.v["<C-s>"] = map("cmd>w<CR>"):desc("Save file")
 mappings.i["<C-v>"] = map("<C-R>+"):desc("Paste from system clipboard")
@@ -28,7 +30,6 @@ mappings.i["<C-v>"] = map("<C-R>+"):desc("Paste from system clipboard")
 -- Operations
 mappings.n["<C-s>"] = map("<cmd>w<CR>"):desc("Save file")
 mappings.n["QQ"] = map("<cmd>qa<CR>"):desc("Quit without saving")
-mappings.n["<Esc>"] = map("<cmd>noh<CR>"):silent():noremap():desc("Clear highlight")
 -- TODO: change text without putting it in register
 
 -- Coding enhancement
@@ -71,6 +72,10 @@ mappings.n["<C-h>"] = map("<C-w>h"):silent():noremap():desc("Move to left split"
 mappings.n["<C-j>"] = map("<C-w>j"):silent():noremap():desc("Move to below split")
 mappings.n["<C-k>"] = map("<C-w>k"):silent():noremap():desc("Move to above split")
 mappings.n["<C-l>"] = map("<C-w>l"):silent():noremap():desc("Move to right split")
+mappings.t["<C-h>"] = map("<C-\\><C-n>:wincmd h<CR>"):silent():noremap():desc("Move to left split")
+mappings.t["<C-j>"] = map("<C-\\><C-n>:wincmd j<CR>"):silent():noremap():desc("Move to below split")
+mappings.t["<C-k>"] = map("<C-\\><C-n>:wincmd k<CR>"):silent():noremap():desc("Move to above split")
+mappings.t["<C-l>"] = map("<C-\\><C-n>:wincmd l<CR>"):silent():noremap():desc("Move to right split")
 
 mappings.n["<C-Up>"] = map("<cmd>resize -2<CR>"):desc("Resize split up")
 mappings.n["<C-Down>"] = map("<cmd>resize +2<CR>"):desc("Resize split down")
@@ -91,7 +96,7 @@ mappings.n["<leader>bd"] = map(":bd<CR>"):desc("Delete buffer")
 
 
 -- Search
-mappings.v["//"] = map('y/<C-R>"<CR>'):desc("Search highlighted text")
+-- TODO: Search word under cursor
 
 -- Move text up and down
 mappings.v["<A-j>"] = map(":m .+1<CR>=="):desc("move text up")

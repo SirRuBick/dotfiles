@@ -40,10 +40,9 @@ local plugins = {
   {
     "christoomey/vim-tmux-navigator",
     event = "VeryLazy",
-    config = function()
+    init = function()
       vim.g.tmux_navigator_no_mappings = 1
       vim.g.tmux_navigator_save_on_switch = 2
-      vim.g.tmux_navigator_disable_when_zoomed = 1
       vim.g.tmux_navigator_disable_when_zoomed = 1
     end,
     commands = {
@@ -128,7 +127,7 @@ local plugins = {
   },
   {
     "mg979/vim-visual-multi",
-    lazy = false,
+    event = { "BufReadPre", "BufNewFile" },
     init = function()
       -- vim.g.VM_default_mappings = 0
       vim.g.VM_maps = {
@@ -146,6 +145,23 @@ local plugins = {
         ["Visual Find"]        = '\\f',
         ["Visual Cursors"]     = '\\c',
       }
+    end
+  },
+  {
+    "akinsho/toggleterm.nvim",
+    event = "VeryLazy",
+    cmd = {
+      "ToggleTerm",
+      "ToggleTermToggleAll",
+      "TermExec",
+      "TermSelect",
+      "ToggleTermSetName",
+      "ToggleTermSendCurrentLine",
+      "ToggleTermSendVisualLines",
+      "ToggleTermSendVisualSelection"
+    },
+    config = function()
+      require("nvshan.plugins.editor.toggleterm")
     end
   },
 }
