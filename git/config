@@ -1,0 +1,14 @@
+[include]
+  path = ~/.config/git/gitconfig.local
+[core]
+  editor = nvim
+  excludesfile = ~/.config/git/gitignore
+[fetch]
+  prune = true
+[color]
+	ui = true
+  diff = auto
+  status = auto
+  branch = auto
+[help]
+  autocorrect = 1
