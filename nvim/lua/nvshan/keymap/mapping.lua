@@ -1,4 +1,5 @@
 local global = require("global")
+local custom_functions = require("nvshan.functions")
 local keymap_utils = require("nvshan.keymap.utils")
 local mappings = keymap_utils.init_mapping()
 local map = keymap_utils.map
@@ -148,5 +149,7 @@ mappings.n["<leader>sp"] = map("<CMD>ProjectRoot<CR>"):desc("Change project root
 if global.is_mac then
   mappings.n["<leader>?"] = map("<CMD>silent !open dict://<cword><CR>"):desc("Open current word in dictionary")
 end
+mappings.n["<A-g>"] = map(custom_functions.go_to_stack_trace):desc("Go to stack trace")
+mappings.n["<F4>"] = map(custom_functions.compile_run):desc("Compile and run")
 
 return mappings
