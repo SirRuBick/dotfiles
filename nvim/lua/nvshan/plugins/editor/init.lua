@@ -160,9 +160,11 @@ local plugins = {
       "ToggleTermSendVisualLines",
       "ToggleTermSendVisualSelection"
     },
-    config = function()
-      require("nvshan.plugins.editor.toggleterm")
-    end
+    opts = {
+      open_mapping = [[<c-\>]],
+      insert_mappings = true,
+      terminal_mappings = true,
+    },
   },
 }
 

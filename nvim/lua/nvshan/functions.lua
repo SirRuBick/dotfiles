@@ -1,4 +1,5 @@
 local M = {}
+local is_available = require("utils").is_available
 
 local function split()
 	vim.cmd("set splitbelow")
@@ -29,6 +30,22 @@ function M.go_to_stack_trace()
 		vim.cmd("e " .. file_path)
 		vim.api.nvim_win_set_cursor(0, { tonumber(line_number), 0 })
 	end
+end
+
+if is_available("toggleterm.nvim") then
+	function M.toggle_glow()
+		local Terminal = require("toggleterm.terminal").Terminal
+		local glow = Terminal:new({
+			cmd = "glow",
+			direction = "float",
+			hidden = true,
+      on_open = function(term)
+        vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", {noremap = true, silent = true})
+      end,
+		})
+    glow:toggle()
+	end
+  -- TODO: more custom terminal
 end
 
 return M

@@ -140,7 +140,6 @@ mappings.n["<leader>uS"] = map(ui.toggle_statusline):desc("Toggle status line")
 -- Preview
 mappings.n["<leader>p"] = map():desc(wk_icons.p)
 mappings.n["<leader>pm"] = map("<CMD>MarkdownPreview<CR>"):desc("Preview Markdown with browser")
-mappings.n["<leader>pg"] = map("<CMD>Glow<CR>"):desc("Preview Markdown with glow")
 
 -- Sessions and Project
 mappings.n["<leader>sp"] = map("<CMD>ProjectRoot<CR>"):desc("Change project root directory")
@@ -151,5 +150,6 @@ if global.is_mac then
 end
 mappings.n["<A-g>"] = map(custom_functions.go_to_stack_trace):desc("Go to stack trace")
 mappings.n["<F4>"] = map(custom_functions.compile_run):desc("Compile and run")
+mappings.n["<leader>pg"] = map(custom_functions.toggle_glow):desc("Glow")
 
 return mappings
