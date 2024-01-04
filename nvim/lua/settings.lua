@@ -16,7 +16,7 @@ settings.pluginmodule = "nvshan.plugins"
 -- use copilot
 settings.use_copilot = true
 -- use chatgpt
-settings.use_chatgpt = true
+settings.use_chatgpt = false
 -- nvim-tree
 settings.float = {
   enable = not settings.transparent,
@@ -25,7 +25,5 @@ settings.float = {
 }
 -- DB: dadbod
 settings.db_ui_save_location = join_path(global.data_dir, "dadbod")
--- use ibl or mini.indent
-settings.use_ibl = false
 
 return settings

@@ -26,11 +26,8 @@ mappings.i["<C-s>"] = map("<cmd>w<CR>"):desc("Save file")
 mappings.v["<C-s>"] = map("cmd>w<CR>"):desc("Save file")
 mappings.i["<C-v>"] = map("<C-R>+"):desc("Paste from system clipboard")
 
--- TODO: Realod config without exiting vim
-
 -- Operations
-mappings.n["<C-s>"] = map("<cmd>w<CR>"):desc("Save file")
-mappings.n["QQ"] = map("<cmd>qa<CR>"):desc("Quit without saving")
+mappings.n["<ESC>"] = map("<Esc><CMD>noh<CR>"):desc("Clear Highlights")
 -- TODO: change text without putting it in register
 
 -- Coding enhancement
@@ -68,7 +65,7 @@ mappings.n["zc"] = map("zc"):desc("zMzv"):desc("Focus on Fold")
 mappings.n["<C-q>"] = map("q"):desc("Macro Prefix")
 
 -- Split Navigation
-mappings.n["<leader>o"] = map("<cmd>only<CR>"):silent():noremap():desc(wk_icons.o)
+mappings.n["<leader>k"] = map("<cmd>only<CR>"):silent():noremap():desc(wk_icons.o)
 mappings.n["<C-h>"] = map("<C-w>h"):silent():noremap():desc("Move to left split")
 mappings.n["<C-j>"] = map("<C-w>j"):silent():noremap():desc("Move to below split")
 mappings.n["<C-k>"] = map("<C-w>k"):silent():noremap():desc("Move to above split")
@@ -95,9 +92,13 @@ mappings.n["]b"] = map("<cmd>bnext<CR>"):desc("Next buffer")
 mappings.n["<leader>bb"] = map(":buffers<CR>:buffer<Space>"):desc("Switch to buffer by name")
 mappings.n["<leader>bd"] = map(":bd<CR>"):desc("Delete buffer")
 
-
--- Search
--- TODO: Search word under cursor
+-- Editor
+mappings.n["<leader>o"] = map():desc(wk_icons.o)
+mappings.n["<leader>os"] = map("<cmd>w<CR>"):desc("Save file")
+mappings.n["<leader>oS"] = map("<cmd>w!<CR>"):desc("Force save file")
+mappings.n["<leader>oq"] = map("<cmd>q<CR>"):desc("Quit")
+mappings.n["<leader>oQ"] = map("<cmd>q!<CR>"):desc("Quit without saving")
+-- TODO: Realod config without exiting vim
 
 -- Move text up and down
 mappings.v["<A-j>"] = map(":m .+1<CR>=="):desc("move text up")
@@ -107,11 +108,10 @@ mappings.x["K"] = map(":move '<-2<CR>gv-gv"):desc("move text down")
 mappings.x["<A-j>"] = map(":move '>+1<CR>gv-gv"):desc("move text up")
 mappings.x["<A-k>"] = map(":move '<-2<CR>gv-gv"):desc("move text down")
 -- Stay in indent mode
--- unbind C-]
-mappings.v["<A-[>"] = map("<gv"):silent():noremap():desc("unindent line")
-mappings.v["<A-]>"] = map(">gv"):silent():noremap():desc("indent line")
-mappings.n["<A-[>"] = map("<<"):silent():noremap():desc("unindent line")
-mappings.n["<A-]>"] = map(">>"):silent():noremap():desc("indent line")
+mappings.v["<A-[>"] = map("<gv"):silent():desc("unindent line")
+mappings.v["<A-]>"] = map(">gv"):silent():desc("indent line")
+mappings.n["<A-[>"] = map("<<"):silent():desc("unindent line")
+mappings.n["<A-]>"] = map(">>"):silent():desc("indent line")
 mappings.i["<A-[>"] = map("<C-d>"):silent():noremap():desc("unindent line")
 mappings.i["<A-]>"] = map("<C-t>"):silent():noremap():desc("indent line")
 
