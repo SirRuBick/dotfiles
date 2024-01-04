@@ -5,6 +5,7 @@ return {
   },
   {
     "kdheepak/lazygit.nvim",
+    cond = false,
     cmd = { "LazyGit", "LazyGitConfig" },
     keys = {
       { "<C-g>",      "<cmd>LazyGit<CR>", desc = "Toggle LazyGit" },

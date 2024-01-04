@@ -48,7 +48,6 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 - tab keymaps?
 - split keymaps?
 - python setup, jupyter keymap?
-- can get rid of lazygit plugin with toggleterm
 
 ### BUGS
 - wildfire or treesitter tries to select space around

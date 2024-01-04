@@ -20,8 +20,7 @@ mappings.n["<leader>c"] = map():desc(wk_icons.c)
 
 -- Operations
 mappings.t["<ESC>"] = map("<C-\\><C-n>"):silent():desc("Exit terminal mode")
-mappings.t["jk"] = map("<C-\\><C-n>"):silent():desc("Exit terminal mode")
-mappings.i["jk"] = map("<C-\\><C-n>"):desc("Exit")
+mappings.i["jk"] = map("<C-\\><C-n>"):desc("Exit insert mode")
 mappings.i["<C-s>"] = map("<cmd>w<CR>"):desc("Save file")
 mappings.v["<C-s>"] = map("cmd>w<CR>"):desc("Save file")
 mappings.i["<C-v>"] = map("<C-R>+"):desc("Paste from system clipboard")
@@ -151,5 +150,7 @@ end
 mappings.n["<A-g>"] = map(custom_functions.go_to_stack_trace):desc("Go to stack trace")
 mappings.n["<F4>"] = map(custom_functions.compile_run):desc("Compile and run")
 mappings.n["<leader>pg"] = map(custom_functions.toggle_glow):desc("Glow")
+mappings.n["<C-g>"] = map(custom_functions.toggle_lazygit):desc("Lazygit")
+mappings.n["<leader>gg"] = map(custom_functions.toggle_lazygit):desc("Lazygit")
 
 return mappings

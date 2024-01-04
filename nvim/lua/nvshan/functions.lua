@@ -39,13 +39,32 @@ if is_available("toggleterm.nvim") then
 			cmd = "glow",
 			direction = "float",
 			hidden = true,
-      on_open = function(term)
-        vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", {noremap = true, silent = true})
-      end,
+			on_open = function(term)
+				vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+			end,
 		})
-    glow:toggle()
+		glow:toggle()
 	end
-  -- TODO: more custom terminal
+
+	function M.toggle_lazygit()
+		local Terminal = require("toggleterm.terminal").Terminal
+		local lazygit = Terminal:new({
+			cmd = "lazygit",
+			hidden = true,
+			direction = "float",
+			float_opts = {
+				border = "none",
+				width = 100000,
+				height = 100000,
+			},
+			on_open = function(_)
+				vim.cmd("startinsert!")
+			end,
+			on_close = function(_) end,
+			count = 99,
+		})
+		lazygit:toggle()
+	end
 end
 
 return M
