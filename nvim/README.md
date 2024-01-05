@@ -28,6 +28,7 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 | Key | Mode |
 | ---- | ---- |
 | `CTRL` + `q` | Normal |
+| `CTRL` + `s` | Normal |
 | `CTRL` + `@` | Normal |
 | `CTRL` + `n` | Normal |
 | `CTRL` + `[` | Normal |
@@ -44,10 +45,10 @@ In the following shortcuts, `<leader>` represents `space`.<br>
 - nvim-lint autocmd or not
 - use "WhoIsSethDaniel/mason-tool-installer.nvim" to manage linter and other dependencies?
 - document useful shortcuts
-- organize key maps
 - tab keymaps?
 - split keymaps?
 - python setup, jupyter keymap?
+- enable chatgpt
 
 ### BUGS
 - wildfire or treesitter tries to select space around
