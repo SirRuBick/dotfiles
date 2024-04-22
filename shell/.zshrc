@@ -29,10 +29,10 @@ source ~/.config/shell/zsh/plugins/prompt.zsh
 source ~/.config/shell/zsh/plugins/cursor.zsh
 
 # syntax highlight
-source ~/.config/shell/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source ~/.config/shell/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # auto suggestions
-source ~/.config/shell/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source ~/.config/shell/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zoxide
 eval "$(zoxide init zsh)"

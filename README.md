@@ -31,3 +31,7 @@ I am using [LinuxHomebrew](https://docs.brew.sh/Homebrew-on-Linux) to manage pac
 ## TODO
 - config shells better
 - tmux is messing with neovim wsl copy paste
+- tmux should try to activate vitual env
+- check fzf kubectl setup https://github.com/junegunn/fzf/wiki/examples#kubectl
+- more fzf integration
+- put python configs like flake8, black and isort

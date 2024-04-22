@@ -1,55 +1,43 @@
-# Usage: indirect_expand PATH -> $PATH
-indirect_expand () {
-    env |sed -n "s/^$1=//p"
+# fzf
+# tm - create new tmux session, or switch to existing one. Works from within tmux too. (@bag-man)
+# `tm` will allow you to select your tmux session via fzf.
+# `tm irc` will attach to the irc session (if it exists), else it will create it.
+
+tm() {
+  [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
+  if [ $1 ]; then
+    tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s $1 && tmux $change -t "$1"); return
+  fi
+  session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) &&  tmux $change -t "$session" || echo "No sessions found."
 }
 
-# Usage: pathremove /path/to/bin [PATH]
-# Eg, to remove ~/bin from $PATH
-#     pathremove ~/bin PATH
-pathremove () {
-    local IFS=':'
-    local newpath
-    local dir
-    local var=${2:-PATH}
-    # Bash has ${!var}, but this is not portable.
-    for dir in `indirect_expand "$var"`; do
-        IFS=''
-        if [ "$dir" != "$1" ]; then
-            newpath=$newpath:$dir
-        fi
-    done
-    export $var=${newpath#:}
+# fs [FUZZY PATTERN] - Select selected tmux session
+#   - Bypass fuzzy finder if there's only one match (--select-1)
+#   - Exit if there's no match (--exit-0)
+fs() {
+  local session
+  session=$(tmux list-sessions -F "#{session_name}" | \
+    fzf --query="$1" --select-1 --exit-0) &&
+  tmux switch-client -t "$session"
 }
 
-# Usage: pathprepend /path/to/bin [PATH]
-# Eg, to prepend ~/bin to $PATH
-#     pathprepend ~/bin PATH
-pathprepend () {
-    # if the path is already in the variable,
-    # remove it so we can move it to the front
-    pathremove "$1" "$2"
-    #[ -d "${1}" ] || return
-    local var="${2:-PATH}"
-    local value=`indirect_expand "$var"`
-    export ${var}="${1}${value:+:${value}}"
-}
+# ftpane - switch pane (@george-b)
+ftpane() {
+  local panes current_window current_pane target target_window target_pane
+  panes=$(tmux list-panes -s -F '#I:#P - #{pane_current_path} #{pane_current_command}')
+  current_pane=$(tmux display-message -p '#I:#P')
+  current_window=$(tmux display-message -p '#I')
 
-# Usage: pathappend /path/to/bin [PATH]
-# Eg, to append ~/bin to $PATH
-#     pathappend ~/bin PATH
-pathappend () {
-    pathremove "${1}" "${2}"
-    #[ -d "${1}" ] || return
-    local var=${2:-PATH}
-    local value=`indirect_expand "$var"`
-    export $var="${value:+${value}:}${1}"
-}
+  target=$(echo "$panes" | grep -v "$current_pane" | fzf +m --reverse) || return
 
-# Usage: ssource filename
-ssource () {
-    if [ -r "$1" ]; then
-        . "$1"
-    fi
-}
+  target_window=$(echo $target | awk 'BEGIN{FS=":|-"} {print$1}')
+  target_pane=$(echo $target | awk 'BEGIN{FS=":|-"} {print$2}' | cut -c 1)
 
+  if [[ $current_window -eq $target_window ]]; then
+    tmux select-pane -t ${target_window}.${target_pane}
+  else
+    tmux select-pane -t ${target_window}.${target_pane} &&
+    tmux select-window -t $target_window
+  fi
+}
 

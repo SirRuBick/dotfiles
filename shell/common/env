@@ -1,6 +1,63 @@
+# Environment setup,
+# all shells will run env first
+#
+#################################################################
+
+# We need to set $ENV so that if you use shell X as your login shell,
+# and then start "sh" as a non-login interactive shell the startup scripts will
+# correctly run.
+export ENV=~/interactive
+
 # We also need to set BASH_ENV, which is run for *non-interactive* shells.
 # (unlike $ENV, which is for interactive shells)
-export BASH_ENV=~/.config/shell/common/env
+export BASH_ENV=~/.config/shell/bash/env
+
+#################################################################
+
+# environment functions
+
+# Usage: prepend_path [PATH]
+function prepend_path() {
+    if [ -d $1 ]; then
+        export PATH="$1:$PATH"
+    fi
+}
+
+# Usage: append_path [PATH]
+function append_path() {
+    if [ -d $1 ]; then
+        export PATH="$PATH:$1"
+    fi
+}
+
+# Usage: indirect_expand PATH -> $PATH
+indirect_expand () {
+    env |sed -n "s/^$1=//p"
+}
+
+# Usage: pathremove /path/to/bin [PATH]
+# Eg, to remove ~/bin from $PATH
+#     pathremove ~/bin PATH
+pathremove () {
+    local IFS=':'
+    local newpath
+    local dir
+    local var=${2:-PATH}
+    # Bash has ${!var}, but this is not portable.
+    for dir in `indirect_expand "$var"`; do
+        IFS=''
+        if [ "$dir" != "$1" ]; then
+            newpath=$newpath:$dir
+        fi
+    done
+    export $var=${newpath#:}
+}
+
+#################################################################
+
+# TODO: Set necessary PATH
+# set PATH
+# prepend_path "/usr/local/bin"
 
 # set up the XDG Base Directory
 export XDG_CONFIG_HOME=~/.config

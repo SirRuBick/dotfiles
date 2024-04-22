@@ -9,6 +9,7 @@
 
 . ~/.config/shell/bash/env
 . ~/.config/shell/bash/interactive
+. ~/.config/shell/bash/functions
 
 if [[ -n $PS1 ]]; then
     : # These are executed only for interactive shells
