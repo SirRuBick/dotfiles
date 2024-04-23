@@ -26,7 +26,11 @@ I am using [LinuxHomebrew](https://docs.brew.sh/Homebrew-on-Linux) to manage pac
 - [fzf](https://github.com/junegunn/fzf)<br>
 - [ripgrep](https://github.com/BurntSushi/ripgrep)<br>
 - [zoxide](https://github.com/ajeetdsouza/zoxide)<br>
-- [exa](https://github.com/ogham/exa)<br>
+- [eza](https://github.com/eza-community/eza)<br>
+- [lazygit](https://github.com/jesseduffield/lazygit)<br>
+- [lazydocker](https://github.com/jesseduffield/lazydocker)<br>
+- [thefuck](https://github.com/nvbn/thefuck)<br>
+- [bat](https://github.com/sharkdp/bat)<br>
 
 ## TODO
 - config shells better
@@ -35,3 +39,10 @@ I am using [LinuxHomebrew](https://docs.brew.sh/Homebrew-on-Linux) to manage pac
 - check fzf kubectl setup https://github.com/junegunn/fzf/wiki/examples#kubectl
 - more fzf integration
 - put python configs like flake8, black and isort
+
+### Tools to check
+- httpie
+- pandoc
+- [cheat](https://github.com/cheat/cheat)
+- delta vs. colordiff
+- tldr

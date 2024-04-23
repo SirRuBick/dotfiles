@@ -15,7 +15,7 @@ function alias_if_exists() {
 # aliases
 
 # Make shorthands for common flags
-alias_if_exists "ls" "exa"
+alias_if_exists "ls" "eza"
 alias ls="ls --color=auto"
 alias ll='ls -alF'
 alias la='ls -A'
@@ -59,6 +59,8 @@ alias_if_exists "python" "python3"
 alias_if_exists "pip" "pip3"
 alias_if_exists "v" "nvim"
 alias_if_exists "lg" "lazygit"
+alias_if_exists "ld" "lazydocker"
+alias_if_exists "cat" "bat"
 
 # Python supports
 alias spv="source .venv/bin/activate"
