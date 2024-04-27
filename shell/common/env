@@ -88,3 +88,7 @@ case "$(uname -s)" in
      ;;
 esac
 
+# Local environment
+if [ -f $XDG_CONFIG_HOME/shell/common/env.local ]; then
+  source $XDG_CONFIG_HOME/shell/common/env.local
+fi
