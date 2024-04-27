@@ -39,6 +39,7 @@ I am using [LinuxHomebrew](https://docs.brew.sh/Homebrew-on-Linux) to manage pac
 - check fzf kubectl setup https://github.com/junegunn/fzf/wiki/examples#kubectl
 - more fzf integration
 - put python configs like flake8, black and isort
+- script to copy python configs to local dir? like ruff or project.toml
 
 ### Tools to check
 - httpie
