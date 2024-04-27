@@ -1,3 +1,55 @@
 [flake8]
-ignore = E221,E241,E272,E226
+
+# Specify the number of subprocesses that flake8 will use to run checks in parallel
+jobs = auto
+
+# increase verbosity of flake8
+verbose = 2
+quiet = 0
+
+# Select the formatter used to display errors
+format = default
+
+# Print total number of errors
+count = True
+
+# Print the source code for each error
+show-source = True
+
+# Count the number of occurrences of each error
+statistics = True
+
+# set maximum length of each line
 max-line-length = 120
+
+# Set the maximum allowed McCabe complexity
+max-complexity = 10
+
+# List of errors to ignore
+ignore = 
+  W503,  # Line break before binary operator
+  E402,  # Module level import not at top of file
+  F401,  # Unused imports
+  F841,  # Local variable name is assigned to but never used
+  W291,  # Trailing whitespace
+  C901,  # Too many nested blocks
+  F811,  # Redefinition of unused name
+  E203,  # Incompatible with black since E203 is not PEP8 compliant
+
+# Specify the list of errors to report
+select = 
+  E,
+  W,
+  F,
+  C
+
+# Enable syntax checking of doctests
+doctests = True
+
+# Global patterns to include for checking
+filename = *.py
+
+# Global patterns to exclude for checking
+exclude = 
+  .git,
+  __pycache__,
