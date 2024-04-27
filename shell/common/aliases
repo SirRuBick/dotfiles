@@ -25,6 +25,7 @@ alias lc="ls -CF"
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
+alias cf='cd $(fd -t d | fzf)'
 
 # git commands
 alias gs='git status'
@@ -80,3 +81,23 @@ alias dockimg='docker images'                                                   
 alias dockprune='docker system prune -a'                                        # prune everything
 alias dockceu='docker-compose run --rm -u $(id -u):$(id -g)'                    # run as the host user
 alias dockce='docker-compose run --rm'
+
+# OS dependent aliases
+case "$(uname -s)" in
+
+   Darwin)
+     # echo 'Mac OS'
+     ;;
+
+   Linux)
+     # echo 'Linux'
+     ;;
+
+   CYGWIN*|MINGW32*|MSYS*)
+     # echo 'MS Windows'
+     ;;
+
+   *)
+     # echo 'Other OS'
+     ;;
+esac
