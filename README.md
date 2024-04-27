@@ -41,6 +41,7 @@ I am using [LinuxHomebrew](https://docs.brew.sh/Homebrew-on-Linux) to manage pac
 - put python configs like flake8, black and isort
 - script to copy python configs to local dir? like ruff or project.toml
 - vscode setup
+- more custom scripts in bin/
 
 ### Tools to check
 - httpie
