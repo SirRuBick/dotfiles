@@ -67,3 +67,24 @@ export XDG_CACHE_HOME=~/.cache
 # set up text editor
 export EDITOR="nvim"
 export VISUAL="nvim"
+
+# OS specific environment
+case "$(uname -s)" in
+
+   Darwin)
+     # MacOS
+     ;;
+
+   Linux)
+     # Linux
+     ;;
+
+   CYGWIN*|MINGW32*|MSYS*)
+     # Windows
+     ;;
+
+   *)
+     # Other OS
+     ;;
+esac
+
