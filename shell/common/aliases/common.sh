@@ -2,11 +2,10 @@
 # shared by all posix shell
 #
 #################################################################
-
 function alias_if_exists() {
   # Does the alias only if the aliased program is installed
-    if command -v $2 > /dev/null; then
-        alias "$1"="$2"
+    if command -v "$2" > /dev/null; then
+      alias "$1"="$2"
     fi
 }
 
@@ -64,12 +63,14 @@ alias_if_exists "ld" "lazydocker"
 alias_if_exists "cat" "bat"
 
 # Python supports
-alias spv="source .venv/bin/activate"
+alias pve="python3 -m venv .venv;source .venv/bin/activate"
+alias psv="source .venv/bin/activate"
 # Jupyter
-alias jc="jupyter console"
-alias jo="jupyter nbconvert"
-alias jn="jupyter notebook"
-alias jb="jupyter notebook --no-browser"
+alias pjc="jupyter console"
+alias pjo="jupyter nbconvert"
+alias pjn="jupyter notebook"
+alias pjb="jupyter notebook --no-browser"
+alias pjl="jupyter lab"
 
 # docker
 # TODO: check these aliases

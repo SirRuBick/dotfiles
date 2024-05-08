@@ -3,8 +3,21 @@
 #
 #################################################################
 
+# set up homebrew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# set up the fuck
+eval $(thefuck --alias)
+
 # source common aliases
-. ~/.config/shell/common/aliases
+# . ~/.config/shell/common/aliases/aliases.sh
+if [ -d "$HOME"/.config/shell/common/aliases ]; then
+  for sh in "$HOME"/.config/shell/common/aliases/*.sh; do
+    if [ -r $sh ]; then
+      . $sh
+    fi
+  done
+  unset sh
+fi
 
 # if run interactively
 if [ -t 0 ]; then
@@ -12,12 +25,3 @@ if [ -t 0 ]; then
     mesg n
 fi
 
-# Bash Prompt
-PS1="\[\e]0;\u@\h: \W\a\]\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[00;36m\]\W\[\033[00m\]\$ "
-PS1="\[\033[36m\][\[\033[m\]\[\033[34m\]\u@\h\[\033[m\] \[\033[32m\]\W\[\033[m\]\[\033[36m\]]\[\033[m\] $ "
-
-# set up homebrew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-# set up the fuck
-eval $(thefuck --alias)

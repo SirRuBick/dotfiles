@@ -135,10 +135,11 @@ setup_neovim() {
 
 setup_shell() {
 	title "Setup Shell"
-	link_file "$DOTFILES_ROOT/bin" "$HOME/.config/bin"
+	link_file "$DOTFILES_ROOT/bin" "$HOME/.local/bin"
 
 	link_file "$DOTFILES_ROOT/shell" "$HOME/.config/shell"
 	link_file "$DOTFILES_ROOT/shell/.bashrc" "$HOME/.bashrc"
+	link_file "$DOTFILES_ROOT/shell/.bash_profile" "$HOME/.bash_profile"
 	link_file "$DOTFILES_ROOT/shell/.bash_logout" "$HOME/.bash_logout"
 
 	if ! command -v "zsh" &>/dev/null; then
@@ -233,19 +234,4 @@ main() {
 	success "Done."
 }
 
-# main
-# link_file "$DOTFILES_ROOT/bin" "$HOME/.config/bin"
-#
-# link_file "$DOTFILES_ROOT/shell" "$HOME/.config/shell"
-# link_file "$DOTFILES_ROOT/shell/.bashrc" "$HOME/.bashrc"
-# link_file "$DOTFILES_ROOT/shell/.bash_logout" "$HOME/.bash_logout"
-#
-# link_file "$DOTFILES_ROOT/shell/.zshrc" "$HOME/.zshrc"
-# link_file "$DOTFILES_ROOT/shell/.zshenv" "$HOME/.zshenv"
-#
-# link_file "$DOTFILES_ROOT/git" "$HOME/.config/git"
-#
-# link_file "$DOTFILES_ROOT/nvim" "$HOME/.config/nvim"
-# link_file "$DOTFILES_ROOT/tmux" "$HOME/.config/tmux"
-# link_file "$DOTFILES_ROOT/joshuto" "$HOME/.config/joshuto"
-# link_file "$DOTFILES_ROOT/lazygit" "$HOME/.config/lazygit"
+main "$@"

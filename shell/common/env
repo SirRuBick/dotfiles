@@ -57,7 +57,7 @@ pathremove () {
 
 # TODO: Set necessary PATH
 # set PATH
-prepend_path "$HOME/.config/bin"
+prepend_path "$HOME/.local/bin"
 
 # set up the XDG Base Directory
 export XDG_CONFIG_HOME=~/.config
