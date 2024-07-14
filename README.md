@@ -14,12 +14,12 @@ I am using [LinuxHomebrew](https://docs.brew.sh/Homebrew-on-Linux) to manage pac
 
 ## Contents
 ### Terminal<br>
-- Wezterm<br>
-- Tmux<br>
+- wezterm<br>
+- tmux<br>
 ### Editor<br>
-- Neovim<br>
+- neovim<br>
 ### Shell<br>
-- Zsh<br>
+- zsh<br>
 ### File Manager<br>
 - [Joshuto](https://github.com/kamiyaa/joshuto)<br>
 ### Other tools<br>
@@ -31,8 +31,10 @@ I am using [LinuxHomebrew](https://docs.brew.sh/Homebrew-on-Linux) to manage pac
 - [lazydocker](https://github.com/jesseduffield/lazydocker)<br>
 - [thefuck](https://github.com/nvbn/thefuck)<br>
 - [bat](https://github.com/sharkdp/bat)<br>
+- [cmatrix](https://github.com/abishekvashok/cmatrix) 
 
 ## TODO
+- tmux copy to clipboard
 - config shells better
 - tmux should try to activate vitual env
 - check fzf kubectl setup https://github.com/junegunn/fzf/wiki/examples#kubectl
@@ -47,3 +49,5 @@ I am using [LinuxHomebrew](https://docs.brew.sh/Homebrew-on-Linux) to manage pac
 - [cheat](https://github.com/cheat/cheat)
 - delta vs. colordiff
 - tldr
+- kubectl, k9s and stern
+- jq and jpq
