@@ -109,6 +109,14 @@ setup_tmux() {
 	link_file "$DOTFILES_ROOT/tmux" "$HOME/.config/tmux"
 }
 
+setup_zellij() {
+	title "Setup Zellij"
+	if ! command -v "zellij" &>/dev/null; then
+		warning "Zellij is not installed"
+	fi
+	link_file "$DOTFILES_ROOT/zellij" "$HOME/.config/zellij"
+}
+
 setup_lazygit() {
 	title "Setup Lazygit"
 	if ! command -v "lazygit" &>/dev/null; then
@@ -214,6 +222,9 @@ main() {
 	tmux)
 		setup_tmux
 		;;
+	zellij)
+		setup_zellij
+		;;
 	lazygit)
 		setup_lazygit
 		;;
@@ -225,6 +236,7 @@ main() {
 		setup_shell
 		setup_git
 		setup_tmux
+    setup_zellij
 		setup_lazygit
 		setup_joshuto
 		;;

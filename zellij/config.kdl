@@ -1,0 +1,46 @@
+// Choose the theme that is specified in the themes section.
+// Default: default
+theme "onedark"
+
+// The name of the default layout to load on startup
+// Default: "default"
+default_layout "default"
+
+// default mode: normal/locked
+default_mode "Locked"
+
+// key maps
+keybinds {
+  unbind "Ctrl g"
+  shared_except "move" "locked" {
+    unbind "Ctrl h"
+    bind "Ctrl b" { SwitchToMode "Move"; }
+  }
+  normal {
+    bind "Ctrl h" { MoveFocus "Left"; }
+    bind "Ctrl j" { MoveFocus "Down"; }
+    bind "Ctrl k" { MoveFocus "Up"; }
+    bind "Ctrl l" { MoveFocus "Right"; }
+  }
+  move {
+    bind "Ctrl b" { SwitchToMode "Normal"; }
+  }
+  locked {
+    bind "Ctrl a" { SwitchToMode "Normal"; }
+    bind "Ctrl h" { SwitchToMode "Normal"; MoveFocus "Left"; SwitchToMode "Locked"; }
+    bind "Ctrl j" { SwitchToMode "Normal"; MoveFocus "Down"; SwitchToMode "Locked"; }
+    bind "Ctrl k" { SwitchToMode "Normal"; MoveFocus "Up"; SwitchToMode "Locked"; }
+    bind "Ctrl l" { SwitchToMode "Normal"; MoveFocus "Right"; SwitchToMode "Locked"; }
+  }
+  shared_among "normal" "locked" {
+    bind "Alt 1" { GoToTab 1; }
+    bind "Alt 2" { GoToTab 2; }
+    bind "Alt 3" { GoToTab 3; }
+    bind "Alt 4" { GoToTab 4; }
+    bind "Alt 5" { GoToTab 5; }
+    bind "Alt 6" { GoToTab 6; }
+  }
+  shared_except "locked" {
+    bind "Esc" { SwitchToMode "Locked"; }
+  }
+}

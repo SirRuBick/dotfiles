@@ -16,6 +16,7 @@ I am using [LinuxHomebrew](https://docs.brew.sh/Homebrew-on-Linux) to manage pac
 ### Terminal<br>
 - wezterm<br>
 - tmux<br>
+- zellij<br>
 ### Editor<br>
 - neovim<br>
 ### Shell<br>
@@ -51,3 +52,4 @@ I am using [LinuxHomebrew](https://docs.brew.sh/Homebrew-on-Linux) to manage pac
 - tldr
 - kubectl, k9s and stern
 - jq and jpq
+- Alfred on Mac
