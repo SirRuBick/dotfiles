@@ -17,7 +17,7 @@ function dip-fn {
     unset OUT
 }
 
-function dex-fn {
+function dent-fn {
 	docker exec -it "$1" "${2:-bash}"
 }
 
@@ -61,3 +61,28 @@ alias drmid=drmid-fn  # remove all dangling images
 alias drun=drun-fn  # execute a bash shell in NEW container from <image>
 alias dsp="docker system prune --all"
 alias dsr=dsr-fn  # Stop and remove <container>
+
+# Launch a random container in interactive mode
+function dbash() {
+docker run --rm -i -t -e TERM=xterm $2 --entrypoint /bin/bash $1
+}
+
+# grep from docker logs
+## Usage: dkgrep <container name/id> <grep string>
+function dkgrep() {
+  docker logs "$1" 2>&1 | grep "$2" | less
+}
+
+# set docker client to a different host
+function dset() {
+  unset DOCKER_HOST
+  export DOCKER_HOST="$1:2375"
+  # checktls $1
+}
+
+# set docker client to a different host
+function dunset() {
+  unset DOCKER_HOST
+  export DOCKER_HOST="localhost:2375"
+  # checktls `hostname`
+}

@@ -63,7 +63,7 @@ alias_if_exists "ld" "lazydocker"
 alias_if_exists "cat" "bat"
 
 # Python supports
-alias pve="python3 -m venv .venv;source .venv/bin/activate"
+alias pve="python3 -m venv .venv;source .venv/bin/activate" # TODO: make a function to check if virtual environment exists
 alias psv="source .venv/bin/activate"
 # Jupyter
 alias pjc="jupyter console"

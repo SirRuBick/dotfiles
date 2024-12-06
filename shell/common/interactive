@@ -4,6 +4,7 @@
 #################################################################
 
 # set up homebrew
+# # TODO: set up homebrew for mac
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # set up the fuck
 eval $(thefuck --alias)
@@ -25,3 +26,5 @@ if [ -t 0 ]; then
     mesg n
 fi
 
+# source rust
+source $HOME/.cargo/env
