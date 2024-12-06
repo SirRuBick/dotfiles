@@ -1,0 +1,9 @@
+layout {
+    tab name="editor" focus=true {
+        pane borderless=true
+    }
+    tab name="terminal" {
+        pane
+        pane size="20%"
+    }
+}

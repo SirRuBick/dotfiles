@@ -12,3 +12,6 @@
   branch = auto
 [help]
   autocorrect = 1
+[user]
+	email = shanrb119@gmail.com
+	name = SirRuBick

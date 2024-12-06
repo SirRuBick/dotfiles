@@ -234,4 +234,10 @@ main() {
 	success "Done."
 }
 
-main "$@"
+link_file "$DOTFILES_ROOT/git" "$HOME/.config/git"
+
+link_file "$DOTFILES_ROOT/nvim" "$HOME/.config/nvim"
+link_file "$DOTFILES_ROOT/tmux" "$HOME/.config/tmux"
+link_file "$DOTFILES_ROOT/zellij" "$HOME/.config/zellij"
+link_file "$DOTFILES_ROOT/joshuto" "$HOME/.config/joshuto"
+link_file "$DOTFILES_ROOT/lazygit" "$HOME/.config/lazygit"
