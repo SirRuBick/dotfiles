@@ -7,32 +7,38 @@ theme "onedark"
 default_layout "default"
 
 // default mode: normal/locked
-default_mode "Locked"
+default_mode "Normal"
+
+// mouse mode
+mouse_mode false
+
+plugins {
+    // Define the "autolock" plugin.
+    autolock location="file:~/.config/zellij/plugins/zellij-autolock.wasm" {
+        // Enabled at start?
+        is_enabled true
+        // Lock when any open these programs open.
+        triggers "nvim|vim|git|fzf|zoxide|atuin"
+        // Reaction to input occurs after this many seconds. (default=0.3)
+        // (An existing scheduled reaction prevents additional reactions.)
+        reaction_seconds "0.3"
+        // Print to Zellij log? (default=false)
+        print_to_log true
+    }
+}
+// Load this "headless" plugin on start.
+load_plugins {
+    autolock
+}
 
 // key maps
 keybinds {
-  unbind "Ctrl g"
-  shared_except "move" "locked" {
-    unbind "Ctrl h"
-    bind "Ctrl b" { SwitchToMode "Move"; }
-  }
-  normal {
-    bind "Ctrl h" { MoveFocus "Left"; }
+  normal clear-defaults=true {
+    bind "Ctrl a" { SwitchToMode "Tmux"; }
+    bind "Ctrl h" { MoveFocusOrTab "Left"; }
+    bind "Ctrl l" { MoveFocusOrTab "Right"; }
     bind "Ctrl j" { MoveFocus "Down"; }
     bind "Ctrl k" { MoveFocus "Up"; }
-    bind "Ctrl l" { MoveFocus "Right"; }
-  }
-  move {
-    bind "Ctrl b" { SwitchToMode "Normal"; }
-  }
-  locked {
-    bind "Ctrl a" { SwitchToMode "Normal"; }
-    bind "Ctrl h" { SwitchToMode "Normal"; MoveFocus "Left"; SwitchToMode "Locked"; }
-    bind "Ctrl j" { SwitchToMode "Normal"; MoveFocus "Down"; SwitchToMode "Locked"; }
-    bind "Ctrl k" { SwitchToMode "Normal"; MoveFocus "Up"; SwitchToMode "Locked"; }
-    bind "Ctrl l" { SwitchToMode "Normal"; MoveFocus "Right"; SwitchToMode "Locked"; }
-  }
-  shared_among "normal" "locked" {
     bind "Alt 1" { GoToTab 1; }
     bind "Alt 2" { GoToTab 2; }
     bind "Alt 3" { GoToTab 3; }
@@ -40,7 +46,31 @@ keybinds {
     bind "Alt 5" { GoToTab 5; }
     bind "Alt 6" { GoToTab 6; }
   }
-  shared_except "locked" {
-    bind "Esc" { SwitchToMode "Locked"; }
+  shared_except "tmux" {
+    bind "Ctrl a" { SwitchToMode "Tmux"; }
   }
+  shared_except "normal" "locked" {
+    bind "Esc" { SwitchToMode "Normal"; }
+  }
+  tmux clear-defaults=true {
+    bind "Esc" { SwitchToMode "Normal"; }
+    bind "g" { SwitchToMode "Locked"; }
+    bind "p" { SwitchToMode "Pane"; }
+    bind "t" { SwitchToMode "Tab"; }
+    bind "n" { SwitchToMode "Resize"; }
+    bind "h" { SwitchToMode "Move"; }
+    bind "s" { SwitchToMode "Scroll"; }
+    bind "o" { SwitchToMode "Session"; }
+    bind "q" { Quit; }
+    bind "Ctrl h" { MoveFocusOrTab "Left"; }
+    bind "Ctrl l" { MoveFocusOrTab "Right"; }
+    bind "Ctrl j" { MoveFocus "Down"; }
+    bind "Ctrl k" { MoveFocus "Up"; }
+  }
+  shared_except "locked" {
+    bind "Ctrl h" { MoveFocusOrTab "Left"; }
+    bind "Ctrl l" { MoveFocusOrTab "Right"; }
+    bind "Ctrl j" { MoveFocus "Down"; }
+    bind "Ctrl k" { MoveFocus "Up"; }
+    }
 }
