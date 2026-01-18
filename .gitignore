@@ -1,3 +1,7 @@
 tmux/plugins/
 lazygit/state.yml
 .archive/
+.dotter/local.toml
+.dotter/cache
+.dotter/cache.toml
+**/*.log
