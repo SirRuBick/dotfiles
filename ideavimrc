@@ -1,0 +1,229 @@
+"""
+"   Alex Shan Ideavim config
+"   Note: noremap not working with syntax <Action>(), have to use :action [action]<CR>
+"""
+let mapleader = " "
+
+""" common options
+set relativenumber
+set number
+set scrolloff=5
+set showmode
+set showcmd
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+set visualbell
+
+set clipboard+=unnamedplus,ideaput
+map Y y$
+map D d$
+
+""" plugins
+set keep-english-in-normal
+set surround
+set multiple-cursors
+set commentary
+set argtextobj
+set easymotion
+" which key
+" TODO: Which Key can share config with nvim
+set which-key
+" disable the timeout option
+set notimeout
+"" increase the timeoutlen (default: 1000), don't add space around the equal sign
+"set timeoutlen=5000
+let g:WhichKey_ShowVimActions = "true"
+let g:WhichKey_FontSize = 12
+let g:WhichKey_CommandColor = "#41ead4"
+let g:WhichKey_PrefixColor = "#f335b2"
+let g:WhichKey_SortOrder = "by_key_prefix_first"
+let g:WhichKeyDesc_leader = "<leader> Leader key"
+
+
+
+" idea specific settings
+set trackactionids
+set ideajoin
+set ideamarks
+
+" keymap
+" actions that can be useful, find maps later:
+" $SelectAll
+
+
+" TODO: do I need key map for below? moving a tab to right split, etc.
+" MoveTabRight
+" MoveTabDown
+" MoveTabLeft
+" MoveTabUp
+
+nnoremap <leader>r :action IdeaVim.ReloadVimRc.reload<CR>
+nmap <ESC> :noh<CR>
+nmap <C-[> :noh<CR>
+nmap U :action $Redo<CR>
+
+xmap <C-c> y
+map <C-S-V> p
+imap <C-v> <C-r>+
+
+map <leader><space> <Action>(HideActiveWindow)
+
+" nmap <c-o> <Action>(Back)
+" nmap <c-i> <Action>(Forward)
+
+" TODO: BOOKMArk
+
+" Buffer
+map <leader>bb <Action>(Switcher)
+map <leader>bo <Action>(CloseAllEditorsButActive)
+map <leader>bd <Action>(CloseContent)
+map <leader>bD <Action>(EditSourceInNewWindow)      " detach tab
+map <leader>ba <Action>(NewElement)
+map <leader>bs <Action>(SaveAll)
+map <leader>bq <Action>(CloseAllEditors)
+map <leader>bc <Action>(CloseAllUnmodifiedEditors)
+map <leader>bn <Action>(NextTab)
+map <leader>bp <Action>(PreviousTab)
+map <leader>bk <Action>(PinActiveTab)
+map <leader>bi <Action>(CloseAllUnpinnedEditors)
+
+" Tab navigation
+nnoremap ]b :tabnext<CR>
+nnoremap [b :tabprev<CR>
+
+" Jump between methods
+nmap [f <Action>(MethodUp)
+nmap ]f <Action>(MethodDown)
+nmap [d <Action>(GotoPreviousError)
+nmap ]d <Action>(GotoNextError)
+nmap [p <Action>(PreviousParameter)
+nmap ]p <Action>(NextParameter)
+
+" indent line
+nnoremap <Tab> >>_
+nnoremap <S-Tab> <<_
+inoremap <S-Tab> <C-D>
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+" Popup navigation
+" inoremap <C-j> <Action>(PopupMenu-selectNext)
+" inoremap <C-k> <Action>(PopupMenu-selectPrev)
+
+" wild fire
+nmap <Enter> <Action>(EditorSelectWord)
+xmap <Enter> <Action>(EditorSelectWord)
+nmap <BS> <Action>(EditorUnSelectWord)
+xmap <BS> <Action>(EditorUnSelectWord)
+
+"Move code up and down
+inoremap <A-j> <Esc>:action MoveStatementDown<CR>i
+inoremap <A-k> <Esc>:action MoveStatementUp<CR>i
+vnoremap <A-j> :action MoveStatementDown<CR>
+vnoremap <A-k> :action MoveStatementUp<CR>
+" normal mode may not be necessary
+nnoremap <A-j> :action MoveStatementDown<CR>    " MoveLineDown
+nnoremap <A-k> :action MoveStatementUp<CR>      " MoveLineUp
+
+" Debugger
+nmap <leader>dd <Action>(Resume)
+nmap <leader>da <Action>(RunAnything)
+nmap <leader>dt <Action>(ContextRun)
+nmap <leader>db <Action>(ToggleLineBreakpoint)
+nmap <leader>de <Action>(EvaluateExpression)
+nmap <leader>dC <Action>(ChooseRunConfiguration)
+nmap <leader>dc <Action>(ChooseDebugConfiguration)
+
+
+" Display options
+map <leader>vd <Action>(ToggleDistractionFreeMode)
+map <leader>vz <Action>(ToggleZenMode)
+map <leader>vf <Action>(ToggleFullScreen)
+
+" Actions
+map <leader>am <Action>(ShowIntentionActions)
+
+" File navigation
+nmap <leader>fp <Action>($LRU)
+nmap <leader>ff <Action>(GotoFile)
+nmap <leader>fr <Action>(RecentFiles)
+nmap <leader>fw <Action>(FindInPath)
+nmap <leader>fl <Action>(RecentLocations)
+nmap <leader>fs <Action>(NewScratchFile)
+nmap <leader>fa <Action>(SearchEverywhere)  " shift shift
+xmap <leader>fo <Action>($SearchWeb)
+map <leader>fb <Action>(ShowNavBar)
+
+
+" Refactoring
+map <leader>lr <Action>(RenameElement)
+map <leader>lf <Action>(ReformatCode)
+map <leader>le <Action>(ShowErrorDescription)
+map <leader>lf <Action>(QuickImplementations)
+map <leader>lm <Action>(ExtractMethod)
+map <leader>lv <Action>(IntroduceVariable)
+map <leader>lf <Action>(IntroduceField)
+map <leader>ls <Action>(ChangeSignature)
+map <leader>lo <Action>(FileStructurePopup)
+xmap <leader>ln <Action>(Refactorings.QuickListPopupAction)
+
+map <leader>xt <Action>(ActivateTODOToolWindow) " TODO
+
+" Go to code
+nmap gd <Action>(GotoDeclaration)
+nmap gi <Action>(GotoImplementation)
+nmap gh <Action>(ShowHoverInfo)
+nmap gr <Action>(FindUsages)
+nmap gu <Action>(ShowUsages)
+nmap gy <Action>(GotoTypeDeclaration)
+nmap gw <Action>(GotoClass)
+nmap gs <Action>(FileStructurePopup)
+nmap gp <Action>(GotoSuperMethod)
+nmap gt <Action>(GotoTest)
+" nmap gb <Action>(Back)
+" nmap gf <Action>(Forward)
+
+" Git windows
+nmap <leader>gg <Action>() " lazygit
+nmap <leader>gc <Action>(CheckinProject)
+nmap <leader>gs <Action>(ActivateVersionControlToolWindow)
+nmap <leader>gB <Action>(Git.Branches)
+nmap <leader>gb <Action>(Annotate) " blame
+nmap <leader>gd <Action>(VCS.ShowTabbedFileHistory)
+
+
+
+""" set handler
+sethandler <C-J> a:ide
+sethandler <C-K> a:ide
+sethandler <C-H> a:ide
+sethandler <C-L> a:ide
+sethandler <C-V> a:vim
+sethandler <C-Q> a:vim
+sethandler <C-S-V> a:ide i"vim
+
+
+" example
+if has('ide')
+  " mappings and options that exist only in IdeaVim
+  map <leader>f <Action>(GotoFile)
+  map <leader>g <Action>(FindInPath)
+
+  if &ide =~? 'intellij idea'
+    if &ide =~? 'community'
+      " some mappings and options for IntelliJ IDEA Community Edition
+    elseif &ide =~? 'ultimate'
+      " some mappings and options for IntelliJ IDEA Ultimate Edition
+    endif
+  elseif &ide =~? 'pycharm'
+    " PyCharm specific mappings and options
+  elseif &ide =~? 'rider'
+    " Rider specific mappings and options
+  elseif &ide =~? 'datagrip'
+    " DataGrip specific mappings and options
+  endif
+else
+  " some mappings for Vim/Neovim
+  nnoremap <leader>f <cmd>Telescope find_files<cr>
+endif
