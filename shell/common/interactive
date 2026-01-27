@@ -8,6 +8,8 @@
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # set up the fuck
 eval $(thefuck --alias)
+# set up starship
+eval "$(starship init bash)"
 
 # source common aliases
 # . ~/.config/shell/common/aliases/aliases.sh
