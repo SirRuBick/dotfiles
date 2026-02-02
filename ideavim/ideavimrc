@@ -20,13 +20,20 @@ set clipboard+=unnamedplus,ideaput
 map Y y$
 map D d$
 
-""" plugins
+""" plugin/
 set keep-english-in-normal
 set surround
+set nerdtree
 set multiple-cursors
 set commentary
-set argtextobj
 set easymotion
+set ReplaceWithRegister
+nmap <Leader>r  <Plug>ReplaceWithRegisterOperator
+nmap <Leader>rr <Plug>ReplaceWithRegisterLine
+xmap <Leader>r  <Plug>ReplaceWithRegisterVisual
+set argtextobj
+set functiontextobj
+set textobj-indent
 " which key
 " TODO: Which Key can share config with nvim
 set which-key
@@ -59,7 +66,7 @@ set ideamarks
 " MoveTabLeft
 " MoveTabUp
 
-nnoremap <leader>r :action IdeaVim.ReloadVimRc.reload<CR>
+nmap <leader>/ <Action>(IdeaVim.ReloadVimRc.reload)
 nmap <ESC> :noh<CR>
 nmap <C-[> :noh<CR>
 nmap U :action $Redo<CR>
@@ -100,6 +107,10 @@ nmap [d <Action>(GotoPreviousError)
 nmap ]d <Action>(GotoNextError)
 nmap [p <Action>(PreviousParameter)
 nmap ]p <Action>(NextParameter)
+nmap [r <Action>(GotoPrevElementUnderCaretUsage)
+nmap ]r <Action>(GotoNextElementUnderCaretUsage)
+nmap [h <Action>(VcsShowPrevChangeMarker)
+nmap ]h <Action>(VcsShowNextChangeMarker)
 
 " indent line
 nnoremap <Tab> >>_
