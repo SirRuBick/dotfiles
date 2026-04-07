@@ -1,0 +1,22 @@
+[shell.files]
+"git/config" = "~/.gitconfig"
+joshuto = ""  # TODO: consider yazi first
+lazygit = { target = "~/.config/lazygit", type="symbolic" }
+"starship/starship.toml" = { target = "~/.config/starship.toml", type="symbolic" }
+python = ""
+"ideavim/ideavimrc" = { target = "~/.ideavimrc", type="symbolic" }
+
+tmux = "" # replaced by zellij
+zellij = "~/.config/zellij" # TODO: Try zellij on windows
+fastfetch = "~/.config/fastfetch"
+
+[shell.variables]
+install = "echo not defined"
+uninstall = "echo not defined"
+update = "echo not defined"
+autoremove = "echo not defined"
+user_color = "7"
+logo_file = "alogo.txt"
+
+[nvim.files]
+nvim = "~/.config/nvim"

@@ -13,7 +13,6 @@ Use Dotter for Management
 - powershell on linux
 - is terminal multiplexer necessary even on linux? if yes, what about windows? terminal by default?
 - align shortcuts for neovim, vscode, jetbrains
-- review gitconfig and apply in dotter
 
 
 ## Common tools across platform
@@ -33,14 +32,18 @@ Use Dotter for Management
 - [fzf](https://github.com/junegunn/fzf)<br>
 - [ripgrep](https://github.com/BurntSushi/ripgrep)<br>
 
-## Linux
 ## Installation
+### Arch Linux (One-liner)
+```bash
+sudo pacman -Syu --noconfirm git && git clone https://github.com/shanr/dotfiles.git ~/dotfiles && cd ~/dotfiles && ./bootstrap.sh
+```
+
+### Manual Installation
 1. install curl git
 2. install linuxhomebrew -> insatll build-essential
 3. brew install gcc neovim tmux joshuto lazygit fzf ripgrep glow nodejs
 4. tmp: git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ### Terminal<br>
-- wezterm<br>
 - tmux<br>
 - zellij<br>
 ### File Manager<br>
@@ -68,6 +71,5 @@ winget install starship
 ### TODO 
 - everything (run with powertoys run)
 - quicker
-- [ ] fastfetch, set the path to ascii.txt with a variable for dotter
 
 

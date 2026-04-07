@@ -1,3 +1,6 @@
+[user]
+  email = {{user_email}}
+  name = {{user_name}}
 [include]
   path = ~/.config/git/gitconfig.local
 [core]

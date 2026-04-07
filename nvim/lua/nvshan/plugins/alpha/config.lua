@@ -1,0 +1,46 @@
+require("alpha").setup(require("alpha.themes.startify").config)
+local time = os.date("%A, %d-%B-%Y %H:%M:%S")
+
+local alpha = require("alpha")
+local dashboard = require("alpha.themes.dashboard")
+
+local logo = [[
+⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣤⣄⣠⠤⠴⠞⠓⠶⠤⣶⣶⣶⡄⠀⠀⠀⠀                                                      ALEXSHAN       
+⠀⠀⠀⠀⠀⠀⠀⢰⣿⣿⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⡟⠀⠀⠀⠀       ████ ██████           █████      ██                     
+⠀⠀⠀⠀⠀⠀⠀⠀⡻⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢳⠀⠀⠀⠀      ███████████             █████                             
+⠀⠀⢠⣾⣿⣶⡤⢴⠁⠀⠀⣠⣴⣶⣦⣄⠀⠀⠀⢠⣾⣿⣿⡄⠀⠀⠀      █████████ ███████████████████ ███   ███████████   
+⠀⠀⠘⣿⠋⠁⠀⣿⠀⠀⢸⣿⣿⣟⣻⣿⠇⠀⠀⠘⢿⣯⣽⣿⣆⠀⠀     █████████  ███    █████████████ █████ ██████████████   
+⠀⠀⢰⠃⠀⠀⠀⢹⠀⠀⠀⠻⠿⠿⠿⠋⠀⠀⠻⠛⠀⠉⠉⠁⣸⠀⠀    █████████ ██████████ █████████ █████ █████ ████ █████   
+⣤⣶⣼⡀⠀⠀⠀⣼⣿⣷⣶⣤⣤⣤⣤⡀⠀⠀⠀⠀⠀⠀⣀⣴⣧⡀⠀  ███████████ ███    ███ █████████ █████ █████ ████ █████  
+⠻⠿⠿⠷⠤⠤⠤⠿⠿⠿⠿⠿⠿⠿⠿⣇⠤⠤⠤⠴⠶⠿⠿⠿⠿⠁⠀ ██████  █████████████████████ ████ █████ █████ ████ ██████ 
+]]
+
+dashboard.section.header.val = vim.split(logo, "\n")
+dashboard.section.header.opts.hl = "DashboardHeader"
+dashboard.section.buttons.val = {
+  dashboard.button("f", "󰈞  Find file", ":Telescope find_files <CR>"),
+  dashboard.button("a", "  New file", ":ene <BAR> startinsert <CR>"),
+  dashboard.button("p", "  Find project", ":Telescope projects <CR>"),
+  dashboard.button("r", "󱋡  Recently used files", ":Telescope oldfiles <CR>"),
+  dashboard.button("w", "󱎸  Find words", ":Telescope live_grep <CR>"),
+  -- dashboard.button("g", "󰊢  Open Lazygit", ":LazyGit<CR>"),
+  dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),
+  dashboard.button("q", "󰗼  Quit Neovim", ":qa<CR>"),
+}
+dashboard.config.layout[1].val = vim.fn.max({ 2, vim.fn.floor(vim.fn.winheight(0) * 0.1) })
+dashboard.config.layout[3].val = 2
+dashboard.config.opts.noautocmd = true
+
+alpha.setup(dashboard.opts)
+
+vim.api.nvim_create_autocmd("UIEnter", {
+  callback = function()
+    local stats = require("lazy").stats()
+    local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+    dashboard.section.footer.val = {
+      "  Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms",
+      " 󰅐 Today is " .. time .. "         ",
+    }
+    pcall(vim.cmd.AlphaRedraw)
+  end,
+})

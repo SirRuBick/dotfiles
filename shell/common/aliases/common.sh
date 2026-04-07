@@ -87,18 +87,39 @@ alias dockce='docker-compose run --rm'
 case "$(uname -s)" in
 
    Darwin)
-     # echo 'Mac OS'
+     alias clip='pbcopy'
+     alias open='open'
      ;;
 
    Linux)
-     # echo 'Linux'
+     if grep -qi "microsoft" /proc/version; then
+       # WSL
+       alias clip='clip.exe'
+       # Ensure wsl-open or similar is used if available, otherwise explorer.exe
+       if command -v wsl-open > /dev/null; then
+         alias open='wsl-open'
+       else
+         alias open='explorer.exe'
+       fi
+       alias explorer='explorer.exe'
+       alias powershell='powershell.exe'
+     else
+       # Native Linux
+       if command -v xclip > /dev/null; then
+         alias clip='xclip -selection clipboard'
+       elif command -v wl-copy > /dev/null; then
+         alias clip='wl-copy'
+       fi
+       alias open='xdg-open'
+     fi
      ;;
 
    CYGWIN*|MINGW32*|MSYS*)
-     # echo 'MS Windows'
+     alias clip='cat | clip.exe'
+     alias open='start'
      ;;
 
    *)
-     # echo 'Other OS'
+     # Other OS
      ;;
 esac

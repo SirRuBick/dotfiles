@@ -1,0 +1,10 @@
+includes = ["linux.toml"]
+
+[shell.variables]
+install = "sudo pacman -S"
+uninstall = "sudo pacman -Rs"
+update = "sudo pacman -Syu"
+autoremove = "sudo pacman -Rs $(pacman -Qdtq)"
+
+[wsl.files]
+"wsl/wsl.conf" = { target = "/etc/wsl.conf", type="symbolic" }

@@ -29,6 +29,21 @@ Set-Alias v nvim
 Set-Alias ff fastfetch
 Set-Alias lg lazygit
 
+# Git Aliases (mirrors common.sh)
+function gs { git status }
+function ga { git add $args }
+function gp { git push $args }
+function gpo { git push origin $args }
+function gl { git log --graph --oneline --decorate }
+function gc { git commit -m $args }
+function gco { git checkout $args }
+function gb { git branch $args }
+function gd { git diff $args }
+
+# System Helpers
+function clip { $input | clip.exe }
+function open { explorer.exe $args }
+
 
 # Evnrionment Variables
 

@@ -1,0 +1,15 @@
+[wsl2]
+# Limits VM memory to use no more than 8GB (adjust based on your total RAM)
+memory=24GB 
+
+# Sets the VM to use 4 virtual processors
+processors=8
+
+# Automatically reclaims unused memory back to Windows
+autoMemoryReclaim=gradual 
+
+[experimental]
+# Improves network speed and allows Windows/Linux to share the same IP
+networkingMode=mirrored
+# Allows you to run Windows GUI apps inside Linux more smoothly
+guiApplications=true

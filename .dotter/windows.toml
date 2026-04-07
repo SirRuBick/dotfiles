@@ -1,0 +1,16 @@
+[shell.files]
+lazygit = { target = "~/AppData/Local/lazygit", type="symbolic" }
+glazewm = { target = "~/.glzr/glazewm", type="symbolic" }
+yasb = { target = "~/.config/yasb", type="symbolic" }
+powershell = { target = "~/Documents/PowerShell/", type="symbolic" }
+cava = { target="~/.config/cava", type="symbolic" }
+"windows_terminal/settings.json" = "~/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
+
+[nvim.files]
+nvim = { target = "~/AppData/Local/nvim", type="symbolic" }
+
+[nvim.variables]
+vim_root_dir = "~/Desktop"
+
+[wsl.files]
+"wsl/wslconfig" = { target = "~/.wslconfig", type="symbolic" }
