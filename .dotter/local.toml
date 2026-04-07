@@ -1,0 +1,11 @@
+# Update this file based on system
+# Select packages to deploy
+packages = ["shell", "nvim", "wsl"]
+
+# Include OS-specific configuration, e.g. ".dotter/windows.toml"
+includes = []
+
+[variables]
+user_email = ""                # git
+user_name = ""                 # git
+logo_file = "alogo.txt"        # fastfetch
