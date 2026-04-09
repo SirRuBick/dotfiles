@@ -12,20 +12,20 @@
             "keys": "ctrl+c"
         },
         {
-            "id": "User.toggleFocusMode",
-            "keys": "f1"
-        },
-        {
             "id": "Terminal.MoveFocusUp",
             "keys": "alt+shift+k"
         },
         {
-            "id": "Terminal.MoveFocusDown",
-            "keys": "alt+shift+j"
+            "id": "User.toggleFocusMode",
+            "keys": "f1"
         },
         {
             "id": "Terminal.PasteFromClipboard",
             "keys": "ctrl+v"
+        },
+        {
+            "id": "Terminal.MoveFocusDown",
+            "keys": "alt+shift+j"
         },
         {
             "id": "Terminal.DuplicatePaneAuto",
@@ -40,12 +40,12 @@
             "keys": "alt+shift+h"
         },
         {
-            "id": "Terminal.OpenNewTab",
-            "keys": "alt+shift+t"
-        },
-        {
             "id": "Terminal.ResizePaneRight",
             "keys": "alt+shift+right"
+        },
+        {
+            "id": "Terminal.OpenNewTab",
+            "keys": "alt+shift+t"
         },
         {
             "id": "Terminal.ResizePaneDown",
@@ -111,6 +111,12 @@
             },
             {
                 "guid": "{64ba3723-5c7e-54e0-9889-f911227fe319}",
+                "hidden": false,
+                "name": "Arch",
+                "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{177c7c80-b2fa-58ad-8e70-eb08be6afc1a}",
                 "hidden": false,
                 "name": "Arch",
                 "source": "Microsoft.WSL"

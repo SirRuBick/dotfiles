@@ -6,7 +6,6 @@ I am using [LinuxHomebrew](https://docs.brew.sh/Homebrew-on-Linux) to manage pac
 Use Dotter for Management
 
 ## TODO
-- Finish dotter setup 
 - git config setup again
 - vscode setup
 - look into fzf/ripgrep on windows, integration with pwsh
