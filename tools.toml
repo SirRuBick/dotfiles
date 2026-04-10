@@ -111,3 +111,9 @@ executable = "cava"
 package = "cava"
 methods = { windows = "scoop" }
 skip_in_wsl = true
+
+[[tools]]
+name = "maple-mono"
+executable = "MapleMono-NF"
+package = "MapleMono-NF"
+methods = { windows = "scoop", macos = "brew" }

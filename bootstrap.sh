@@ -210,11 +210,13 @@ load_tools_config() {
                 ;;
             METHOD\|*)
                 IFS='|' read -r _ tool os method <<< "$line"
+                tool=${tool//-/_}
                 # Set variable TOOL_METHOD_<tool>_<os>
                 declare "TOOL_METHOD_${tool}_${os}=${method}"
                 ;;
             SKIP\|*)
                 IFS='|' read -r _ tool <<< "$line"
+                tool=${tool//-/_}
                 # Set variable TOOL_SKIP_<tool>
                 declare "TOOL_SKIP_${tool}=true"
                 ;;
@@ -226,15 +228,16 @@ load_tools_config() {
         info "Parsed ${#tools_ref[@]} tools from tools.toml"
         for i in "${!tools_ref[@]}"; do
             local tool="${tools_ref[$i]}"
+            local tool_var=${tool//-/_}
             echo "  $tool:"
             local os_list="windows arch ubuntu centos macos"
             for os in $os_list; do
-                local var_name="TOOL_METHOD_${tool}_${os}"
+                local var_name="TOOL_METHOD_${tool_var}_${os}"
                 if [ -n "${!var_name+x}" ]; then
                     echo "    $os: ${!var_name}"
                 fi
             done
-            local skip_var="TOOL_SKIP_${tool}"
+            local skip_var="TOOL_SKIP_${tool_var}"
             if [ "${!skip_var:-}" = true ]; then
                 echo "    skip_in_wsl: true"
             fi
@@ -271,6 +274,10 @@ tool_installed() {
                 command -v powertoys &>/dev/null
             fi
             ;;
+        maple-mono)
+            # Font detection skipped; always return false to trigger installation
+            return 1
+            ;;
         *)
             if [ "$OS" = "windows" ]; then
                 powershell -Command "Get-Command $tool_executable -ErrorAction SilentlyContinue" &>/dev/null
@@ -283,6 +290,7 @@ tool_installed() {
 
 should_skip_tool() {
     local tool="$1"
+    tool=${tool//-/_}
     local var_name="TOOL_SKIP_${tool}"
     if [ "$IS_WSL" = true ] && [ "${!var_name:-}" = true ]; then
         return 0  # skip
@@ -376,6 +384,7 @@ ensure_awk() {
 # ── Get install method for a tool ───────────────────────────────────────────
 get_tool_method() {
     local tool="$1"
+    tool=${tool//-/_}
     local var_name="TOOL_METHOD_${tool}_${OS}"
     if [ -n "${!var_name+x}" ]; then
         echo "${!var_name}"
@@ -724,6 +733,22 @@ install_powertoys() {
     esac
 }
 
+install_maple_mono() {
+    local method
+    method="$(get_tool_method maple-mono)"
+    case "$method" in
+        scoop)
+            run_cmd scoop install Maple-Mono-NF
+            ;;
+        brew)
+            run_cmd brew install --cask font-maple-mono-nf
+            ;;
+        *)
+            error "Unsupported method '$method' for maple-mono on $OS"
+            ;;
+    esac
+}
+
 # ── Tool install dispatcher ─────────────────────────────────────────────────
 install_tool() {
     local tool_name="$1"
@@ -772,7 +797,7 @@ install_tool() {
     info "Installing $tool_name ($tool_executable) with method: $method"
     
     # Call the appropriate install function
-    local install_func="install_${tool_name}"
+    local install_func="install_${tool_name//-/_}"
     if type -t "$install_func" &>/dev/null; then
         "$install_func" "$tool_package" "$method"
     else

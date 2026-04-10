@@ -37,6 +37,12 @@ Personal dotfiles repository for cross-platform development environment setup. T
 - **GUI Tools**: VSCode, Obsidian via Homebrew Casks
 - **Compiler**: GCC (via Xcode Command Line Tools)
 
+### Fonts
+- **Maple Mono NF**: Open‑source monospace font with Nerd Font icons.
+  - **Windows**: Installed via Scoop (`Maple-Mono-NF`)
+  - **macOS**: Installed via Homebrew (`font-maple-mono-nf`)
+  - **Linux**: Manual installation required (download from [GitHub releases](https://github.com/subframe7536/maple-font/releases))
+
 ## Installation
 
 ### Prerequisites
