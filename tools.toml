@@ -5,13 +5,14 @@
 name = "neovim"
 executable = "nvim"
 package = "neovim"
-methods = { windows = "scoop", arch = "pacman", ubuntu = "apt", centos = "yum", macos = "brew" }
+methods = { windows = "winget", arch = "pacman", ubuntu = "apt", centos = "yum", macos = "brew" }
 
 [[tools]]
 name = "vscode"
 executable = "code" 
 package = "code"
 methods = { windows = "winget", arch = "pacman", ubuntu = "apt", centos = "yum", macos = "brew" }
+skip_in_wsl = true
 
 [[tools]]
 name = "git"
@@ -23,19 +24,19 @@ methods = { windows = "winget", arch = "pacman", ubuntu = "apt", centos = "yum",
 name = "starship"
 executable = "starship"
 package = "starship"
-methods = { windows = "scoop", arch = "curl", ubuntu = "curl", centos = "curl", macos = "brew" }
+methods = { windows = "winget", arch = "curl", ubuntu = "curl", centos = "curl", macos = "brew" }
 
 [[tools]]
 name = "zoxide"
 executable = "zoxide"
 package = "zoxide"
-methods = { windows = "scoop", arch = "curl", ubuntu = "curl", centos = "curl", macos = "brew" }
+methods = { windows = "winget", arch = "curl", ubuntu = "curl", centos = "curl", macos = "brew" }
 
 [[tools]]
 name = "lazygit"
 executable = "lazygit"
 package = "lazygit"
-methods = { windows = "scoop", arch = "pacman", ubuntu = "curl", centos = "curl", macos = "brew" }
+methods = { windows = "winget", arch = "pacman", ubuntu = "curl", centos = "curl", macos = "brew" }
 
 [[tools]]
 name = "joshuto"
@@ -66,12 +67,13 @@ name = "obsidian"
 executable = "obsidian"
 package = "obsidian"
 methods = { windows = "winget", arch = "pacman", ubuntu = "curl", centos = "curl", macos = "brew" }
+skip_in_wsl = true
 
 [[tools]]
 name = "glazewm"
 executable = "glazewm"
 package = "glazewm"
-methods = { windows = "scoop" }
+methods = { windows = "winget" }
 
 [[tools]]
 name = "yasb"
@@ -90,3 +92,22 @@ name = "powertoys"
 executable = "powertoys"
 package = "powertoys"
 methods = { windows = "winget" }
+
+[[tools]]
+name = "opencode"
+executable = "opencode"
+package = "opencode-ai"
+methods = { windows = "scoop", arch = "pacman", ubuntu = "curl", centos = "curl", macos = "brew" }
+
+[[tools]]
+name = "gcc"
+executable = "gcc"
+package = "gcc"
+methods = { arch = "gcc", ubuntu = "gcc", centos = "gcc", macos = "xcode_cli", windows = "winget" }
+
+[[tools]]
+name = "cava"
+executable = "cava"
+package = "cava"
+methods = { windows = "scoop" }
+skip_in_wsl = true

@@ -31,6 +31,9 @@ VERBOSE=false
 SPECIFIC_TOOLS=()
 SKIP_TOOLS=()
 DOTTER_PROFILE=""
+WSL=false
+IS_WSL=false
+WSL_DISTRO_NAME=""
 
 # ── OS Detection ────────────────────────────────────────────────────────────
 detect_os() {
@@ -59,6 +62,20 @@ detect_os() {
             error "Unsupported OS: $uname_out"
             ;;
     esac
+}
+
+detect_wsl() {
+    if [[ -f /proc/sys/fs/binfmt_misc/WSLInterop ]] || \
+       [[ "$(uname -r)" =~ microsoft ]] || \
+       [[ -n "${WSL_DISTRO_NAME:-}" ]]; then
+        IS_WSL=true
+    else
+        IS_WSL=false
+    fi
+    if [[ -n "${WSL_DISTRO_NAME:-}" ]]; then
+        # Optionally store the distro name
+        :
+    fi
 }
 
 dotter_profile_for_os() {
@@ -150,6 +167,16 @@ load_tools_config() {
         }
         next
     }
+    /^[[:space:]]*skip_in_wsl[[:space:]]*=/ && in_tools {
+        line = $0
+        sub(/^[[:space:]]*skip_in_wsl[[:space:]]*=[[:space:]]*/, "", line)
+        gsub(/^[[:space:]]*/, "", line)
+        gsub(/[[:space:]]*$/, "", line)
+        if (line == "true") {
+            print "SKIP|" current_tool
+        }
+        next
+    }
     /^[[:space:]]*$/ || /^[[:space:]]*#/ {
         # blank line or comment, ignore
         next
@@ -186,10 +213,15 @@ load_tools_config() {
                 # Set variable TOOL_METHOD_<tool>_<os>
                 declare "TOOL_METHOD_${tool}_${os}=${method}"
                 ;;
+            SKIP\|*)
+                IFS='|' read -r _ tool <<< "$line"
+                # Set variable TOOL_SKIP_<tool>
+                declare "TOOL_SKIP_${tool}=true"
+                ;;
         esac
     done <<< "$output"
 
-    # If verbose, print parsed methods
+    # If verbose, print parsed methods and skip flags
     if [ "$VERBOSE" = true ]; then
         info "Parsed ${#tools_ref[@]} tools from tools.toml"
         for i in "${!tools_ref[@]}"; do
@@ -202,6 +234,10 @@ load_tools_config() {
                     echo "    $os: ${!var_name}"
                 fi
             done
+            local skip_var="TOOL_SKIP_${tool}"
+            if [ "${!skip_var:-}" = true ]; then
+                echo "    skip_in_wsl: true"
+            fi
         done
     fi
 }
@@ -245,6 +281,15 @@ tool_installed() {
     esac
 }
 
+should_skip_tool() {
+    local tool="$1"
+    local var_name="TOOL_SKIP_${tool}"
+    if [ "$IS_WSL" = true ] && [ "${!var_name:-}" = true ]; then
+        return 0  # skip
+    fi
+    return 1  # don't skip
+}
+
 ensure_scoop() {
     if [ "$OS" != "windows" ]; then return; fi
     if command -v scoop &>/dev/null; then return; fi
@@ -284,6 +329,27 @@ ensure_pipx() {
     fi
 }
 
+ensure_npm() {
+    if command -v npm &>/dev/null; then return; fi
+    info "Installing Node.js (includes npm)..."
+    case "$OS" in
+        arch)   run_cmd sudo pacman -S --needed --noconfirm nodejs npm ;;
+        ubuntu) run_cmd sudo apt install -y nodejs npm ;;
+        centos) run_cmd sudo yum install -y nodejs npm ;;
+        macos)  run_cmd brew install node ;;
+        windows)
+            if command -v scoop &>/dev/null; then
+                run_cmd scoop install nodejs
+            elif command -v winget &>/dev/null; then
+                run_cmd winget install --id OpenJS.NodeJS -e --accept-source-agreements --accept-package-agreements
+            else
+                error "No package manager available to install Node.js"
+            fi
+            ;;
+        *)      error "Unsupported OS for Node.js installation" ;;
+    esac
+}
+
 ensure_awk() {
     if command -v awk &>/dev/null; then return; fi
     info "Installing awk..."
@@ -320,6 +386,7 @@ get_tool_method() {
             centos) echo "yum" ;;
             macos)  echo "brew" ;;
             windows) echo "scoop" ;;
+            *)      echo "unknown" ;;
         esac
     fi
 }
@@ -598,6 +665,10 @@ generic_install_tool() {
             ensure_pipx
             run_cmd pipx install "$tool_package"
             ;;
+        npm)
+            ensure_npm
+            run_cmd npm install -g "$tool_package"
+            ;;
         build)
             info "Building $tool_package from source..."
             local tmp_dir
@@ -679,6 +750,15 @@ install_tool() {
     local tool_package="${packages_ref[$tool_index]}"
     local tool_methods="${methods_ref[$tool_index]}"
     
+    # Check if tool should be skipped in WSL
+    if should_skip_tool "$tool_name"; then
+        if [ "$FORCE" = true ] || [ "$WSL" = true ]; then
+            info "Skipping $tool_name (not applicable in WSL, but overridden by --force/--wsl)"
+        else
+            info "Skipping $tool_name (not applicable in WSL; use --wsl or --force to install)"
+            return
+        fi
+    fi
     # Check if tool is already installed
     if [ "$FORCE" = false ] && tool_installed "$tool_executable"; then
         info "$tool_name ($tool_executable) is already installed. Use --force to reinstall."
@@ -922,11 +1002,12 @@ Options:
   --skip-tool <name>   Skip specific tool(s) (can be repeated)
   --os <os>            Override OS detection (arch|ubuntu|centos|macos|windows)
   --profile <profile>  Override dotter profile (default: auto-detected)
-  --dry-run            Show what would be installed without executing
-  --force              Reinstall tools even if already present
-  --no-backup          Skip dotfile backup before deploy
-  --verbose, -v        Verbose output
-  --help, -h           Show this help message
+   --dry-run            Show what would be installed without executing
+   --force              Reinstall tools even if already present
+   --no-backup          Skip dotfile backup before deploy
+   --wsl                Install tools in WSL environment (skip GUI tools)
+   --verbose, -v        Verbose output
+   --help, -h           Show this help message
 
 Examples:
   bootstrap.sh                        # Full: install tools + deploy configs
@@ -969,6 +1050,7 @@ parse_args() {
             --force)        FORCE=true; shift ;;
             --no-backup)    NO_BACKUP=true; shift ;;
             --verbose|-v)   VERBOSE=true; shift ;;
+            --wsl)          WSL=true; shift ;;
             --help|-h)      usage; exit 0 ;;
             *)              error "Unknown option: $1. Use --help for usage." ;;
         esac
@@ -987,6 +1069,18 @@ main() {
         detect_os
     fi
     info "Detected OS: $OS"
+
+    # Detect WSL
+    detect_wsl
+    if [ "$WSL" = true ]; then
+        IS_WSL=true
+    fi
+    if [ "$IS_WSL" = true ]; then
+        info "WSL detected"
+        if [ "$WSL" = false ] && [ "$FORCE" = false ]; then
+            error "WSL detected. Use --wsl to install tools in WSL, or --force to ignore."
+        fi
+    fi
 
     # Ensure package managers are available
     case "$OS" in

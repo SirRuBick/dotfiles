@@ -8,7 +8,7 @@ Personal dotfiles repository for cross-platform development environment setup. T
 - **Unified bootstrap**: Single entrypoint for tool installation and configuration deployment
 - **Tool management**: Automatic detection and installation of development tools
 - **Dotter-based deployment**: OS-specific configuration via profiles
-- **Modular design**: Easy to add/remove tools via `tools.sh`
+- **Modular design**: Easy to add/remove tools via `tools.toml`
 
 ## Tools Managed
 
@@ -18,20 +18,24 @@ Personal dotfiles repository for cross-platform development environment setup. T
 - **Shell Enhancements**: Starship, Zoxide, FZF
 - **Terminal Tools**: Lazygit, Joshuto, Zellij, Fastfetch
 - **Build Tools**: Cargo (for Rust-based tools)
+- **AI Coding Agent**: OpenCode
 
 ### Windows-Specific Tools
 - **Window Manager**: GlazeWM
 - **Status Bar**: YASB (Yet Another Status Bar)
 - **Shell**: PowerShell
 - **Productivity**: PowerToys
+- **Audio Visualizer**: Cava
 
 ### Linux-Specific Tools
 - **Package Managers**: Pacman (Arch), Apt (Ubuntu), Yum (CentOS)
 - **Build Tools**: Rust/Cargo for tools not available via package managers
+- **Compiler**: GCC
 
 ### macOS-Specific Tools
 - **Package Manager**: Homebrew
 - **GUI Tools**: VSCode, Obsidian via Homebrew Casks
+- **Compiler**: GCC (via Xcode Command Line Tools)
 
 ## Installation
 
@@ -165,6 +169,11 @@ Each tool section includes:
 - `executable`: Command name used to detect if the tool is installed
 - `package`: Package name used by package managers
 - `methods`: Table mapping OS to installation method (optional; defaults to OS-specific defaults)
+- `skip_in_wsl`: Boolean (true/false) to skip installing this tool in WSL environments (optional; default false)
+
+### WSL Support
+
+When running under Windows Subsystem for Linux (WSL), the bootstrap script detects WSL and will skip tools marked with `skip_in_wsl = true` (e.g., GUI tools like VS Code). Use the `--wsl` flag to force installation of these tools in WSL, or `--force` to override all skips.
 
 Available methods:
 - `pacman`: Arch Linux package manager
@@ -176,6 +185,7 @@ Available methods:
 - `curl`: Universal installer (for tools with curl-based installers)
 - `cargo`: Rust Cargo (for Rust-based tools)
 - `pipx`: Python package manager
+- `npm`: Node.js package manager (for JavaScript tools)
 - `build`: Build from source
 
 ### Adding New Tools
