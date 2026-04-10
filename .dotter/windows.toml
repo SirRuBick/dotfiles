@@ -6,11 +6,15 @@ powershell = { target = "~/Documents/PowerShell/", type="symbolic" }
 cava = { target="~/.config/cava", type="symbolic" }
 "windows_terminal/settings.json" = "~/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
 
+[obsidian.files]
+"vim/vimrc" = { target = "~/.obsidian.vimrc", type="symbolic" }
+
+[vscode.files]
+"vscode/settings.json" = { target="~/AppData/Roaming/Code/User/settings.json", type="symbolic" }
+"vscode/keybindings.json" = { target="~/AppData/Roaming/Code/User/keybindings.json", type="symbolic" }
+
 [nvim.files]
 nvim = { target = "~/AppData/Local/nvim", type="symbolic" }
-
-[nvim.variables]
-vim_root_dir = "~/Desktop"
 
 [wsl.files]
 "wsl/wslconfig" = { target = "~/.wslconfig", type="symbolic" }

@@ -8,10 +8,10 @@
 "shell/.zshenv" = "~/.zshenv"
 
 [vscode.files]
-"vscode/vim_settings.json" = "~/.config/Code/User/settings.json"
+"vscode/vim_settings.json" = "~/Library/Application Support/Code/User/settings.json"
 
 [nvim.files]
 nvim = { target = "~/.config/nvim", type="symbolic" }
 
 [obsidian.files]
-"vim/vimrc" = { target = "~/.obsidian/vimrc", type="symbolic" }
+"vim/vimrc" = { target = "~/.obsidian.vimrc", type="symbolic" }

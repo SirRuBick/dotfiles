@@ -1,0 +1,92 @@
+# Tool definitions with mapping and installation methods
+# Each tool has: name (as used in GLOBAL_TOOLS), executable (for detection), package (for installation), and per-OS methods
+
+[[tools]]
+name = "neovim"
+executable = "nvim"
+package = "neovim"
+methods = { windows = "scoop", arch = "pacman", ubuntu = "apt", centos = "yum", macos = "brew" }
+
+[[tools]]
+name = "vscode"
+executable = "code" 
+package = "code"
+methods = { windows = "winget", arch = "pacman", ubuntu = "apt", centos = "yum", macos = "brew" }
+
+[[tools]]
+name = "git"
+executable = "git"
+package = "git"
+methods = { windows = "winget", arch = "pacman", ubuntu = "apt", centos = "yum", macos = "xcode_cli" }
+
+[[tools]]
+name = "starship"
+executable = "starship"
+package = "starship"
+methods = { windows = "scoop", arch = "curl", ubuntu = "curl", centos = "curl", macos = "brew" }
+
+[[tools]]
+name = "zoxide"
+executable = "zoxide"
+package = "zoxide"
+methods = { windows = "scoop", arch = "curl", ubuntu = "curl", centos = "curl", macos = "brew" }
+
+[[tools]]
+name = "lazygit"
+executable = "lazygit"
+package = "lazygit"
+methods = { windows = "scoop", arch = "pacman", ubuntu = "curl", centos = "curl", macos = "brew" }
+
+[[tools]]
+name = "joshuto"
+executable = "joshuto"
+package = "joshuto"
+methods = { windows = "scoop", arch = "pacman", ubuntu = "cargo", centos = "cargo", macos = "brew" }
+
+[[tools]]
+name = "zellij"
+executable = "zellij"
+package = "zellij"
+methods = { windows = "scoop", arch = "pacman", ubuntu = "curl", centos = "curl", macos = "brew" }
+
+[[tools]]
+name = "fastfetch"
+executable = "fastfetch"
+package = "fastfetch"
+methods = { windows = "scoop", arch = "pacman", ubuntu = "curl", centos = "curl", macos = "brew" }
+
+[[tools]]
+name = "fzf"
+executable = "fzf"
+package = "fzf"
+methods = { windows = "scoop", arch = "pacman", ubuntu = "apt", centos = "yum", macos = "brew" }
+
+[[tools]]
+name = "obsidian"
+executable = "obsidian"
+package = "obsidian"
+methods = { windows = "winget", arch = "pacman", ubuntu = "curl", centos = "curl", macos = "brew" }
+
+[[tools]]
+name = "glazewm"
+executable = "glazewm"
+package = "glazewm"
+methods = { windows = "scoop" }
+
+[[tools]]
+name = "yasb"
+executable = "yasb"
+package = "yasb"
+methods = { windows = "pipx" }
+
+[[tools]]
+name = "powershell"
+executable = "pwsh"
+package = "powershell"
+methods = { windows = "winget" }
+
+[[tools]]
+name = "powertoys"
+executable = "powertoys"
+package = "powertoys"
+methods = { windows = "winget" }

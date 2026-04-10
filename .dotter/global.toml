@@ -10,11 +10,14 @@ tmux = "" # replaced by zellij
 zellij = "~/.config/zellij" # TODO: Try zellij on windows
 fastfetch = "~/.config/fastfetch"
 
+[obsidian.files]
+"vim/vimrc" = { target = "~/.obsidian.vimrc", type="symbolic" }
+
+[vscode.files]
+"vscode/settings.json" = "~/.vscode/settings.json"
+"vscode/keybindings.json" = "~/.vscode/settings.json"
+
 [shell.variables]
-install = "echo not defined"
-uninstall = "echo not defined"
-update = "echo not defined"
-autoremove = "echo not defined"
 user_color = "7"
 logo_file = "alogo.txt"
 
