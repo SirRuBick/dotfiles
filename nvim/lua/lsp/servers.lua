@@ -31,6 +31,28 @@ local servers = {
       },
     },
   },
+  pyright = {
+    cmd = { "pyright-langserver", "--stdio" },
+    filetypes = { "python" },
+    settings = {
+      python = {
+        analysis = {
+          typeCheckingMode = "basic",
+          autoSearchPaths = true,
+          diagnosticMode = "openFilesOnly",
+          useLibraryCodeForTypes = true,
+        },
+      },
+    },
+    single_file_support = true,
+  },
+  clangd = {
+    cmd = { "clangd", "--offset-encoding=utf-16" },
+  },
+  bashls = {},
+  ts_ls = {},
+  jsonls = {},
+  sqlls = {},
 }
 
 return servers

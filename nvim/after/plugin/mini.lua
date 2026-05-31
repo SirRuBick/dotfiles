@@ -85,3 +85,10 @@ if ok_starter then
 		footer = "  " .. os.date("%A, %d %B %Y"),
 	})
 end
+
+-- mini.tabline (buffer bar)
+local ok_tabline, mini_tabline = pcall(require, "mini.tabline")
+if ok_tabline then
+	vim.opt.showtabline = 2
+	mini_tabline.setup()
+end

@@ -9,6 +9,7 @@ blink.setup({
   },
   appearance = {
     nerd_font_variant = 'normal',
+    kind_icons = require("icons").kind,
   },
   sources = {
     default = { 'lsp', 'path', 'buffer', 'luasnip' },
@@ -18,4 +19,5 @@ blink.setup({
   },
   snippets = { preset = 'luasnip' },
   signature = { enabled = true },
+  fuzzy = { implementation = "lua" },
 })

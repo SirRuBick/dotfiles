@@ -46,6 +46,18 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- Tabwidth: default 4, exceptions at 2
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup,
+  desc = "Set tabwidth for json/markdown/html to 2",
+  pattern = { "json", "jsonc", "markdown", "html", "css", "yaml" },
+  callback = function()
+    vim.opt_local.tabstop = 2
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.softtabstop = 2
+  end,
+})
+
 -- Auto-save on buffer leave or focus lost
 vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
   group = augroup,
@@ -57,5 +69,33 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
         vim.notify("Auto-save error: " .. err, vim.log.levels.ERROR)
       end
     end
+  end,
+})
+
+-- Lazy-load render-markdown on first markdown file
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup,
+  pattern = "markdown",
+  once = true,
+  callback = function()
+    local ok, rm = pcall(require, "render-markdown")
+    if not ok then return end
+    rm.setup({
+      file_types = { "markdown" },
+      render_modes = { "n", "c" },
+      heading = {
+        enabled = true, sign = true, position = "inline",
+        icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
+      },
+      code = { enabled = true, sign = true, style = "full", position = "left", language_pad = 0, disable_background = { "diff" } },
+      dash = { enabled = true, icon = "─", width = "full" },
+      bullet = { enabled = true, icons = { "●", "○", "◆", "◇" } },
+      checkbox = { enabled = true, unchecked = { icon = "󰄱 " }, checked = { icon = "󰱒 " } },
+      quote = { enabled = true, icon = "┃" },
+      pipe_table = { enabled = true, style = "full" },
+      link = { enabled = true, icon = "" },
+      sign = { enabled = true },
+    })
+    vim.keymap.set("n", "<leader>tm", "<cmd>RenderMarkdown toggle<cr>", { desc = "Toggle markdown rendering" })
   end,
 })

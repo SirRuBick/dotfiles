@@ -1,6 +1,6 @@
 # Neovim Configuration
 
-Minimal, plugin-manager-free Neovim config using `vim.pack` (built-in) and native treesitter.
+Minimal, plugin-manager-free Neovim config using `vim.pack` (built-in), native treesitter, and Neovim 0.12 built-in features.
 
 ## Architecture
 
@@ -10,27 +10,26 @@ nvim/
 ├── lua/
 │   ├── options.lua              # vim.opt settings, SSH clipboard
 │   ├── theme.lua                # Colorscheme (catppuccin), transparency toggle
-│   ├── keymaps.lua              # Global keymaps, hop
+│   ├── keymaps.lua              # Global keymaps, flash, buffer management, incremental selection
 │   ├── autocmds.lua             # CookLazy, LazyFile, yank highlight, auto-save
 │   ├── statusline.lua           # Statusline config (mini.statusline)
-│   ├── terminal.lua             # Floating terminal
+│   ├── terminal.lua             # Floating terminal system
 │   ├── plugins.lua              # vim.pack.add() declarations
-│   ├── treesitter.lua           # Built-in treesitter (highlight, text objects, movement)
+│   ├── treesitter.lua           # Built-in treesitter (highlight, text objects, movement, swap, peek)
 │   └── lsp/
-│       ├── init.lua             # LSP setup, diagnostics, keymaps, conform, commands
-│       └── servers.lua          # Server configurations (lua_ls, rust_analyzer)
+│       ├── init.lua             # LSP setup, diagnostics, keymaps, efm-langserver, commands
+│       └── servers.lua          # Server configurations (lua_ls, rust_analyzer, pyright, ...)
 ├── after/
 │   └── plugin/
-│       ├── bufferline.lua       # Bufferline config + keymaps
+│       ├── blink.lua            # blink.cmp completion
 │       ├── dap.lua              # DAP (debugging) config + keymaps
 │       ├── devicons.lua         # File icons
-│       ├── fzf.lua              # fzf-lua config, project, which-key
+│       ├── fzf.lua              # fzf-lua config, which-key
 │       ├── gitsigns.lua         # Git signs, blame, hunk actions
-│       ├── mini.lua             # mini.statusline + mini.starter (dashboard)
-│       ├── obsess.lua           # Focus panel
+│       ├── mini.lua             # mini.statusline + mini.starter + mini.tabline
 │       ├── oil.lua              # Oil file explorer
 │       └── render-markdown.lua  # Inline markdown rendering
-├── parser/                      # Compiled treesitter parsers (.so)
+├── parser/                      # Compiled treesitter parsers (.so / .dll)
 └── scripts/
     └── install-parsers.sh       # Regenerate parsers from grammar source
 ```
@@ -42,17 +41,14 @@ nvim/
 | oil.nvim | File explorer |
 | nvim-treesitter-context | Sticky function/class header |
 | nvim-lspconfig | LSP configurations |
-| conform.nvim | Formatting |
+| efmls-configs-nvim | Linting + formatting via efm-langserver |
 | nvim-web-devicons | File icons |
-| bufferline.nvim | Buffer tabs |
 | nvim-autopairs | Auto-close brackets |
 | fzf-lua | Fuzzy finder |
 | flash.nvim | Jump to position |
-| project.nvim | Project management |
 | nvim-surround | Surround motions |
 | which-key.nvim | Keybinding hints |
-| obsess.nvim | Focus/pomodoro panel |
-| mini.nvim | Statusline + start screen |
+| mini.nvim | Statusline + start screen + buffer tabline |
 | mason.nvim | LSP/DAP/linter installer |
 | gitsigns.nvim | Git gutter signs, blame, hunk actions |
 | plenary.nvim | Lua utility library (dependency) |
@@ -67,14 +63,21 @@ nvim/
 | LuaSnip | Snippet engine |
 | friendly-snippets | Snippet collection |
 
-## LSP Servers
+## LSP + Linting/Formatting
 
 | Server | Language |
 |---|---|
 | lua_ls | Lua |
 | rust_analyzer | Rust |
+| pyright | Python |
+| bashls | Bash |
+| ts_ls | TypeScript/JavaScript |
+| gopls | Go |
+| clangd | C/C++ |
+| efm | Linting & formatting (all languages) |
 
-Formatters (via conform.nvim): stylua (lua), isort+black (python), rustfmt (rust), prettierd (js)
+Formatting on save via efm-langserver (autocmd `BufWritePre`). Linters run on open/change.
+Requires Mason to install server binaries (`:Mason`).
 
 ---
 
@@ -88,10 +91,17 @@ Leader: `Space`
 |---|---|---|
 | `<C-s>` | i, n, v | Save file |
 | `<C-a>` | i, n | Select all |
-| `<leader>qq` | n | Save all and quit |
-| `<leader>ub` | n | Toggle transparency |
+| `<leader>q` | n | Save all and quit |
+| `<leader>ob` | n | Toggle transparency |
 | `n` | n | Next search result (centered) |
 | `N` | n | Previous search result (centered) |
+
+### Line Movement
+
+| Key | Mode | Action |
+|---|---|---|
+| `<A-j>` | n, v | Move line/selection down |
+| `<A-k>` | n, v | Move line/selection up |
 
 ### Window Management
 
@@ -116,25 +126,18 @@ Leader: `Space`
 | `<leader><tab>l` | n | Next tab |
 | `<leader><tab>h` | n | Previous tab |
 
-### Line Movement
-
-| Key | Mode | Action |
-|---|---|---|
-| `<A-j>` | n, v | Move line/selection down |
-| `<A-k>` | n, v | Move line/selection up |
-
 ### Buffer Management
 
 | Key | Mode | Action |
 |---|---|---|
-| `]b` | n | Next buffer |
-| `[b` | n | Previous buffer |
-| `<leader>bb` | n | Switch to alternate buffer |
-| `<leader>bd` | n | Delete buffer |
-| `<leader>bf` | n | Pick buffer (fuzzy) |
+| `]b` | n | Next buffer (built-in `:bnext`) |
+| `[b` | n | Previous buffer (built-in `:bprev`) |
+| `<leader>bb` | n | Switch to alternate buffer (`:b#`) |
+| `<leader>bd` | n | Delete buffer (`:bdelete`) |
+| `<leader>fb` | n | Fuzzy buffer picker (fzf-lua) |
 | `<leader>bo` | n | Close other buffers |
-| `<leader>bp` | n | Toggle pin buffer |
-| `<leader>bP` | n | Close unpinned buffers |
+
+Buffer bar shown by mini.tabline at top. Click to switch, middle-click to close.
 
 ### File Explorer (Oil)
 
@@ -153,7 +156,6 @@ Leader: `Space`
 | `<leader>fs` | n | Grep word under cursor |
 | `<leader>fk` | n | Find keymaps |
 | `<leader>fh` | n | Find help tags |
-| `<leader>fp` | n | Find projects |
 
 ### Flash (Jump)
 
@@ -190,7 +192,6 @@ Leader: `Space`
 | `<leader>cw` | n | Workspace symbols |
 | `<leader>cW` | n | Workspace diagnostics |
 | `<leader>lw` | n | Workspace symbols |
-| `<C-Space>` | i | Trigger completion |
 
 ### Floating Terminal
 
@@ -199,6 +200,15 @@ Leader: `Space`
 | `<leader>tt` | n | Toggle floating terminal |
 | `<leader>gg` | n | Toggle lazygit |
 | `<C-\><C-\>` | t | Toggle floating terminal (from terminal mode) |
+
+### Treesitter — Incremental Selection (Neovim 0.12+ built-in)
+
+| Key | Mode | Action |
+|---|---|---|
+| `<CR>` | n, x | Expand selection to parent node |
+| `<BS>` | x | Shrink selection to child node |
+
+Supports count prefix (e.g., `3<CR>`). Uses LSP `selectionRange` as fallback when no treesitter parser is available.
 
 ### Treesitter — Text Objects
 
@@ -213,13 +223,6 @@ Visual mode (`v`) and operator-pending mode (`d`, `c`, `y`, etc.)
 | `al` / `il` | Loop outer / inner |
 | `a=` / `i=` | Assignment outer / inner |
 | `as` / `is` | Scope outer / inner |
-
-### Treesitter — Incremental Selection
-
-| Key | Mode | Action |
-|---|---|---|
-| `<CR>` | n, x | Grow selection to parent node |
-| `<BS>` | x | Shrink selection to first child |
 
 ### Treesitter — Movement
 
@@ -245,19 +248,6 @@ Visual mode (`v`) and operator-pending mode (`d`, `c`, `y`, etc.)
 | Key | Mode | Action |
 |---|---|---|
 | `<leader>lp` | n | Peek definition in floating window |
-
-### Focus Panel (Obsess)
-
-| Key | Mode | Action |
-|---|---|---|
-| `<leader>os` | n | Toggle focus panel |
-| `<leader>oc` | n | Close focus panel |
-| `<leader>oo` | n | Set timer (minutes) |
-| `<leader>ol` | n | Set timer (seconds) |
-| `<leader>oa` | n | Add task |
-| `<leader>ot` | n | Toggle task done |
-| `<leader>od` | n | Delete task |
-| `<leader>oe` | n | Clear all tasks |
 
 ### Git (Gitsigns)
 
@@ -325,30 +315,19 @@ Requires: gcc, tree-sitter CLI (installed via bootstrap.sh)
 
 ---
 
-## Tools
-
-Managed via `tools.toml` + `bootstrap.sh`:
-
-| Tool | Install method |
-|---|---|
-| neovim | winget |
-| gcc | winget (WinLibs) |
-| cargo/rust | winget (Rustup) |
-| tree-sitter | scoop |
-| fzf | scoop |
-
----
-
 ## Autocmds
 
 | Event | Action |
 |---|---|
-| VimEnter | Fire `CookLazy` event (loads devicons, fzf-lua, which-key, obsess, project) |
-| BufReadPost/BufNewFile (once) | Fire `LazyFile` event (loads bufferline, conform.nvim) |
+| ColorScheme | Apply transparency |
+| VimEnter | Fire `CookLazy` event |
+| BufReadPost/BufNewFile (once) | Fire `LazyFile` event |
+| LspAttach | Register LSP keymaps |
+| BufWritePre | Format on save via efm |
 | TextYankPost | Highlight yanked text |
 | FileType | Disable auto-wrap comments |
 | BufLeave/FocusLost | Auto-save modified buffers |
 
 ---
 
-*Last updated: 2026-05-23*
+*Last updated: 2026-05-25*

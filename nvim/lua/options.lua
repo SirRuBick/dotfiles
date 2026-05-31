@@ -5,8 +5,8 @@ opt.number = true
 opt.relativenumber = true
 opt.cursorline = true
 opt.expandtab = true
-opt.tabstop = 2
-opt.shiftwidth = 2
+opt.tabstop = 4
+opt.shiftwidth = 4
 opt.softtabstop = 4
 opt.wrap = false
 opt.scrolloff = 5
@@ -27,33 +27,34 @@ opt.ttimeoutlen = 50
 opt.completeopt = "menu,menuone,noinsert"
 opt.swapfile = false
 opt.shadafile = "NONE"
+opt.mouse = "a"
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- SSH clipboard via OSC 52
-local function is_ssh()
-  return vim.env.SSH_CONNECTION
-      or vim.env.SSH_CLIENT
-      or vim.env.SSH_TTY
-end
+opt.fillchars = { eob = " " }
 
-if is_ssh() then
-  local function paste()
-    return {
-      vim.fn.split(vim.fn.getreg(""), "\n"),
-      vim.fn.getregtype(""),
-    }
-  end
-  vim.g.clipboard = {
-    name = 'OSC 52',
-    copy = {
-      ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
-      ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
-    },
-    paste = {
-      ['+'] = paste,
-      ['*'] = paste,
-    },
-  }
+vim.opt.pumborder = "rounded"
+vim.opt.pummaxwidth = 60
+vim.opt.winborder = "rounded"
+
+-- SSH clipboard via OSC 52
+if require("env").is_ssh then
+	local function paste()
+		return {
+			vim.fn.split(vim.fn.getreg(""), "\n"),
+			vim.fn.getregtype(""),
+		}
+	end
+	vim.g.clipboard = {
+		name = "OSC 52",
+		copy = {
+			["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+			["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+		},
+		paste = {
+			["+"] = paste,
+			["*"] = paste,
+		},
+	}
 end

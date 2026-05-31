@@ -2,6 +2,10 @@
 set -euo pipefail
 
 # Regenerate treesitter parsers from grammar source
+#
+# Prefer using :TSInstall <lang> from within Neovim instead of this script.
+# See lua/tsutils.lua — it has the same grammar registry and cross-platform build.
+#
 # Usage: ./nvim/scripts/install-parsers.sh [language...]
 #        ./nvim/scripts/install-parsers.sh --all
 #

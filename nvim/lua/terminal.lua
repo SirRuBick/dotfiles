@@ -7,20 +7,19 @@ local M = {}
 -- Per-tool terminal state
 local terms = {}
 
--- Cross‑platform shell detection
+-- Cross‑platform shell detection – returns a list: { executable, arg... }
 local function get_shell()
 	if vim.fn.has("win32") == 1 then
-		-- Try PowerShell Core, then Windows PowerShell, then cmd
 		if vim.fn.executable("pwsh") == 1 then
-			return "pwsh"
+			return { "pwsh", "-NoLogo" }
 		elseif vim.fn.executable("powershell") == 1 then
-			return "powershell"
+			return { "powershell", "-NoLogo" }
 		else
-			return "cmd"
+			return { "cmd" }
 		end
 	else
-		-- Unix: use $SHELL, or fall back to sh
-		return vim.env.SHELL or "sh"
+		local shell = vim.env.SHELL or "/bin/sh"
+		return { shell }
 	end
 end
 
@@ -55,25 +54,25 @@ function M.open(cmd, opts)
 				return
 			end
 		end
-		-- Terminal exists but not visible — reopen
-		M._open_float(state.buf, width_ratio, height_ratio, name)
+		-- Terminal exists but not visible – reopen
+		state.win = M._open_float(state.buf, width_ratio, height_ratio)
 		vim.cmd("startinsert")
 		return
 	end
 
-	-- Create new terminal buffer
+	-- Create a new terminal buffer
 	local buf = vim.api.nvim_create_buf(false, true)
 	vim.bo[buf].buflisted = false
-	vim.api.nvim_buf_set_name(buf, "term://" .. name)
 
-	M._open_float(buf, width_ratio, height_ratio, name)
+	-- Open float window (enters the float, does not touch the original window's buffer)
+	local win = M._open_float(buf, width_ratio, height_ratio)
 
-	-- Start terminal in the buffer
-	vim.cmd("buffer " .. buf)
-	vim.fn.termopen(cmd or os.getenv("SHELL") or "powershell")
+	-- Start terminal in the float's buffer
+	local shell_cmd = cmd or get_shell()
+	vim.fn.termopen(shell_cmd)
 	vim.cmd("startinsert")
 
-	terms[name] = { buf = buf, cmd = cmd }
+	terms[name] = { buf = buf, cmd = cmd, win = win }
 
 	-- Auto-close on terminal exit
 	vim.api.nvim_create_autocmd("TermClose", {
@@ -89,19 +88,8 @@ function M.open(cmd, opts)
 end
 
 -- Open a floating window for the given buffer
-function M._open_float(buf, width_ratio, height_ratio, name)
+function M._open_float(buf, width_ratio, height_ratio)
 	local win = vim.api.nvim_open_win(buf, true, float_opts(width_ratio, height_ratio))
-
-	-- Close window on BufLeave
-	vim.api.nvim_create_autocmd("BufLeave", {
-		buffer = buf,
-		once = true,
-		callback = function()
-			if win and vim.api.nvim_win_is_valid(win) then
-				vim.api.nvim_win_close(win, true)
-			end
-		end,
-	})
 
 	-- q to close from normal mode
 	vim.keymap.set("n", "q", function()
@@ -109,11 +97,27 @@ function M._open_float(buf, width_ratio, height_ratio, name)
 			vim.api.nvim_win_close(win, true)
 		end
 	end, { buffer = buf, silent = true, desc = "Close terminal" })
+
+	return win
 end
 
 -- Toggle generic floating terminal
 function M.toggle()
-	M.open(nil, { name = "FloatTerm", width = 0.8, height = 0.8 })
+	local name = "FloatTerm"
+	local state = terms[name]
+
+	-- If visible, close it
+	if state and state.buf and vim.api.nvim_buf_is_valid(state.buf) then
+		for _, win in ipairs(vim.api.nvim_list_wins()) do
+			if vim.api.nvim_win_is_valid(win) and vim.api.nvim_win_get_buf(win) == state.buf then
+				vim.api.nvim_win_close(win, true)
+				return
+			end
+		end
+	end
+
+	-- Open and focus into the terminal
+	M.open(nil, { name = name, width = 0.8, height = 0.8 })
 end
 
 -- ── Tool registry ───────────────────────────────────────────────────────────
