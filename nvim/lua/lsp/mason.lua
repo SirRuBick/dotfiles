@@ -31,6 +31,7 @@ do
 				"shfmt", "shellcheck",
 				"clang-format", "cpplint",
 				"prettierd", "fixjson",
+				"debugpy", "codelldb",
 			},
 			auto_update = true,
 			run_on_start = true,

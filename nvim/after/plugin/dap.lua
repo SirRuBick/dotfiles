@@ -8,6 +8,12 @@ local opts = { silent = true }
 -- Cross-platform executable path from Mason install
 local function mason_bin(name)
   local base = vim.fn.stdpath("data") .. "/mason/bin/" .. name
+  -- On Windows, Mason installs .cmd files
+  if vim.fn.has("win32") == 1 then
+    local cmd = base .. ".cmd"
+    if vim.fn.filereadable(cmd) == 1 then return cmd end
+  end
+  -- Linux/macOS or if .cmd not found
   return vim.fn.exepath(base) ~= "" and vim.fn.exepath(base) or base
 end
 
@@ -15,6 +21,11 @@ end
 local function load_dap()
   if _loaded then return end
   _loaded = true
+
+  pcall(vim.cmd, "packadd nvim-nio")
+  pcall(vim.cmd, "packadd nvim-dap")
+  pcall(vim.cmd, "packadd nvim-dap-ui")
+  pcall(vim.cmd, "packadd nvim-dap-virtual-text")
 
   local ok_dap, dap = pcall(require, "dap")
   if not ok_dap then return end
@@ -38,10 +49,25 @@ local function load_dap()
     dap_vt.setup({})
   end
 
-  -- Python adapter
+  -- Signs
+  local icons = require("icons").dap
+  vim.fn.sign_define("DapBreakpoint", { text = icons.Breakpoint, texthl = "DiagnosticSignError" })
+  vim.fn.sign_define("DapBreakpointCondition", { text = icons.BreakpointCondition, texthl = "DiagnosticSignWarn" })
+  vim.fn.sign_define("DapBreakpointRejected", { text = icons.BreakpointRejected, texthl = "DiagnosticSignError" })
+  vim.fn.sign_define("DapLogPoint", { text = icons.LogPoint, texthl = "DiagnosticSignInfo" })
+  vim.fn.sign_define("DapStopped", { text = icons.Stopped, texthl = "DiagnosticSignInfo" })
+
+  -- Python adapter (server mode — no visible terminal popup)
+  local debugpy_python = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/"
+    .. (vim.fn.has("win32") == 1 and "Scripts/python.exe" or "bin/python")
   dap.adapters.python = {
-    type = "executable",
-    command = mason_bin("debugpy-adapter"),
+    type = "server",
+    host = "127.0.0.1",
+    port = "${port}",
+    executable = {
+      command = debugpy_python,
+      args = { "-m", "debugpy", "--listen", "${port}", "--wait-for-client" },
+    },
   }
   dap.configurations.python = {
     {
