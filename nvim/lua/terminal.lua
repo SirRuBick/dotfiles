@@ -79,10 +79,15 @@ function M.open(cmd, opts)
 		buffer = buf,
 		once = true,
 		callback = function()
-			if vim.api.nvim_buf_is_valid(buf) then
-				vim.api.nvim_buf_delete(buf, { force = true })
-			end
-			terms[name] = nil
+			vim.schedule(function()
+				if win and vim.api.nvim_win_is_valid(win) then
+					pcall(vim.api.nvim_win_close, win, true)
+				end
+				if vim.api.nvim_buf_is_valid(buf) then
+					vim.api.nvim_buf_delete(buf, { force = true })
+				end
+				terms[name] = nil
+			end)
 		end,
 	})
 end
