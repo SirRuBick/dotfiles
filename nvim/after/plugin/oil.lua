@@ -22,4 +22,4 @@ vim.keymap.set("n", "<leader>e", function()
 	else
 		oil.open_float()
 	end
-end, { desc = wk_icons.e })
+end)

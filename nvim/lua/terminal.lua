@@ -157,7 +157,7 @@ M.tools = {
 			}
 		end,
 		keymap = "<leader>z",
-		desc = "Yazi file manager",
+		desc = "Yazi",
 	},
 }
 
@@ -184,3 +184,4 @@ vim.keymap.set("t", "<C-\\><C-\\>", function()
 end, { desc = "Toggle floating terminal" })
 
 return M
+

@@ -5,15 +5,6 @@ local map = vim.keymap.set
 local wk_icons = require("icons").whichkey
 local utils = require("utils")
 
-if utils.is_available("which-key") then
-	map("n", "<leader>b", "", { desc = wk_icons.b })
-	map("n", "<leader>d", "", { desc = wk_icons.d })
-	map("n", "<leader>e", "", { desc = wk_icons.e })
-	map("n", "<leader>g", "", { desc = wk_icons.g })
-	map("n", "<leader>l", "", { desc = wk_icons.l })
-	map("n", "<leader>t", "", { desc = wk_icons.t })
-	map("n", "<leader>u", "", { desc = wk_icons.u })
-end
 -- Window split
 map("n", "<leader>wh", "<cmd>leftabove vsplit<cr>", { desc = "Split left and focus" })
 map("n", "<leader>wj", "<cmd>rightbelow split<cr>", { desc = "Split below and focus" })
@@ -34,17 +25,17 @@ map("n", "<leader>we", "<C-w>=", { desc = "Equalize window sizes" })
 map("n", "<leader>wo", "<cmd>only<cr>", { desc = "Close other windows" })
 map("n", "<leader>wq", "<cmd>quit<cr>", { desc = "Close current window" })
 map("n", "<leader>wz", function()
-  local cur = vim.api.nvim_get_current_win()
-  if _win_tabzoom then
-    if vim.api.nvim_win_is_valid(_win_tabzoom) then
-      vim.api.nvim_set_current_win(_win_tabzoom)
-      vim.cmd("tabclose")
-    end
-    _win_tabzoom = nil
-  else
-    _win_tabzoom = cur
-    vim.cmd("tab split")
-  end
+	local cur = vim.api.nvim_get_current_win()
+	if _win_tabzoom then
+		if vim.api.nvim_win_is_valid(_win_tabzoom) then
+			vim.api.nvim_set_current_win(_win_tabzoom)
+			vim.cmd("tabclose")
+		end
+		_win_tabzoom = nil
+	else
+		_win_tabzoom = cur
+		vim.cmd("tab split")
+	end
 end, { desc = "Toggle zoom window" })
 
 -- Window resize
@@ -60,7 +51,7 @@ map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 -- Save / Select all / Quit
 map({ "i", "n", "v", "s" }, "<C-s>", "<Cmd>w<CR>", { silent = true, desc = "Save file" })
 map({ "i", "n" }, "<C-a>", "<Cmd>normal! ggVG<CR>", { silent = true, desc = "Select all" })
-map("n", "<leader>q", "<cmd>wqa<cr>", { desc = wk_icons.q })
+map("n", "<leader>q", "<cmd>wqa<cr>", { desc = "Save & Quit" })
 
 -- Window resize
 map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
@@ -100,7 +91,7 @@ map("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
 
 -- Undotree
 vim.cmd("packadd nvim.undotree")
-map("n", "<leader>u", "<cmd>Undotree<cr>", { desc = wk_icons.u })
+map("n", "<leader>u", "<cmd>Undotree<cr>", { desc = "UndoTree" })
 
 -- Paste without overwriting clipboard
 map("x", "p", '"_dP', { desc = "Paste without yanking" })
