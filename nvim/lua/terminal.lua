@@ -86,6 +86,9 @@ function M.open(cmd, opts)
 				if vim.api.nvim_buf_is_valid(buf) then
 					vim.api.nvim_buf_delete(buf, { force = true })
 				end
+				if opts.on_exit then
+					opts.on_exit()
+				end
 				terms[name] = nil
 			end)
 		end,
@@ -137,13 +140,37 @@ M.tools = {
 		keymap = "<leader>gg",
 		desc = "Lazygit",
 	},
+	yazi = {
+		setup = function()
+			local chooser = vim.fn.tempname()
+			return { "yazi", "--chooser-file", chooser }, {
+				name = "yazi",
+				width = 0.9,
+				height = 0.9,
+				on_exit = function()
+					local file = vim.fn.readfile(chooser)
+					if #file > 0 and file[1] ~= "" then
+						vim.cmd("edit " .. vim.fn.fnameescape(file[1]))
+					end
+					vim.fn.delete(chooser)
+				end,
+			}
+		end,
+		keymap = "<leader>z",
+		desc = "Yazi file manager",
+	},
 }
 
 -- Register keymaps from tool table
 for name, tool in pairs(M.tools) do
 	if tool.keymap then
 		vim.keymap.set("n", tool.keymap, function()
-			M.open(tool.cmd, { name = name, width = tool.width, height = tool.height })
+			if tool.setup then
+				local cmd, opts = tool.setup()
+				M.open(cmd, opts)
+			else
+				M.open(tool.cmd, { name = name, width = tool.width, height = tool.height })
+			end
 		end, { desc = tool.desc })
 	end
 end

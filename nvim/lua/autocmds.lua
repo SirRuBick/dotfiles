@@ -99,3 +99,31 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.keymap.set("n", "<leader>tm", "<cmd>RenderMarkdown toggle<cr>", { desc = "Toggle markdown rendering" })
   end,
 })
+
+-- Equalize splits on terminal/monitor resize
+vim.api.nvim_create_autocmd("VimResized", {
+  group = augroup,
+  desc = "Equalize splits on resize",
+  pattern = "*",
+  callback = function()
+    vim.cmd("wincmd =")
+  end,
+})
+
+-- Cursorline only in active window
+vim.api.nvim_create_autocmd("WinEnter", {
+  group = augroup,
+  desc = "Enable cursorline on active window",
+  pattern = "*",
+  callback = function()
+    vim.opt_local.cursorline = true
+  end,
+})
+vim.api.nvim_create_autocmd("WinLeave", {
+  group = augroup,
+  desc = "Disable cursorline on inactive window",
+  pattern = "*",
+  callback = function()
+    vim.opt_local.cursorline = false
+  end,
+})

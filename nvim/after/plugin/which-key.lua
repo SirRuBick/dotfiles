@@ -8,6 +8,7 @@ if ok_wk then
 		{ "<leader>f", group = wk_icons.f },
 		{ "<leader>g", group = wk_icons.g },
 		{ "<leader>l", group = wk_icons.l },
+		{ "<leader>o", group = wk_icons.o },
 		{ "<leader>q", group = wk_icons.q },
 		{ "<leader>t", group = wk_icons.t },
 		{ "<leader>u", group = wk_icons.u },

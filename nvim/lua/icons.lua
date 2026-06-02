@@ -202,6 +202,7 @@ icons.whichkey = {
 	l = " LSP",
 	m = "󰚩 LLM",
 	n = "󰏬 Notes (Obsidian)",
+	o = " Options",
 	q = "󰈆 Quit",
 	s = "󱂬 Session",
 	t = " Terminal",

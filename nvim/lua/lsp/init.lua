@@ -194,6 +194,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	group = vim.api.nvim_create_augroup("FormatOnSave", { clear = true }),
 	pattern = { "*.lua", "*.py", "*.json", "*.css", "*.html", "*.c", "*.cpp", "*.h", "*.hpp" },
 	callback = function(args)
+		if not vim.g.format_on_save then return end
 		if vim.bo[args.buf].buftype ~= "" then
 			return
 		end
@@ -204,6 +205,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		vim.lsp.buf.format({ bufnr = args.buf, timeout_ms = 2000, name = "efm" })
 	end,
 })
+
+vim.keymap.set("n", "<leader>of", function()
+	vim.g.format_on_save = not vim.g.format_on_save
+	vim.notify("Format on save " .. (vim.g.format_on_save and "enabled" or "disabled"))
+end, { desc = "Toggle format on save" })
 
 -- Autopairs
 vim.api.nvim_create_autocmd("InsertEnter", {

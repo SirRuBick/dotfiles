@@ -5,7 +5,6 @@ vim.opt.background = "dark"
 vim.cmd([[colorscheme catppuccin]])
 
 -- Transparency toggle
-vim.g.transparent_enabled = true
 
 local function apply_transparency()
 	if vim.g.transparent_enabled then

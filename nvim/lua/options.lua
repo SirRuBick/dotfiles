@@ -1,4 +1,8 @@
 -- Options
+vim.g.mapleader = " "
+vim.g.transparent_enabled = true
+vim.g.format_on_save = true
+
 local opt = vim.opt
 
 opt.number = true

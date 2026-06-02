@@ -1,6 +1,5 @@
 -- Keymaps
 local map = vim.keymap.set
-vim.g.mapleader = " "
 
 -- Icons
 local wk_icons = require("icons").whichkey
