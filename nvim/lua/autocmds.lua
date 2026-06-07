@@ -78,6 +78,7 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
   once = true,
   callback = function()
+    vim.cmd("packadd render-markdown.nvim")
     local ok, rm = pcall(require, "render-markdown")
     if not ok then return end
     rm.setup({

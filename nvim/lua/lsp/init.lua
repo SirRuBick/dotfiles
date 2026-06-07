@@ -135,56 +135,57 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
--- efm-langserver (linting + formatting)
+-- efm-langserver (linting + formatting) — lazy-loaded per-filetype
 do
 	local ok, _ = pcall(require, "efmls-configs")
 	if ok then
-		local function safe(name)
-			local ok_mod, mod = pcall(require, name)
-			return ok_mod and mod or {}
+		local efm_loaded = {}
+		local efm_languages = {}
+		local efm_filetypes = {
+			"c", "cpp", "css", "html", "json", "jsonc", "lua", "markdown", "python", "sh",
+		}
+		local efm_map = {
+			lua = { "efmls-configs.linters.luacheck", "efmls-configs.formatters.stylua" },
+			python = { "efmls-configs.linters.flake8", "efmls-configs.formatters.black" },
+			sh = { "efmls-configs.linters.shellcheck", "efmls-configs.formatters.shfmt" },
+			c = { "efmls-configs.formatters.clang_format", "efmls-configs.linters.cpplint" },
+			cpp = { "efmls-configs.formatters.clang_format", "efmls-configs.linters.cpplint" },
+			json = { "efmls-configs.formatters.fixjson" },
+			jsonc = { "efmls-configs.formatters.fixjson" },
+			css = { "efmls-configs.formatters.prettier_d" },
+			html = { "efmls-configs.formatters.prettier_d" },
+			markdown = { "efmls-configs.formatters.prettier_d" },
+		}
+
+		local function load_efm_for_ft(ft)
+			if efm_loaded[ft] then return end
+			efm_loaded[ft] = true
+			local langs = {}
+			for _, mod in ipairs(efm_map[ft] or {}) do
+				local ok_mod, m = pcall(require, mod)
+				if ok_mod then table.insert(langs, m) end
+			end
+			efm_languages[ft] = langs
+			vim.lsp.config("efm", {
+				filetypes = efm_filetypes,
+				init_options = { documentFormatting = true },
+				settings = { languages = efm_languages },
+			})
 		end
 
-		local luacheck = safe("efmls-configs.linters.luacheck")
-		local stylua = safe("efmls-configs.formatters.stylua")
-		local flake8 = safe("efmls-configs.linters.flake8")
-		local black = safe("efmls-configs.formatters.black")
-		local prettier_d = safe("efmls-configs.formatters.prettier_d")
-		local fixjson = safe("efmls-configs.formatters.fixjson")
-		local shellcheck = safe("efmls-configs.linters.shellcheck")
-		local shfmt = safe("efmls-configs.formatters.shfmt")
-		local cpplint = safe("efmls-configs.linters.cpplint")
-		local clangfmt = safe("efmls-configs.formatters.clang_format")
-
-		vim.lsp.config("efm", {
-			filetypes = {
-				"c",
-				"cpp",
-				"css",
-				"html",
-				"json",
-				"jsonc",
-				"lua",
-				"markdown",
-				"python",
-				"sh",
-			},
-			init_options = { documentFormatting = true },
-			settings = {
-				languages = {
-					lua = { luacheck, stylua },
-					python = { flake8, black },
-					sh = { shellcheck, shfmt },
-					c = { clangfmt, cpplint },
-					cpp = { clangfmt, cpplint },
-					json = { fixjson },
-					jsonc = { fixjson },
-					css = { prettier_d },
-					html = { prettier_d },
-					markdown = { prettier_d },
-				},
-			},
+		-- Register BEFORE vim.lsp.enable() so it fires first
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = efm_filetypes,
+			callback = function(args)
+				load_efm_for_ft(args.match)
+			end,
 		})
 
+		vim.lsp.config("efm", {
+			filetypes = efm_filetypes,
+			init_options = { documentFormatting = true },
+			settings = { languages = {} },
+		})
 		vim.lsp.enable("efm")
 	end
 end

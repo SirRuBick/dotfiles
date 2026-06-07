@@ -1,12 +1,12 @@
 -- All plugins using vim.pack (no external plugin manager)
 vim.pack.add({
-  { src = 'https://github.com/stevearc/oil.nvim' },
+  { src = 'https://github.com/stevearc/oil.nvim', opt = true },
   { src = 'https://github.com/nvim-treesitter/nvim-treesitter-context' },
   { src = 'https://github.com/neovim/nvim-lspconfig' },
   { src = 'https://github.com/creativenull/efmls-configs-nvim' },
   { src = 'https://github.com/nvim-tree/nvim-web-devicons' },
   { src = 'https://github.com/windwp/nvim-autopairs' },
-  { src = 'https://github.com/ibhagwan/fzf-lua' },
+  { src = 'https://github.com/ibhagwan/fzf-lua', opt = true },
   { src = 'https://github.com/folke/flash.nvim' },
   { src = 'https://github.com/kylechui/nvim-surround' },
   { src = 'https://github.com/folke/which-key.nvim' },
@@ -20,7 +20,7 @@ vim.pack.add({
   { src = 'https://github.com/theHamsta/nvim-dap-virtual-text' },
   { src = 'https://github.com/rcarriga/nvim-dap-ui' },
   { src = 'https://github.com/nvim-neotest/nvim-nio' },
-  { src = 'https://github.com/MeanderingProgrammer/render-markdown.nvim' },
+  { src = 'https://github.com/MeanderingProgrammer/render-markdown.nvim', opt = true },
   { src = 'https://github.com/saghen/blink.cmp' },
   { src = 'https://github.com/saghen/blink.lib' },
   { src = 'https://github.com/saghen/blink.compat' },

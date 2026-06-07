@@ -1,25 +1,31 @@
--- Oil file explorer
+-- Oil file explorer: lazy-loaded on first use
 local wk_icons = require("icons").whichkey
-local ok, oil = pcall(require, "oil")
-if not ok then
-	return
+
+local oil_loaded = false
+local oil
+
+local function load_oil()
+	if not oil_loaded then
+		vim.cmd("packadd oil.nvim")
+		oil = require("oil")
+		oil.setup({
+			keymaps = {
+				["q"] = { "actions.close", mode = "n" },
+			},
+			float = {
+				max_width = 0.9,
+				max_height = 0.9,
+			},
+		})
+		oil_loaded = true
+	end
 end
 
-oil.setup({
-	keymaps = {
-		["q"] = { "actions.close", mode = "n" },
-	},
-	float = {
-		-- max_width and max_height can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
-		max_width = 0.9,
-		max_height = 0.9,
-	},
-})
-
 vim.keymap.set("n", "<leader>e", function()
+	load_oil()
 	if vim.bo.filetype == "oil" then
 		oil.close()
 	else
 		oil.open_float()
 	end
-end)
+end, { desc = wk_icons.e.group })
