@@ -89,12 +89,26 @@ end, { desc = "Close other buffers" })
 map("n", "n", "nzzzv", { desc = "Next search result (centered)" })
 map("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
 
+-- Reload config
+map("n", "<leader>or", "<cmd>source $MYVIMRC<cr>", { desc = "Reload config" })
+
 -- Undotree
 vim.cmd("packadd nvim.undotree")
 map("n", "<leader>u", "<cmd>Undotree<cr>", { desc = "UndoTree" })
 
 -- Paste without overwriting clipboard
 map("x", "p", '"_dP', { desc = "Paste without yanking" })
+
+-- Swap visual selection with clipboard
+map("x", "P", function()
+	vim.cmd('normal! "+ygv"_d"+P')
+end, { desc = "Swap selection with clipboard" })
+
+-- Indent with Tab / Unindent with Shift-Tab
+map("n", "<Tab>", ">>", { desc = "Indent line" })
+map("n", "<S-Tab>", "<<", { desc = "Unindent line" })
+map("v", "<Tab>", ">gv", { desc = "Indent selection" })
+map("v", "<S-Tab>", "<gv", { desc = "Unindent selection" })
 
 -- Flash
 map({ "n", "x", "o" }, "s", function()

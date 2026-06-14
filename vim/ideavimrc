@@ -1,0 +1,244 @@
+" ============================================================================
+" IdeaVim Configuration
+" Mirrors Neovim keymaps for PyCharm, Rider, DataGrip
+" ============================================================================
+
+" ── Leader ──────────────────────────────────────────────────────────────────
+let mapleader=" "
+
+" ── Options ─────────────────────────────────────────────────────────────────
+set relativenumber
+set number
+set scrolloff=5
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set viminfo='25
+set clipboard+=unnamed
+
+" ── Plugins ─────────────────────────────────────────────────────────────────
+set surround
+set commentary
+set NERDTree
+set multiple-cursors
+set highlightedyank
+set which-key
+set easymotion
+
+" ── Force Vim handling for Alt+O/I (overrides JetBrains defaults) ─────────
+sethandler <A-o> a:vim
+sethandler <A-i> a:vim
+
+" ── Save / Select All / Quit ───────────────────────────────────────────────
+map <C-s> <Action>(SaveAll)
+imap <C-s> <Action>(SaveAll)
+map <C-a> <Action>(SelectAll)
+imap <C-a> <Action>(SelectAll)
+
+" ── Window Navigation ──────────────────────────────────────────────────────
+map <C-h> <Action>(ActivateProjectToolWindow)
+map <C-l> <Action>(ActivateFindToolWindow)
+map <C-j> <Action>(ActivateTerminalToolWindow)
+map <C-k> <Action>(ActivateBookmarksToolWindow)
+
+" ── Split Navigation ───────────────────────────────────────────────────────
+" Use IdeaVim's built-in split commands
+map <leader>wh <Action>(MoveEditorLeft)
+map <leader>wj <Action>(MoveEditorDown)
+map <leader>wk <Action>(MoveEditorUp)
+map <leader>wl <Action>(MoveEditorRight)
+map <leader>wo <Action>(Unsplit)
+map <leader>wq <Action>(CloseActiveTab)
+map <leader>we <Action>(EqualizeSplits)
+
+" ── Line Movement ──────────────────────────────────────────────────────────
+map <A-j> <Action>(MoveLineDown)
+map <A-k> <Action>(MoveLineUp)
+vmap <A-j> <Action>(MoveLineDown)
+vmap <A-k> <Action>(MoveLineUp)
+
+" ── Buffer (Tab) Management ────────────────────────────────────────────────
+map ]b <Action>(NextTab)
+map [b <Action>(PreviousTab)
+map <leader>bb <Action>(JumpToLastWindow)
+map <leader>bd <Action>(CloseActiveTab)
+map <leader>bo <Action>(CloseAllEditorsButActive)
+map <leader>ba <Action>(NewFile)
+
+" ── Line Navigation ────────────────────────────────────────────────────────
+map H <Action>(EditorLineStart)
+map L <Action>(EditorLineEnd)
+
+" ── Search Centered ────────────────────────────────────────────────────────
+map n nzz
+map N Nzz
+
+" ── Paste Without Yanking ──────────────────────────────────────────────────
+vmap p "_dP
+
+" ── Swap Selection with Clipboard ──────────────────────────────────────────
+vmap P "+ygv"_d"+P
+
+" ── Indent / Unindent with Tab ─────────────────────────────────────────────
+nmap <Tab> >>
+nmap <S-Tab> <<
+vmap <Tab> >gv
+vmap <S-Tab> <gv
+
+" ── Incremental Selection ──────────────────────────────────────────────────
+nmap <A-o> <Action>(EditorSelectWord)
+xmap <A-o> <Action>(EditorSelectWord)
+nmap <A-i> <Action>(EditorUnSelectWord)
+xmap <A-i> <Action>(EditorUnSelectWord)
+
+" ── Flash / EasyMotion (s → search & jump) ──────────────────────────────────
+" Requires: IdeaVim-EasyMotion plugin (install via JetBrains Marketplace)
+" s  → jump to any 2-char sequence (like Flash jump)
+" S  → line-level jump
+" gw → word-level jump
+map s <Plug>(easymotion-sn)
+map S <Plug>(easymotion-bd-jk)
+map gw <Plug>(easymotion-bd-w)
+map <leader>s <Plug>(easymotion-overwin-f2)
+
+" ── File Explorer ──────────────────────────────────────────────────────────
+map <leader>e <Action>(ActivateProjectToolWindow)
+
+" ── Find / Search ──────────────────────────────────────────────────────────
+map <leader>fa <Action>(SearchEverywhere)
+map <leader>fb <Action>(ShowNavBar)
+map <leader>ff <Action>(GotoFile)
+map <leader>fw <Action>(FindInPath)
+map <leader>fg <Action>(FindInPath)
+map <leader>fr <Action>(RecentFiles)
+xmap <leader>fo <Action>($SearchWeb)
+map <leader>fs <Action>(FindUsages)
+map <leader>fk <Action>(GotoAction)
+map <leader>fh <Action>(HelpTopics)
+map <leader>fp <Action>($LRU)
+
+nmap <leader>u <Action>(ActivateTODOToolWindow) " TODO
+
+" ── Go To Code ─────────────────────────────────────────────────────────────
+map gd <Action>(GotoDeclaration)
+map gD <Action>(GotoImplementation)
+map gI <Action>(GotoImplementation)
+map gT <Action>(GotoTypeDeclaration)
+map gh <Action>(QuickJavaDoc)
+map gu <Action>(FindUsages)
+map gs <Action>(ParameterInfo)
+map gp <Action>(GotoSuperMethod)
+
+" ── LSP / Code Actions ─────────────────────────────────────────────────────
+map <leader>ld <Action>(GotoDefinition)
+map <leader>lr <Action>(FindUsages)
+map <leader>li <Action>(GotoImplementation)
+map <leader>lt <Action>(GotoTypeDeclaration)
+map <leader>la <Action>(ShowIntentionActions)
+map <leader>lf <Action>(ReformatCode)
+map <leader>lR <Action>(RenameElement)
+map <leader>ls <Action>(FileStructurePopup)
+map <leader>lo <Action>(FileStructurePopup)
+map <leader>le <Action>(GotoNextError)
+map <leader>lE <Action>(GotoPreviousError)
+map <leader>lw <Action>(FindInPath)
+
+" ── Git ─────────────────────────────────────────────────────────────────────
+map <leader>gg <Action>(Vcs.Log)
+map <leader>gc <Action>(CheckinProject)
+map <leader>gs <Action>(CheckinProject)
+map <leader>gd <Action>(Annotate)
+map <leader>gb <Action>(Annotate)
+map <leader>gp <Action>(Vcs.Push)
+map <leader>gpl <Action>(Vcs.UpdateProject)
+map ]h <Action>(VcsShowNextChange)
+map [h <Action>(VcsShowPrevChange)
+
+" ── Debugger ────────────────────────────────────────────────────────────────
+map <leader>db <Action>(ToggleLineBreakpoint)
+map <leader>dc <Action>(Continue)
+map <leader>do <Action>(StepOver)
+map <leader>di <Action>(StepInto)
+map <leader>dO <Action>(StepOut)
+map <leader>dt <Action>(Stop)
+map <leader>dr <Action>(Debug)
+map <leader>du <Action>(EvaluateExpression)
+map <leader>dl <Action>(RunToCursor)
+
+" ── Run / Build ─────────────────────────────────────────────────────────────
+map <leader>rr <Action>(Run)
+map <leader>rd <Action>(Debug)
+map <leader>rt <Action>(RunClass)
+map <leader>rs <Action>(Stop)
+map <leader>rc <Action>(Compile)
+map <leader>rp <Action>(RunAnything)
+
+" ── Refactoring ─────────────────────────────────────────────────────────────
+map <leader>rn <Action>(RefactoringMenu)
+map <leader>rv <Action>(IntroduceVariable)
+map <leader>rm <Action>(ExtractMethod)
+map <leader>ri <Action>(Inline)
+map <leader>rk <Action>(ChangeSignature)
+
+" ── Terminal ────────────────────────────────────────────────────────────────
+map <leader>tt <Action>(ActivateTerminalToolWindow)
+
+" ── Errors / Navigation ────────────────────────────────────────────────────
+map <leader>re <Action>(GotoNextError)
+map <leader>rE <Action>(GotoPreviousError)
+map ]d <Action>(GotoNextError)
+map [d <Action>(GotoPreviousError)
+
+" ── Tabs ────────────────────────────────────────────────────────────────────
+map <leader>tn <Action>(NextTab)
+map <leader>tp <Action>(PreviousTab)
+
+" ── JetBrains-Specific: Type Hierarchy / Structure ──────────────────────────
+map <leader>th <Action>(TypeHierarchy)
+map <leader>oo <Action>(FileStructurePopup)
+map <leader>ot <Action>(FileStructurePopup)
+
+" ── JetBrains-Specific: Bookmarks ──────────────────────────────────────────
+map <leader>ma <Action>(ToggleBookmark)
+map <leader>mn <Action>(GotoNextBookmark)
+map <leader>mp <Action>(GotoPreviousBookmark)
+
+" ── JetBrains-Specific: Tool Windows ───────────────────────────────────────
+map <leader>1 <Action>(ActivateProjectToolWindow)
+map <leader>2 <Action>(ActivateFindToolWindow)
+map <leader>3 <Action>(ActivateTerminalToolWindow)
+map <leader>4 <Action>(ActivateDebugToolWindow)
+map <leader>5 <Action>(ActivateVersionControlToolWindow)
+
+" ── JetBrains-Specific: DataGrip ───────────────────────────────────────────
+map <leader>xr <Action>(Console.Execute)
+map <leader>xc <Action>(Console.Open)
+map <leader>xs <Action>(StopAction)
+
+" ── JetBrains-Specific: Rider ──────────────────────────────────────────────
+map <leader>gt <Action>(GotoRelated)
+
+" ── Reload Config ───────────────────────────────────────────────────────────
+map <leader>or :source ~/.ideavimrc<cr>
+
+"
+nmap [p <Action>(PreviousParameter)
+nmap ]p <Action>(NextParameter)
+nmap [r <Action>(GotoPrevElementUnderCaretUsage)
+nmap ]r <Action>(GotoNextElementUnderCaretUsage)
+
+" ── Which-Key Groups ───────────────────────────────────────────────────────
+" Help discoverability for leader key groups
+map <leader>b <nop>
+map <leader>d <nop>
+map <leader>e <nop>
+map <leader>f <nop>
+map <leader>g <nop>
+map <leader>l <nop>
+map <leader>o <nop>
+map <leader>q <nop>
+map <leader>r <nop>
+map <leader>t <nop>
+map <leader>w <nop>
+map <leader>x <nop>
