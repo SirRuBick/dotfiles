@@ -6,8 +6,12 @@ powershell = { target = "~/Documents/PowerShell/", type="symbolic" }
 cava = { target="~/.config/cava", type="symbolic" }
 "windows_terminal/settings.json" = "~/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
 
+[vim.files]
+"vim/ideavimrc" = { target = "~/.ideavimrc", type = "symbolic" }
+"vim/obsidian.vimrc" = { target = "~/omnia/.obsidian.vimrc", type = "symbolic" }
+
 [obsidian.files]
-"vim/vimrc" = { target = "~/.obsidian.vimrc", type="symbolic" }
+"vim/obsidian.vimrc" = { target = "~/omnia/.obsidian.vimrc", type = "symbolic" }
 
 [vscode.files]
 "vscode/settings.json" = { target="~/AppData/Roaming/Code/User/settings.json", type="symbolic" }

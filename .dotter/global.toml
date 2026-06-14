@@ -1,21 +1,21 @@
 [shell.files]
 "git/config" = "~/.gitconfig"
-joshuto = ""  # TODO: consider yazi first
 lazygit = { target = "~/.config/lazygit", type="symbolic" }
 "starship/starship.toml" = { target = "~/.config/starship.toml", type="symbolic" }
-python = ""
-"ideavim/ideavimrc" = { target = "~/.ideavimrc", type="symbolic" }
 
-tmux = "" # replaced by zellij
-zellij = "~/.config/zellij" # TODO: Try zellij on windows
+zellij = "~/.config/zellij"
 fastfetch = "~/.config/fastfetch"
 
+[vim.files]
+"vim/ideavimrc" = { target = "~/.ideavimrc", type = "symbolic" }
+"vim/obsidian.vimrc" = { target = "~/omnia/.obsidian.vimrc", type = "symbolic" }
+
 [obsidian.files]
-"vim/vimrc" = { target = "~/.obsidian.vimrc", type="symbolic" }
+"vim/obsidian.vimrc" = { target = "~/omnia/.obsidian.vimrc", type = "symbolic" }
 
 [vscode.files]
 "vscode/settings.json" = "~/.vscode/settings.json"
-"vscode/keybindings.json" = "~/.vscode/settings.json"
+"vscode/keybindings.json" = "~/.vscode/keybindings.json"
 
 [shell.variables]
 user_color = "7"

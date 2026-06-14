@@ -1,11 +1,13 @@
 [shell.files]
-"shell/bin" = "~/.local/bin"
-"shell/shell" = "~/.config/shell"
 "shell/.bashrc" = "~/.bashrc"
 "shell/.bash_profile" = "~/.bash_profile"
 "shell/.bash_logout" = "~/.bash_logout"
 "shell/.zshrc" = "~/.zshrc"
 "shell/.zshenv" = "~/.zshenv"
+
+[vim.files]
+"vim/ideavimrc" = { target = "~/.ideavimrc", type = "symbolic" }
+"vim/obsidian.vimrc" = { target = "~/omnia/.obsidian.vimrc", type = "symbolic" }
 
 [vscode.files]
 "vscode/vim_settings.json" = "~/.config/Code/User/settings.json"
@@ -14,4 +16,4 @@
 nvim = { target = "~/.config/nvim", type="symbolic" }
 
 [obsidian.files]
-"vim/vimrc" = { target = "~/.obsidian/vimrc", type="symbolic" }
+"vim/obsidian.vimrc" = { target = "~/omnia/.obsidian.vimrc", type = "symbolic" }
