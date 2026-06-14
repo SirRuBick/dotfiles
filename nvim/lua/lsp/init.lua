@@ -132,6 +132,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Go to definition" }))
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, vim.tbl_extend("force", opts, { desc = "Go to declaration" }))
 		vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, vim.tbl_extend("force", opts, { desc = "Signature help" }))
+
+		-- LSP keymaps (gr* + custom <leader>l)
+		vim.keymap.set("n", "grh", vim.lsp.buf.signature_help, vim.tbl_extend("force", opts, { desc = "Signature help" }))
+		vim.keymap.set("n", "<leader>lh", vim.lsp.buf.signature_help, vim.tbl_extend("force", opts, { desc = "Signature help" }))
+		vim.keymap.set("n", "<leader>lx", vim.lsp.codelens.run, vim.tbl_extend("force", opts, { desc = "Codelens run" }))
 	end,
 })
 

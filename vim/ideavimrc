@@ -143,6 +143,18 @@ map <leader>lo <Action>(FileStructurePopup)
 map <leader>le <Action>(GotoNextError)
 map <leader>lE <Action>(GotoPreviousError)
 map <leader>lw <Action>(FindInPath)
+map <leader>lx <Action>(ShowIntentionActions)
+map <leader>lh <Action>(ParameterInfo)
+
+" ── LSP gr* keymaps (match Neovim 0.11+ built-in) ─────────────────────────
+map gra <Action>(ShowIntentionActions)
+map gri <Action>(GotoImplementation)
+map grn <Action>(RenameElement)
+map grr <Action>(FindUsages)
+map grt <Action>(GotoTypeDeclaration)
+map grh <Action>(ParameterInfo)
+map gO <Action>(FileStructurePopup)
+map gx <Action>(OpenUrl)
 
 " ── Git ─────────────────────────────────────────────────────────────────────
 map <leader>gg <Action>(Vcs.Log)
