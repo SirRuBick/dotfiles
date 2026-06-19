@@ -103,7 +103,7 @@ methods = { windows = "scoop", arch = "pacman", ubuntu = "curl", centos = "curl"
 name = "gcc"
 executable = "gcc"
 package = "gcc"
-methods = { arch = "gcc", ubuntu = "gcc", centos = "gcc", macos = "xcode_cli", windows = "winget" }
+methods = { arch = "packman", ubuntu = "apt", centos = "yum", macos = "xcode_cli", windows = "winget" }
 
 [[tools]]
 name = "cava"

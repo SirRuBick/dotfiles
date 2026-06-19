@@ -1,16 +1,21 @@
 [shell.files]
-"git/config" = "~/.gitconfig"
+"shell/bash" = { target = "~/.config/shell/bash", type = "symbolic"}
+"shell/zsh" = { target = "~/.config/shell/zsh", type = "symbolic"}
+"shell/common" = { target = "~/.config/shell/commmon", type = "symbolic"}
+
 lazygit = { target = "~/.config/lazygit", type="symbolic" }
 "starship/starship.toml" = { target = "~/.config/starship.toml", type="symbolic" }
 
 zellij = "~/.config/zellij"
 fastfetch = "~/.config/fastfetch"
 
+[git.files]
+"git/config" = "~/.gitconfig"
+"git/gitignore" = { target = "~/.config/git/gitignore", type = "symbolic"}
+
 [vim.files]
 "vim/ideavimrc" = { target = "~/.ideavimrc", type = "symbolic" }
-"vim/obsidian.vimrc" = { target = "~/omnia/.obsidian.vimrc", type = "symbolic" }
-
-[obsidian.files]
+"vim/shared.vim" = { target = "~/.vim/shared.vim", type = "symbolic" }
 "vim/obsidian.vimrc" = { target = "~/omnia/.obsidian.vimrc", type = "symbolic" }
 
 [vscode.files]
@@ -22,4 +27,4 @@ user_color = "7"
 logo_file = "alogo.txt"
 
 [nvim.files]
-nvim = "~/.config/nvim"
+nvim = { target = "~/.config/nvim", type = "symbolic" }

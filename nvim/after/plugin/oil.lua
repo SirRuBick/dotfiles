@@ -16,6 +16,9 @@ local function load_oil()
 				max_width = 0.9,
 				max_height = 0.9,
 			},
+			view_options = {
+				show_hidden = true,
+			},
 		})
 		oil_loaded = true
 	end

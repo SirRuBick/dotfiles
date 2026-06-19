@@ -7,13 +7,13 @@
 
 [vim.files]
 "vim/ideavimrc" = { target = "~/.ideavimrc", type = "symbolic" }
+"vim/shared.vim" = { target = "~/.vim/shared.vim", type = "symbolic" }
 "vim/obsidian.vimrc" = { target = "~/omnia/.obsidian.vimrc", type = "symbolic" }
 
 [vscode.files]
-"vscode/vim_settings.json" = "~/.config/Code/User/settings.json"
+"vscode/vim_settings.json" = { target = "~/.config/Code/User/settings.json", type = "symbolic" }
+"vscode/keybindings.json" = { target = "~/.config/Code/User/keybindgs.json", type = "symbolic" }
 
 [nvim.files]
 nvim = { target = "~/.config/nvim", type="symbolic" }
 
-[obsidian.files]
-"vim/obsidian.vimrc" = { target = "~/omnia/.obsidian.vimrc", type = "symbolic" }

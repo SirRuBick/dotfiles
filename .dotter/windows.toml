@@ -2,15 +2,15 @@
 lazygit = { target = "~/AppData/Local/lazygit", type="symbolic" }
 glazewm = { target = "~/.glzr/glazewm", type="symbolic" }
 yasb = { target = "~/.config/yasb", type="symbolic" }
-powershell = { target = "~/Documents/PowerShell/", type="symbolic" }
 cava = { target="~/.config/cava", type="symbolic" }
 "windows_terminal/settings.json" = "~/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
 
+[powershell.files]
+powershell = { target = "~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1", type="symbolic" }
+
 [vim.files]
 "vim/ideavimrc" = { target = "~/.ideavimrc", type = "symbolic" }
-"vim/obsidian.vimrc" = { target = "~/omnia/.obsidian.vimrc", type = "symbolic" }
-
-[obsidian.files]
+"vim/shared.vim" = { target = "~/.vim/shared.vim", type = "symbolic" }
 "vim/obsidian.vimrc" = { target = "~/omnia/.obsidian.vimrc", type = "symbolic" }
 
 [vscode.files]
