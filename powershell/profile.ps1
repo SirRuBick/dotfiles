@@ -46,7 +46,7 @@ function open { explorer.exe $args }
 
 
 # Evnrionment Variables
-
+$env:SHELL = "pwsh"
 
 # Prompt
 ## FastFetch
