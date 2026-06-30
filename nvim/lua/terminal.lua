@@ -69,6 +69,9 @@ function M.open(cmd, opts)
 
 	-- Start terminal in the float's buffer
 	local shell_cmd = cmd or get_shell()
+	if type(shell_cmd) == "string" then
+		shell_cmd = { shell_cmd }
+	end
 	vim.fn.termopen(shell_cmd)
 	vim.cmd("startinsert")
 
