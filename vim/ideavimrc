@@ -6,9 +6,9 @@
 " ── Source shared config ─────────────────────────────────────────────────────
 source ~/.vim/shared.vim
 
-" ── Force Vim handling for Alt+O/I (overrides JetBrains defaults) ─────────
-sethandler <A-o> a:vim
-sethandler <A-i> a:vim
+" ── Force Vim handling for Enter/Backspace (overrides JetBrains defaults) ──
+sethandler <CR> a:vim
+sethandler <BS> a:vim
 
 " ── Save / Select All / Quit ───────────────────────────────────────────────
 map <C-s> <Action>(SaveAll)
@@ -46,10 +46,10 @@ map <leader>bo <Action>(CloseAllEditorsButActive)
 map <leader>ba <Action>(NewFile)
 
 " ── Incremental Selection ──────────────────────────────────────────────────
-nmap <A-o> <Action>(ExtendSelection)
-xmap <A-o> <Action>(ExtendSelection)
-nmap <A-i> <Action>(ShrinkSelection)
-xmap <A-i> <Action>(ShrinkSelection)
+nmap <CR> <Action>(ExtendSelection)
+xmap <CR> <Action>(ExtendSelection)
+nmap <BS> <Action>(ShrinkSelection)
+xmap <BS> <Action>(ShrinkSelection)
 
 " ── File Explorer ──────────────────────────────────────────────────────────
 map <leader>e <Action>(ActivateProjectToolWindow)

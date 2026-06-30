@@ -171,8 +171,8 @@
 
 | Shortcut | Description | nvim | vscode | ideavim | obsidian |
 |---|---|---|---|---|---|
-| `<A-o>` | Expand selection | ✅ | ❌ | ✅ | ❌ |
-| `<A-i>` | Shrink selection | ✅ | ❌ | ✅ | ❌ |
+| `<CR>` | Expand selection | ✅ | ❌ | ✅ | ❌ |
+| `<BS>` | Shrink selection | ✅ | ❌ | ✅ | ❌ |
 
 ---
 

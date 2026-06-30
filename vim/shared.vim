@@ -39,7 +39,21 @@ map k gk
 vmap p "_dP
 
 " ── Swap Selection with Clipboard ──────────────────────────────────────────
-vmap P "+ygv"_d"+P
+function! s:SwapWithClipboard()
+    let clip = @+
+    if clip == ''
+        return
+    endif
+    let zsave = @z
+    normal! "zy
+    let sel = @z
+    let @z = clip
+    normal! gv"_d"zP
+    let @z = zsave
+    let @+ = sel
+    let @" = sel
+endfunction
+xnoremap P :<C-u>call <SID>SwapWithClipboard()<CR>
 
 " ── Indent / Unindent with Tab ─────────────────────────────────────────────
 nmap <Tab> >>
@@ -53,9 +67,9 @@ nmap L $
 vmap H ^
 vmap L $
 
-" ── Incremental Selection (Alt+O/I) ────────────────────────────────────────
-sethandler <A-o> a:vim
-sethandler <A-i> a:vim
+" ── Incremental Selection (Enter/Backspace) ─────────────────────────────────
+sethandler <CR> a:vim
+sethandler <BS> a:vim
 
 " ── Flash / EasyMotion ──────────────────────────────────────────────────────
 " s  → jump to any 2-char sequence

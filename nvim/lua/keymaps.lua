@@ -101,7 +101,25 @@ map("x", "p", '"_dP', { desc = "Paste without yanking" })
 
 -- Swap visual selection with clipboard
 map("x", "P", function()
-	vim.cmd('normal! "+ygv"_d"+P')
+	-- vim.cmd('normal! "+ygv"_d"+P')
+    local clip = vim.fn.getreg("+")
+    local cliptype = vim.fn.getregtype("+")
+    if clip == "" then return end
+
+    local zsave = vim.fn.getreg("z")
+    local zsavetype = vim.fn.getregtype("z")
+
+    vim.cmd('normal! "zy')
+    local sel = vim.fn.getreg("z")
+    local seltype = vim.fn.getregtype("z")
+
+    vim.fn.setreg("z", clip, cliptype)
+    vim.cmd('normal! gv"_d"zP')
+
+    vim.fn.setreg("z", zsave, zsavetype)
+
+    vim.fn.setreg("+", sel, seltype)
+    vim.fn.setreg("", sel, seltype)
 end, { desc = "Swap selection with clipboard" })
 
 -- Indent with Tab / Unindent with Shift-Tab
@@ -128,7 +146,7 @@ map("c", "<c-s>", function()
 end, { desc = "Flash toggle search" })
 
 -- Incremental selection via built-in treesitter/LSP (Neovim 0.12+)
-map({ "n", "x" }, "<A-o>", function()
+map({ "n", "x" }, "<CR>", function()
 	local count = vim.v.count1
 	if vim.treesitter.get_parser(nil, nil, { error = false }) then
 		require("vim.treesitter._select").select_parent(count)
@@ -137,7 +155,7 @@ map({ "n", "x" }, "<A-o>", function()
 	end
 end, { desc = "Select parent node" })
 
-map("x", "<A-i>", function()
+map("x", "<BS>", function()
 	local count = vim.v.count1
 	if vim.treesitter.get_parser(nil, nil, { error = false }) then
 		require("vim.treesitter._select").select_child(count)
