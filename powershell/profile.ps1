@@ -81,6 +81,8 @@ Import-Module Terminal-Icons
 # PSReadLine
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineKeyHandler -Key Tab -Function Complete
+# Unbind Alt+1-9 from DigitArgument (conflicts with zellij)
+1..9 | ForEach-Object { Remove-PSReadLineKeyHandler -Chord "Alt+$_" -ErrorAction SilentlyContinue }
 
 
 # Functions
