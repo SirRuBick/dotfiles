@@ -173,6 +173,9 @@ keybinds clear-defaults=true {
         bind "Alt 4" { GoToTab 4; }
         bind "Alt 5" { GoToTab 5; }
         bind "Alt 6" { GoToTab 6; }
+        bind "Alt 7" { GoToTab 7; }
+        bind "Alt 8" { GoToTab 8; }
+        bind "Alt 9" { GoToTab 9; }
         bind "q" { Quit; }
     }
     shared_among "normal" "locked" {
