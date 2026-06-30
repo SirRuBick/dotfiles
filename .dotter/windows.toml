@@ -6,7 +6,7 @@ cava = { target="~/.config/cava", type="symbolic" }
 "windows_terminal/settings.json" = "~/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
 
 [powershell.files]
-powershell = { target = "~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1", type="symbolic" }
+"powershell/profile.ps1" = { target = "~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1", type="symbolic" }
 
 [vim.files]
 "vim/ideavimrc" = { target = "~/.ideavimrc", type = "symbolic" }
