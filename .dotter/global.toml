@@ -28,3 +28,6 @@ logo_file = "alogo.txt"
 
 [nvim.files]
 nvim = { target = "~/.config/nvim", type = "symbolic" }
+
+[yazi.files]
+yazi = { target = "~/.config/yazi", type = "symbolic" }

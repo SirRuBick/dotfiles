@@ -22,3 +22,6 @@ nvim = { target = "~/AppData/Local/nvim", type="symbolic" }
 
 [wsl.files]
 "wsl/wslconfig" = { target = "~/.wslconfig", type="symbolic" }
+
+[yazi.files]
+yazi = { target = "~/AppData/Roaming/yazi/config", type="symbolic" }

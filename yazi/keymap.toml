@@ -1,0 +1,111 @@
+[manager]
+keymap = [
+  { on = ["<Esc>"], run = "escape", desc = "Cancel selection or find" },
+  { on = ["q"], run = "quit", desc = "Quit" },
+  { on = ["Q"], run = "quit --no-cwd-file", desc = "Quit without writing cwd-file" },
+
+  # Navigation
+  { on = ["j"], run = "arrow 1", desc = "Move cursor down" },
+  { on = ["k"], run = "arrow -1", desc = "Move cursor up" },
+  { on = ["J"], run = "arrow 5", desc = "Move cursor down 5" },
+  { on = ["K"], run = "arrow -5", desc = "Move cursor up 5" },
+  { on = ["h"], run = "leave", desc = "Go to parent directory" },
+  { on = ["l"], run = "enter", desc = "Enter directory or open file" },
+  { on = ["g", "g"], run = "arrow -99999999", desc = "Move cursor to top" },
+  { on = ["G"], run = "arrow 99999999", desc = "Move cursor to bottom" },
+
+  { on = ["H"], run = "seek -5", desc = "Seek up 5 units in preview" },
+  { on = ["L"], run = "seek 5", desc = "Seek down 5 units in preview" },
+
+  # Tabs
+  { on = ["<C-t>"], run = "tab_create --current", desc = "Create new tab" },
+  { on = ["W"], run = "tab_close", desc = "Close current tab" },
+  { on = ["<Tab>"], run = "tab_switch 1 --relative", desc = "Switch to next tab" },
+  { on = ["<S-Tab>"], run = "tab_switch -1 --relative", desc = "Switch to previous tab" },
+
+  { on = ["<A-1>"], run = "tab_switch 0", desc = "Switch to tab 1" },
+  { on = ["<A-2>"], run = "tab_switch 1", desc = "Switch to tab 2" },
+  { on = ["<A-3>"], run = "tab_switch 2", desc = "Switch to tab 3" },
+  { on = ["<A-4>"], run = "tab_switch 3", desc = "Switch to tab 4" },
+  { on = ["<A-5>"], run = "tab_switch 4", desc = "Switch to tab 5" },
+
+  # Selection
+  { on = [" "], run = "toggle --state=none", desc = "Toggle selection" },
+  { on = ["t"], run = "toggle_all --state=none", desc = "Toggle all selections" },
+  { on = ["V"], run = "visual_mode", desc = "Enter visual mode" },
+
+  # Operations
+  { on = ["y", "y"], run = "yank", desc = "Copy selected files" },
+  { on = ["d", "d"], run = "cut", desc = "Cut selected files" },
+  { on = ["p", "p"], run = "paste", desc = "Paste files" },
+  { on = ["p", "o"], run = "paste --force", desc = "Paste files (overwrite)" },
+  { on = ["d", "D"], run = "remove", desc = "Permanently delete selected files" },
+  { on = ["a"], run = "rename --append", desc = "Rename append" },
+  { on = ["A"], run = "rename --prepend", desc = "Rename prepend" },
+  { on = ["c", "w"], run = "rename", desc = "Rename" },
+
+  { on = ["<Delete>"], run = "remove", desc = "Delete files" },
+
+  # Creation
+  { on = ["f", "t"], run = "create", desc = "Create file/dir (end with / for dir)" },
+  { on = ["m", "k"], run = "create", desc = "Create file/dir (end with / for dir)" },
+
+  # Search
+  { on = ["/"], run = "find", desc = "Find" },
+  { on = ["?"], run = "find --previous", desc = "Find previous" },
+  { on = ["n"], run = "find_arrow", desc = "Go to next found" },
+  { on = ["N"], run = "find_arrow --previous", desc = "Go to previous found" },
+  { on = ["S"], run = "search fd", desc = "Search with fd" },
+  { on = ["C"], run = "search rg", desc = "Search with rg" },
+
+  # Hidden and sort
+  { on = ["z", "h"], run = "hidden toggle", desc = "Toggle hidden files" },
+  { on = ["<C-h>"], run = "hidden toggle", desc = "Toggle hidden files" },
+
+  { on = [","], run = "sort natural", desc = "Sort naturally" },
+  { on = [".", "m"], run = "sort modified", desc = "Sort by modified time" },
+  { on = [".", "s"], run = "sort size", desc = "Sort by size" },
+  { on = [".", "e"], run = "sort extension", desc = "Sort by extension" },
+  { on = [".", "r"], run = "sort reverse", desc = "Reverse sort" },
+
+  # Line mode
+  { on = ["m", "s"], run = "linemode size", desc = "Set linemode to size" },
+  { on = ["m", "m"], run = "linemode mtime", desc = "Set linemode to mtime" },
+  { on = ["m", "p"], run = "linemode permissions", desc = "Set linemode to permissions" },
+  { on = ["m", "o"], run = "linemode owner", desc = "Set linemode to owner" },
+  { on = ["m", "n"], run = "linemode none", desc = "Set linemode to none" },
+
+  # Goto
+  { on = ["g", "r"], run = "cd /", desc = "Go to root" },
+  { on = ["g", "h"], run = "cd ~", desc = "Go to home" },
+  { on = ["g", "e"], run = "cd /etc", desc = "Go to /etc" },
+  { on = ["g", "d"], run = "cd ~/Downloads", desc = "Go to Downloads" },
+  { on = ["g", "D"], run = "cd ~/Desktop", desc = "Go to Desktop" },
+  { on = ["g", "c", "d"], run = "cd ~/.config", desc = "Go to .config" },
+  { on = ["g", "c", "v"], run = "cd ~/.config/nvim", desc = "Go to nvim config" },
+  { on = ["g", "c", "y"], run = "cd ~/.config/yazi", desc = "Go to yazi config" },
+
+  # Misc
+  { on = ["="], run = "chmod", desc = "Change permissions" },
+  { on = ["w"], run = "tasks_show", desc = "Show task manager" },
+  { on = ["r"], run = "reload", desc = "Reload directory" },
+  { on = [":"], run = "shell --interactive", desc = "Shell command" },
+
+  # External tools
+  { on = ["<C-g>"], run = "shell 'lazygit'", desc = "Open lazygit" },
+]
+
+[input]
+keymap = [
+  { on = ["<Esc>"], run = "close", desc = "Cancel input" },
+  { on = ["<Enter>"], run = "close --submit", desc = "Submit input" },
+  { on = ["<C-c>"], run = "close", desc = "Cancel input" },
+]
+
+[tasks]
+keymap = [
+  { on = ["w"], run = "close", desc = "Close task manager" },
+  { on = ["<Esc>"], run = "close", desc = "Close task manager" },
+  { on = ["k"], run = "arrow -1", desc = "Move cursor up" },
+  { on = ["j"], run = "arrow 1", desc = "Move cursor down" },
+]

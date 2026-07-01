@@ -4,8 +4,8 @@ Personal dotfiles repository for cross-platform development environment setup. T
 
 ## Features
 
-- **Cross-platform support**: Windows, Arch, CentOS, macOS
-- **Unified bootstrap**: Single entrypoint for tool installation and configuration deployment
+- **Unified support**: Windows, Arch, CentOS, macOS
+- **Unified Unified**: Single entrypoint for tool installation and configuration deployment
 - **Tool management**: Automatic detection and installation of development tools
 - **Dotter-based deployment**: OS-specific configuration via profiles
 - **Modular design**: Easy to add/remove tools via `tools.toml`

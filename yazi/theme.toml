@@ -1,0 +1,161 @@
+# Catppuccin Mocha theme for Yazi
+# https://github.com/catppuccin/catppuccin
+
+[manager]
+cwd = { fg = "#89b4fa", bold = true }
+
+# Hovered item
+hovered = { fg = "#cdd6f4", bg = "#45475a" }
+
+# Previewed item in parent directory
+preview_hovered = { fg = "#cdd6f4", bg = "#45475a" }
+
+# Find matched text
+find_keyword = { fg = "#f9e2af", bold = true, italic = true, underline = true }
+
+# Selected items (visual mode)
+selected = { fg = "#fab387", bold = true }
+
+# Copied items
+copied = { fg = "#a6e3a1", bg = "#313244" }
+
+# Cut items
+cut = { fg = "#f38ba8", bg = "#313244" }
+
+# Tab bar
+tab_active = { fg = "#1e1e2e", bg = "#89b4fa", bold = true }
+tab_inactive = { fg = "#a6adc8", bg = "#313244" }
+
+# Border
+border_symbol = "│"
+border_style = { fg = "#585b70" }
+
+# Count
+count_copied = { fg = "#1e1e2e", bg = "#a6e3a1" }
+count_cut = { fg = "#1e1e2e", bg = "#f38ba8" }
+count_selected = { fg = "#1e1e2e", bg = "#fab387" }
+
+[status]
+separator_open = ""
+separator_close = ""
+separator_style = { fg = "#313244", bg = "#313244" }
+
+mode_normal = { fg = "#1e1e2e", bg = "#89b4fa", bold = true }
+mode_select = { fg = "#1e1e2e", bg = "#fab387", bold = true }
+mode_unset = { fg = "#1e1e2e", bg = "#f38ba8", bold = true }
+
+progress_label = { fg = "#cdd6f4", bold = true }
+progress_normal = { fg = "#89b4fa", bg = "#313244" }
+progress_error = { fg = "#f38ba8", bg = "#313244" }
+
+permissions_t = { fg = "#89b4fa" }
+permissions_r = { fg = "#f9e2af" }
+permissions_w = { fg = "#f38ba8" }
+permissions_x = { fg = "#a6e3a1" }
+permissions_s = { fg = "#585b70" }
+
+[filetype]
+rules = [
+  { url = "*/", fg = "#89b4fa", bold = true },
+
+  # Images
+  { url = "*.bmp", fg = "#f9e2af" },
+  { url = "*.gif", fg = "#f9e2af" },
+  { url = "*.heic", fg = "#f9e2af" },
+  { url = "*.jpg", fg = "#f9e2af" },
+  { url = "*.jpeg", fg = "#f9e2af" },
+  { url = "*.pgm", fg = "#f9e2af" },
+  { url = "*.png", fg = "#f9e2af" },
+  { url = "*.ppm", fg = "#f9e2af" },
+  { url = "*.svg", fg = "#f9e2af" },
+  { url = "*.webp", fg = "#f9e2af" },
+
+  # Audio
+  { url = "*.wav", fg = "#cba6f7" },
+  { url = "*.flac", fg = "#cba6f7" },
+  { url = "*.mp3", fg = "#cba6f7" },
+  { url = "*.amr", fg = "#cba6f7" },
+  { url = "*.ogg", fg = "#cba6f7" },
+  { url = "*.opus", fg = "#cba6f7" },
+
+  # Video
+  { url = "*.avi", fg = "#cba6f7" },
+  { url = "*.flv", fg = "#cba6f7" },
+  { url = "*.m3u", fg = "#cba6f7" },
+  { url = "*.m4a", fg = "#cba6f7" },
+  { url = "*.m4v", fg = "#cba6f7" },
+  { url = "*.mkv", fg = "#cba6f7" },
+  { url = "*.mov", fg = "#cba6f7" },
+  { url = "*.mp4", fg = "#cba6f7" },
+  { url = "*.mpg", fg = "#cba6f7" },
+  { url = "*.rmvb", fg = "#cba6f7" },
+  { url = "*.webm", fg = "#cba6f7" },
+  { url = "*.wmv", fg = "#cba6f7" },
+
+  # Archives
+  { url = "*.7z", fg = "#f38ba8" },
+  { url = "*.bz2", fg = "#f38ba8" },
+  { url = "*.gz", fg = "#f38ba8" },
+  { url = "*.rar", fg = "#f38ba8" },
+  { url = "*.tar", fg = "#f38ba8" },
+  { url = "*.tgz", fg = "#f38ba8" },
+  { url = "*.xz", fg = "#f38ba8" },
+  { url = "*.zip", fg = "#f38ba8" },
+  { url = "*.zst", fg = "#f38ba8" },
+
+  # Documents
+  { url = "*.doc", fg = "#89b4fa" },
+  { url = "*.docx", fg = "#89b4fa" },
+  { url = "*.pdf", fg = "#89b4fa" },
+  { url = "*.txt", fg = "#cdd6f4" },
+  { url = "*.md", fg = "#cdd6f4" },
+
+  # Code
+  { url = "*.c", fg = "#a6e3a1" },
+  { url = "*.cpp", fg = "#a6e3a1" },
+  { url = "*.css", fg = "#89b4fa" },
+  { url = "*.go", fg = "#89dceb" },
+  { url = "*.html", fg = "#fab387" },
+  { url = "*.java", fg = "#f38ba8" },
+  { url = "*.js", fg = "#f9e2af" },
+  { url = "*.json", fg = "#f9e2af" },
+  { url = "*.jsx", fg = "#89dceb" },
+  { url = "*.lua", fg = "#89b4fa" },
+  { url = "*.py", fg = "#f9e2af" },
+  { url = "*.rs", fg = "#fab387" },
+  { url = "*.ts", fg = "#89b4fa" },
+  { url = "*.tsx", fg = "#89dceb" },
+  { url = "*.toml", fg = "#fab387" },
+  { url = "*.yaml", fg = "#fab387" },
+  { url = "*.yml", fg = "#fab387" },
+  { url = "*.sh", fg = "#a6e3a1" },
+  { url = "*.bash", fg = "#a6e3a1" },
+  { url = "*.zsh", fg = "#a6e3a1" },
+  { url = "*.vim", fg = "#a6e3a1" },
+
+  # Config files
+  { url = "*.lock", fg = "#585b70" },
+  { url = ".gitignore", fg = "#585b70" },
+  { url = ".gitconfig", fg = "#585b70" },
+
+  # Executables
+  { url = "*", is = "exec", fg = "#a6e3a1", bold = true },
+
+  # Symlinks
+  { url = "*", is = "link", fg = "#94e2d5", bold = true },
+
+  # Block devices
+  { url = "*", is = "block", fg = "#f5c2e7" },
+
+  # Char devices
+  { url = "*", is = "char", fg = "#f5c2e7" },
+
+  # FIFOs
+  { url = "*", is = "fifo", fg = "#94e2d5" },
+
+  # Sockets
+  { url = "*", is = "sock", fg = "#cba6f7" },
+
+  # Regular files
+  { url = "*", fg = "#cdd6f4" },
+]
